@@ -16,11 +16,8 @@ public class Controller {
 
 	private static Controller theOne;
 
-	private static final String DB_NAME = "vg_inventory.db";
+	private static final String DB_NAME = "TravelAid.db";
 
-	private static final String USER_TABLE_NAME = "user";
-	private static final String[] USER_FIELD_NAMES = { "_id", "name", "email", "role", "password"};
-	private static final String[] USER_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "TEXT"};
 
 	private static final String VIDEO_GAME_TABLE_NAME = "video_game";
 	private static final String[] VIDEO_GAME_FIELD_NAMES = { "_id", "name", "platform", "year", "genre", "publisher"};
@@ -34,39 +31,42 @@ public class Controller {
 
 	// country _id PRIMARY KEY INTEGER, ​name ​TEXT, ​population ​INTEGER, ​cities TEXT, ​city_id ​INTEGER ,​climate ​TEXT, ​average_temperature ​REAL
 	private static final String[] COUNTRY_TABLE_NAME = {"country"};
-	private static final String[] COUNTRY_TABLE_FIELD_NAME= {"_id, country, name, population, cities, city_id, climate, average_temperature "};
-	private static final String[] COUNTRY_TABLE_FIELD_TYPES = {"INTEGER PRIMARY KEY, TEXT, INTEGER, TEXT, INTEGER, TEXT, REAL "};
+	private static final String[] COUNTRY_TABLE_FIELD_NAME= {"_id", "country", "name", "population", "cities", "city_id", "climate", "average_temperature"};
+	private static final String[] COUNTRY_TABLE_FIELD_TYPES = {"INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT", "INTEGER", "TEXT", "REAL"};
 	//Vegetable  _​id PRIMARY KEY​ INTEGER, ​description ​TEXT, ​unit ​TEXT, ​price REAL, , ​country_code ​INTEGER
 	private static final String[] VEGETABLE_TABLE_NAME = {"vegetable" };
-	private static final String[] VEGETABLE_TABLE_FIELD_NAME = {"_id, type, description, unit, price, country_code " };
-	private static final String[] VEGETABLE_TABLE_FIELD_TYPE = {"INTEGER PRIMARY KEY, TEXT, TEXT, TEXT, REAL, INTEGER" };
+	private static final String[] VEGETABLE_TABLE_FIELD_NAME = {"_id", "type", "description", "unit", "price", "country_code " };
+	private static final String[] VEGETABLE_TABLE_FIELD_TYPE = {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
 	//fruit  _​id PRIMARY KEY​ INTEGER, ​​description ​TEXT, ​unit ​TEXT, price ​REAL, , ​country_code ​
 	private static final String[] FRUIT_TABLE_NAME = {"fruit"};
-	private static final String[] FRUIT_TABLE_FIELD_NAME = {"_id, type, description, unit, price, country_code"};
-	private static final String[] FRUIT_TABLE_FIELD_TYPE = {"INTEGER PRIMARY KEY, TEXT, TEXT, TEXT, REAL, INTEGER"};
+	private static final String[] FRUIT_TABLE_FIELD_NAME = {"_id", "type", "description", "unit", "price", "country_code " };
+	private static final String[] FRUIT_TABLE_FIELD_TYPE =  {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
 	//dairy _​id PRIMARY KEY​ INTEGER, ​type ​TEXT, ​description ​TEXT, ​unit ​TEXT, price ​REAL,  ​country_code ​INTEGER
 	private static final String[] DAIRY_TABLE_NAME = {"dairy"};
-	private static final String[] DAIRY_TABLE_FIELD_NAME = {"_id, type, description, unit, price, country_code"};
-	private static final String[] DAIRY_TABLE_FIELD_TYPE = {"INTEGER PRIMARY KEY, TEXT,TEXT, TEXT, REAL, INTEGER"};
+	private static final String[] DAIRY_TABLE_FIELD_NAME = {"_id", "type", "description", "unit", "price", "country_code " };
+	private static final String[] DAIRY_TABLE_FIELD_TYPE =  {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
 	//meat _​id PRIMARY KEY​ INTEGER, ​type ​TEXT, ​description ​TEXT, ​unit ​TEXT, price ​REAL, , ​country_code ​INTEGER
 	private static final String[] MEAT_TABLE_NAME = {"meat"};
-	private static final String[] MEAT_TABLE_FIELD_NAME = {"_id, type, description, unit, price, country_code"};
-	private static final String[] MEAT_TABLE_FIELD_TYPE = {"INTEGER PRIMARY KEY, TEXT, TEXT, TEXT, REAL, INTEGER"};
+	private static final String[] MEAT_TABLE_FIELD_NAME = {"_id", "type", "description", "unit", "price", "country_code " };
+	private static final String[] MEAT_TABLE_FIELD_TYPE =  {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
 	//real estatE  _id PRIMARY KEY INTEGER, ​type ​TEXT, ​average_rent_pric​e REAL, average_buying_price ​REAL, country_code INTEGER 
 	private static final String[] REAL_ESTATE_TABLE_NAME = {"real_estate"};
-	private static final String[] REAL_ESTATE_FIELD_NAME = {"_id, type, avg_rent_price, avg_buying_price, country_code"};
-	private static final String[] REAL_ESTATE_FIELD_TYPE = {"INTEGER PRIMARY KEY, TEXT, REAL, REAL, INTEGER"};
+	private static final String[] REAL_ESTATE_FIELD_NAME = {"_id", "type", "avg_rent_price", "avg_buying_price", "country_code"};
+	private static final String[] REAL_ESTATE_FIELD_TYPE = {"INTEGER PRIMARY KEY", "TEXT", "REAL", "REAL", "INTEGER"};
 	//public transportation  _id PRIMARY KEY INTEGER, ​type ​TEXT, average_price REA, country_code​ INTEGER 
 	private static final String[] PUBLIC_TRANSPORTATION_TABLE_NAME = {"public_transportation"};
-	private static final String[] PUBLIC_TRANSPORTATION_FIELD_NAME = {"_id, type, avg_price, country_code"};
-	private static final String[] PUBLIC_TRANSPORTATION_FIELD_TYPE = {"INTEGER PRIMARY KEY, TEXT, REAL, INTEGER"};
+	private static final String[] PUBLIC_TRANSPORTATION_FIELD_NAME = {"_id", "type", "avg_price", "country_code"};
+	private static final String[] PUBLIC_TRANSPORTATION_FIELD_TYPE = {"INTEGER PRIMARY KEY", "TEXT", "REAL", "INTEGER"};
 
 	//private  ​_id PRIMARY KEY INTEGER​, ​average_economic_car_price ​REAL ,​average_gas_price​ REAL, ​averge_diesel_price ​REAL, 
 	//average_inssurance_price REAL,​unit​ TEXT ,​country_code​ INTEGER -
 	private static final String[] PRIVATE_TRANSPORTATION_TABLE_NAME = {"private_transportation"};
-	private static final String[] PRIVATE_TRANSPORTATION_FIELD_NAME ={"_id, type, avg_car_price, avg_gas_price, avg_diesel_pricem avg_inssurance_price, unit, country_code "};
-	private static final String[] PRIVATE_TRANSPORTATION_FIELD_TYPE = {"INTEGER PRIMARY KEY, REAL, REAL, REAL, REAL, TEXT, INTEGER "};
+	private static final String[] PRIVATE_TRANSPORTATION_FIELD_NAME ={"_id", "type, avg_car_price", "avg_gas_price", "avg_diesel_price","avg_inssurance_price", "unit", "country_code "};
+	private static final String[] PRIVATE_TRANSPORTATION_FIELD_TYPE = {"INTEGER PRIMARY KEY", "REAL", "REAL", "REAL", "REAL", "TEXT", "INTEGER"};
 	//email _id PRIMARY KEY INTEGER,  ​name TEXT, ​age INTEGER, climate_preference​ TEXT, ​email TEXT 
+	private static final String USER_TABLE_NAME = "user";
+	private static final String[] USER_FIELD_NAMES = { "_id", "name", "age","climate_preference", "email"};
+	private static final String[] USER_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT", "TEXT"};
 
 
 
