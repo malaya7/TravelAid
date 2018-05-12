@@ -3,7 +3,7 @@ package edu.orangecoastcollege.model;
 public enum Types 
 {
 // Food 
-Vegetable, Fruit, dairy_products,  Meat,	
+Vegetable, Fruit, Dairy_products,  Meat,	
 // transportations
 Public_transportation, Private_transportation,
 // currency

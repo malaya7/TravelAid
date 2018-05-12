@@ -6,5 +6,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="Lib/activation.jar"/>
+	<classpathentry kind="lib" path="Lib/javax.mail-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="Lib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="Lib/smtp-1.6.1.jar"/>
+	<classpathentry kind="lib" path="Lib/sqlite-jdbc-3.21.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
