@@ -2,12 +2,12 @@ package edu.orangecoastcollege.model;
 
 public class Grocery
 {
-  String description;
-  String unit; 
-  double price; 
+  private String description;
+  private String unit; 
+  private double price; 
   
   // TODO We need a way to asstioacte this food with a country 
-  int country_code;
+private  int country_code;
   
   // using enum for type which could be frit,veg, meat, dairy
   Types type;

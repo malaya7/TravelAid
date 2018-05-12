@@ -2,9 +2,9 @@ package edu.orangecoastcollege.model;
 
 public class Country
 {
-	String Name;
-	String climate;
-	int population;
+	private String Name;
+	private String climate;
+	private int population;
 	
 	public Country(String name, String climate, int population)
 	{

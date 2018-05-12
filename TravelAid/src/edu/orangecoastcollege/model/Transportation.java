@@ -5,15 +5,15 @@ public class Transportation
 	// public or private
 	Types type;
 	// Train, Bus, Taxi
-	String Kind;
-	int country_code;
-	double averagePrice;
+	private String Kind;
+	private int country_code;
+	private double averagePrice;
 	
 	// for private only 
-	double average_economic_car_price;
+	private double average_economic_car_price;
 	/** should have a defult value Gallons*/
-	double average_gas_price;
-	double average_inssurance_price;
+	private	double average_gas_price;
+	private double average_inssurance_price;
 	
 	public Transportation(Types type, String kind, int country_code, double averagePrice,
 			double average_economic_car_price, double average_gas_price, double average_inssurance_price) {
