@@ -17,12 +17,18 @@ public class Controller {
 	private static Controller theOne;
 
 	private static final String DB_NAME = "TravelAid.db";
+	private static final String USA_DAIRY_FILE_DATA_FILE = "Dairy USA.csv";
+	private static final String USA_FRUIT_DATA_FILE = "Fruit USA.csv";
+	private static final String USA_VEGETABLE_DATA_FILE = "Meat USA.csv";
+
+	
 
 
 	private static final String VIDEO_GAME_TABLE_NAME = "video_game";
 	private static final String[] VIDEO_GAME_FIELD_NAMES = { "_id", "name", "platform", "year", "genre", "publisher"};
 	private static final String[] VIDEO_GAME_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "INTEGER", "TEXT", "TEXT"};
 	private static final String VIDEO_GAME_DATA_FILE = "videogames_lite.csv";
+	
 
 	// Below is the relationship table "user_games" which associates users with the video games in their inventory
 	private static final String USER_GAMES_TABLE_NAME = "user_games";
@@ -313,7 +319,9 @@ public class Controller {
 	}
 
 */
-
+	//make this method take a 				String file
+	//switch on that string and depending on which file,
+	//try different reads for each object with its corresponding file
 	private int initializeVideoGameDBFromFile() throws SQLException {
 		int recordsCreated = 0;
 

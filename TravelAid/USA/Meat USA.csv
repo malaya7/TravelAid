@@ -1,0 +1,48 @@
+Meat Products USA					
+_id	type	description	unit	price$	country_code
+	Grass Fed Beef	Ribeye Steak	lb	21.41	
+	Grass Fed Beef	Ribeye Roast	lb	16.33	
+	Grass Fed Beef	Chuck Roast	lb	8.39	
+	Grass Fed Beef	Flat Iron Steak	lb	14.36	
+	Grass Fed Beef	Rump Roast	lb	9.09	
+	Grass Fed Beef	Bottom Round Roast	lb	10.02	
+	Grass Fed Beef	Filet Mignon	lb	34.98	
+	Grass Fed Beef	Tenderloin	lb	27.25	
+	Grass Fed Beef	Sirloin Steak	lb	15.51	
+	Grass Fed Beef	Sirloin Roast	lb	12.62	
+	Grass Fed Beef	Brisket	lb	8.43	
+	Grass Fed Beef	Flank Steak	lb	13.27	
+	Grass Fed Beef	Skirt Steak	lb	12.65	
+	Grass Fed Beef	Short Ribs	lb	7.67	
+	Grass Fed Beef	Stew Meat	lb	8.58	
+	Grass Fed Beef	Tri Tip	lb	15.68	
+	Beef	Ground Beef 70-79%	lb	3.99	
+	Beef	Ground Beef 80-89%	lb	5.99	
+	Beef	Beef Paties	lb	12.99	
+	Beef	Boneless NY Strip Steak	lb	18.38	
+	Pork	Bacon	lb	5	
+	Pork	BackRibs	lb	7	
+	Pork	Breakfast Sausage	lb	3.19	
+	Pork	CC Chops	lb	5	
+	Pork	Dinner Sausage	lb	3.99	
+	Pork	Italian Sausage	lb	3.79	
+	Pork	PKG/SLCD Ham	lb	9.12	
+	Chicken	Bagged Fryer	lb	3	
+	Chicken	Drumsticks	lb	3.29	
+	Chicken	BNLS/SKNLS Breast	lb	6.78	
+	Chicken	Whole Wings	lb	4.49	
+	Chicken	Split bn-in Breast	lb	4.87	
+	Chicken	thighs	lb	3.49	
+	Chicken	legs	lb	4.59	
+	Chicken	BNLS/SKNLS thighs	lb	5.5	
+	Chicken	breast tenders	lb	6.11	
+	Eggs	Org Brown large	dozen	3.94	
+	Eggs	Org Brown Extra large	dozen	3.13	
+	Eggs	Org White Large	dozen	3.52	
+	Turkey	Paties	lb	3.78	
+	Turkey	Sausage		3.28	
+	Turkey	Breast		5	
+	Turkey	Drumsticks		2	
+	Turkey	thighs		2	
+	Turkey	wings		1.57	
+	Turkey	tenders		5.59	
