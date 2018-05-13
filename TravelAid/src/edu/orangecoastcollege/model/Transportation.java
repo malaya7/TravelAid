@@ -16,7 +16,8 @@ public class Transportation
 	private double average_inssurance_price;
 	
 	public Transportation(Types type, String kind, int country_code, double averagePrice,
-			double average_economic_car_price, double average_gas_price, double average_inssurance_price) {
+			double average_economic_car_price, double average_gas_price, double average_inssurance_price) 
+	{
 		super();
 		this.type = type;
 		Kind = kind;

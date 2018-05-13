@@ -79,7 +79,8 @@ public class Controller {
 	
 	private User mCurrentUser;
 	private DBModel mUserDB;
-	private DBModel mVideoGameDB;
+	private DBModel mJapanDB;
+	// should be a  relational tabel
 	private DBModel mUserGamesDB;
 
 	private ObservableList<User> mAllUsersList;
@@ -108,9 +109,9 @@ public class Controller {
 				}
 
 				// Create the video game table in the database, loading games from the CSV file
-				theOne.mVideoGameDB = new DBModel(DB_NAME, VIDEO_GAME_TABLE_NAME, VIDEO_GAME_FIELD_NAMES, VIDEO_GAME_FIELD_TYPES);
+				theOne.mJapanDB = new DBModel(DB_NAME, VIDEO_GAME_TABLE_NAME, VIDEO_GAME_FIELD_NAMES, VIDEO_GAME_FIELD_TYPES);
 				theOne.initializeVideoGameDBFromFile();
-				resultsList = theOne.mVideoGameDB.getAllRecords();
+				//resultsList = theOne.mJapansDB.getAllRecords();
 				for (ArrayList<String> values : resultsList)
 				{
 					int id = Integer.parseInt(values.get(0));
@@ -347,7 +348,7 @@ public class Controller {
 				values[2] = data[3];
 				values[3] = data[4];
 				values[4] = data[5];
-				theOne.mVideoGameDB.createRecord(Arrays.copyOfRange(VIDEO_GAME_FIELD_NAMES, 1, VIDEO_GAME_FIELD_NAMES.length), values);
+			//	theOne.mVideoGameDB.createRecord(Arrays.copyOfRange(VIDEO_GAME_FIELD_NAMES, 1, VIDEO_GAME_FIELD_NAMES.length), values);
 				recordsCreated++;
 			}
 
