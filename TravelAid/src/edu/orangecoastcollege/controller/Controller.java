@@ -19,8 +19,9 @@ public class Controller {
 	private static final String DB_NAME = "TravelAid.db";
 	private static final String USA_DAIRY_FILE_DATA_FILE = "Dairy USA.csv";
 	private static final String USA_FRUIT_DATA_FILE = "Fruit USA.csv";
-	private static final String USA_VEGETABLE_DATA_FILE = "Meat USA.csv";
-
+	private static final String USA_VEGETABLE_DATA_FILE = "Vegetable USA.csv";
+	private static final String USA_MEAT_DATA_FILE = "Meat USA.csv";
+	
 	
 
 
@@ -78,10 +79,15 @@ public class Controller {
 
 	
 	private User mCurrentUser;
-	private DBModel mUserDB;
+	private DBModel mUserDB;  		//need
 	private DBModel mVideoGameDB;
 	private DBModel mUserGamesDB;
-
+	private DBModel mUSADB;
+	private DBModel mSpainDB;
+	
+	
+	
+	
 	private ObservableList<User> mAllUsersList;
 	//private ObservableList<VideoGame> mAllGamesList;
 
@@ -319,9 +325,16 @@ public class Controller {
 	}
 
 */
-	//make this method take a 				String file
-	//switch on that string and depending on which file,
-	//try different reads for each object with its corresponding file
+	private int initializeUSADairy()throws SQLException{}
+	private int initializeUSAFruit()throws SQLException{}
+	private int initializeUSAMeatUSA()throws SQLException{}
+	private int initializeUSAVegetable()throws SQLException{}
+	
+	private int initializeUSARealEstate() throws SQLException {}
+	private int initizalizeUSAPublicTransportation()throws SQLEception{}
+	private int initizalizeUSAPrivateTransportation()throws SQLEception{}
+	
+	
 	private int initializeVideoGameDBFromFile() throws SQLException {
 		int recordsCreated = 0;
 

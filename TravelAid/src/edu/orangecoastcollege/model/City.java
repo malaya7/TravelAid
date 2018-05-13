@@ -5,7 +5,7 @@ public class City extends Country
 	String cityName;
 	double average_temperature;
 	double  minimum_wage;
-	
+	//if ask about city they get this constructor if querie about anything database related theyll get the countries info
 	public City(String name, String climate, int population, String cityName, double average_temperature,
 			double minimum_wage) 
 	{

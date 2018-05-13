@@ -1,20 +1,19 @@
 package edu.orangecoastcollege.model;
 
-public class Transportation 
-{
+public class Transportation {
 	// public or private
 	Types type;
 	// Train, Bus, Taxi
 	private String Kind;
 	private int country_code;
 	private double averagePrice;
-	
-	// for private only 
+	private double averagePublicPrice;
+	// for private only
 	private double average_economic_car_price;
-	/** should have a defult value Gallons*/
-	private	double average_gas_price;
+	/** should have a defult value Gallons */
+	private double average_gas_price;
 	private double average_inssurance_price;
-	
+
 	public Transportation(Types type, String kind, int country_code, double averagePrice,
 			double average_economic_car_price, double average_gas_price, double average_inssurance_price) {
 		super();
@@ -22,18 +21,22 @@ public class Transportation
 		Kind = kind;
 		this.country_code = country_code;
 		this.averagePrice = averagePrice;
-		if(this.type.equals(Types.Private_transportation))
-		{
+		if (this.type.equals(Types.Private_transportation)) {
 			this.average_economic_car_price = average_economic_car_price;
 			this.average_gas_price = average_gas_price;
 			this.average_inssurance_price = average_inssurance_price;
-		}
-		else
-		{
+		} else {
 			this.average_economic_car_price = 0;
 			this.average_gas_price = 0;
 			this.average_inssurance_price = 0;
 		}
+	}
+
+	public Transportation(String kind, double avgPublicPrice, int countryCode) {
+		this.Kind = kind;
+		this.averagePrice = avgPublicPrice;
+		this.country_code = countryCode;
+
 	}
 
 	public Types getType() {
@@ -141,6 +144,5 @@ public class Transportation
 			return false;
 		return true;
 	}
-
 
 }
