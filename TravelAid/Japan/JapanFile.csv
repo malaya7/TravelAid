@@ -1,0 +1,44 @@
+Type,description ,unit ,price$
+Fruit,Apple,Ib,4.09
+Fruit,Avocado,Ib,2.14
+Fruit,Banana,Ib,2.26
+Fruit,Blueberries,Ib,5.47
+Fruit,Cherries,Ib,3.66
+Fruit,Grapes,Ib,3.35
+Fruit,Grapefruit,Ib,1.8
+Fruit,Kiwifruit,Ib,0.91
+Fruit,Mango,Ib,7.31
+Fruit,Orange,Ib,1.18
+Fruit,Papaya,Ib,4.36
+Fruit,Peach,Ib,5.48
+Fruit,Pineapple,Ib,2.74
+Fruit,Watermelon,Ib,7.42
+Veg,Onion ,kg,2.9
+Veg,Lettuce,kg,1.92
+Veg,Potato,kg,7.04
+Veg,Broccoli,Ib,1.66
+Veg,Tomatoes,Ib,4.29
+Veg,Tofu,Ib,1.49
+Veg,Carrots,Ib,2.99
+Veg,Cabbage,Ib,0.79
+Veg,Potatoes,Ib,1.1
+Veg,Bean,Ib,0.47
+Dairy,Yogurt,Ib,1.1
+Dairy,MIlk,L,2.18
+Dairy,Egg,lb,4.4
+Dairy,Meiji Sliced Cheese,lb,5.69
+Dairy,White Bread,lb,2.02
+Meat,Hamburger,lb,6.78
+Meat,Bacon,lb,5.8
+Meat,Chicken Breasts,lb,3.81
+Meat,Beef Shoulder Cut,lb,6.99
+Meat,sushi,lb,9.2
+Meat,fish,kg,9.5
+Real-Estate,Rental,Month,900
+Real-Estate,owning,,247120
+Transportation ,public subway,ride,2
+Transportation ,public,Month,80
+Transportation ,Private,EcoCar,9500
+Transportation ,Gas,Gallon,4.24
+Transportation ,Diesel,Gallon,5.15
+Transportation ,insurance,Year,274.21
