@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="557.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmailController">
+   <children>
+      <Button layoutX="181.0" layoutY="480.0" mnemonicParsing="false" onAction="#sendEmailFromView" prefHeight="26.0" prefWidth="251.0" text="Send email" />
+      <TextArea layoutX="35.0" layoutY="262.0" prefHeight="200.0" prefWidth="541.0" />
+      <ListView layoutX="31.0" layoutY="62.0" prefHeight="181.0" prefWidth="548.0" />
+      <Label layoutX="258.0" layoutY="45.0" text="Countries Chosen" />
+      <Label layoutX="259.0" layoutY="243.0" prefHeight="17.0" prefWidth="94.0" text="Email to be sent" />
+      <Button layoutX="493.0" layoutY="481.0" mnemonicParsing="false" onAction="#goBackButton" text="Back" />
+      <Label fx:id="emailErrorLabel" layoutX="120.0" layoutY="516.0" text="There was an error sending the email, please make sure it's right." textFill="RED" />
+      <Label layoutX="48.0" layoutY="14.0" text="User: " />
+      <Label fx:id="getUserName" layoutX="85.0" layoutY="14.0" text="UsersName" />
+      <Label layoutX="359.0" layoutY="15.0" text="Email Entered" />
+      <Label fx:id="getEmail" layoutX="461.0" layoutY="15.0" text="Email to send info 2" />
+   </children>
+</AnchorPane>
