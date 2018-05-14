@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="94.0" fitWidth="271.0" layoutX="36.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/UnitedStates.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="94.0" fitWidth="250.0" layoutX="322.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/UnitedKingdom.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="90.0" fitWidth="260.0" layoutX="31.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Spain.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="322.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Australia.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="90.0" fitWidth="260.0" layoutX="29.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="67.65048217773438">
+         <image>
+            <Image url="@images/Canada.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="125.0" fitWidth="250.0" layoutX="322.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.38298034667969">
+         <image>
+            <Image url="@images/VietNam.PNG" />
+         </image>
+      </ImageView>
+      <Button layoutX="44.0" layoutY="167.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="335.0" layoutY="168.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="44.0" layoutY="284.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="44.0" layoutY="395.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="335.0" layoutY="284.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="335.0" layoutY="395.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="36.0" layoutY="448.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Exit" />
+      <Button layoutX="522.0" layoutY="448.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Back" />
+      <ImageView fitHeight="79.0" fitWidth="414.0" layoutX="93.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/test3.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Logo2.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="122.0" fitWidth="174.0" layoutX="214.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Transportation.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="184.0" layoutX="413.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/House.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="377.0" layoutX="161.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/PleaseChooseOne.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="181.0" layoutX="7.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/AllFood.PNG" />
+         </image>
+      </ImageView>
+      <Label layoutX="103.0" layoutY="11.0" prefHeight="87.0" prefWidth="420.0" text="Food, Transportation and Real-Estate" textFill="RED">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="69.0" layoutY="238.0" mnemonicParsing="false" text="Food">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="253.0" layoutY="238.0" mnemonicParsing="false" text="Transportation">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="460.0" layoutY="238.0" mnemonicParsing="false" text="Real-Estate">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="72.0" layoutY="445.0" mnemonicParsing="false" text="Back" />
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Logo2.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

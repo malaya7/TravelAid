@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="603.0" style="-fx-background-color: #9AD9EA;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+   <children>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Logo2.PNG" />
+         </image>
+      </ImageView>
+      <HBox layoutY="93.0" prefHeight="90.0" prefWidth="607.0">
+         <children>
+            <ImageView fitHeight="88.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Bus.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="88.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Car1.PNG" />
+               </image>
+            </ImageView>
+            <ImageView cache="true" fitHeight="91.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Train.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="96.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Transportation.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label layoutX="143.0" layoutY="23.0" text="Transportaion" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="186.0" text="Bus" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="186.0" layoutY="186.0" text="Uber" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="186.0" text="Train" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="454.0" layoutY="186.0" text="All Transportation" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <ListView layoutY="254.0" prefHeight="199.0" prefWidth="607.0" />
+      <Label layoutX="12.0" layoutY="230.0" text="Search:" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="83.0" layoutY="228.0" prefHeight="25.0" prefWidth="524.0" promptText="type here" />
+      <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Back" />
+      <Button layoutX="315.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Save" />
+   </children>
+</AnchorPane>
