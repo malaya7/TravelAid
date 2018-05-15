@@ -3,6 +3,7 @@ package edu.orangecoastcollege.view;
 
 import edu.orangecoastcollege.controller.Controller;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -54,5 +55,8 @@ public class SignInScene {
 	{
 	    ViewNavigator.loadScene("Sign Up", ViewNavigator.SIGN_UP_SCENE);
 	}
-
+	public void exitButton()
+	{
+		System.exit(0);
+	}
 }

@@ -1,8 +1,7 @@
 package edu.orangecoastcollege.model;
 
 public class Transportation {
-	// public or private
-	Types type;
+
 	// Train, Bus, Taxi
 	private String Kind;
 	private int country_code;
@@ -14,24 +13,19 @@ public class Transportation {
 	private double average_gas_price;
 	private double average_inssurance_price;
 
-	public Transportation(Types type, String kind, int country_code, double averagePrice,
-			double average_economic_car_price, double average_gas_price, double average_inssurance_price) 
-	{
+
+
+	public Transportation(String kind, double averagePrice, double average_economic_car_price,
+			double average_gas_price, double average_inssurance_price, int country_code) {
 		super();
-		this.type = type;
 		Kind = kind;
 		this.country_code = country_code;
 		this.averagePrice = averagePrice;
-		if (this.type.equals(Types.Private_transportation)) {
-			this.average_economic_car_price = average_economic_car_price;
-			this.average_gas_price = average_gas_price;
-			this.average_inssurance_price = average_inssurance_price;
-		} else {
-			this.average_economic_car_price = 0;
-			this.average_gas_price = 0;
-			this.average_inssurance_price = 0;
-		}
+		this.average_economic_car_price = average_economic_car_price;
+		this.average_gas_price = average_gas_price;
+		this.average_inssurance_price = average_inssurance_price;
 	}
+
 
 	public Transportation(String kind, double avgPublicPrice, int countryCode) {
 		this.Kind = kind;
@@ -40,13 +34,7 @@ public class Transportation {
 
 	}
 
-	public Types getType() {
-		return type;
-	}
-
-	public void setType(Types type) {
-		this.type = type;
-	}
+	
 
 	public String getKind() {
 		return Kind;
@@ -104,6 +92,8 @@ public class Transportation {
 		long temp;
 		temp = Double.doubleToLongBits(averagePrice);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(averagePublicPrice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(average_economic_car_price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(average_gas_price);
@@ -111,7 +101,6 @@ public class Transportation {
 		temp = Double.doubleToLongBits(average_inssurance_price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + country_code;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -131,6 +120,8 @@ public class Transportation {
 			return false;
 		if (Double.doubleToLongBits(averagePrice) != Double.doubleToLongBits(other.averagePrice))
 			return false;
+		if (Double.doubleToLongBits(averagePublicPrice) != Double.doubleToLongBits(other.averagePublicPrice))
+			return false;
 		if (Double.doubleToLongBits(average_economic_car_price) != Double
 				.doubleToLongBits(other.average_economic_car_price))
 			return false;
@@ -141,9 +132,8 @@ public class Transportation {
 			return false;
 		if (country_code != other.country_code)
 			return false;
-		if (type != other.type)
-			return false;
 		return true;
 	}
+
 
 }
