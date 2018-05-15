@@ -47,6 +47,8 @@ public class Controller {
 	private static final String EU_FRUIT_DAT_FILE = "fruit products.csv";
 	private static final String EU_VEGETABLE_DATA_FILE = "vegetable products.csv" ;
 	private static final String SPAIN_HOUSING_FILE= "Housing Spain.csv";
+	private static final String Japan_FILE_DATA_FILE = "JapanFile.csv";
+
 	
 
 	//country codes
@@ -54,7 +56,8 @@ public class Controller {
 	public static String UK_COUNTRY_CODE="2";
 	public static String SPAIN_COUNTRY_CODE="3";
 	public static String VIETNAM_COUNTRY_CODE="4";
-	
+	public static String JAPAN_COUNTRY_CODE="5";
+
 	// country _id PRIMARY KEY INTEGER, ​name ​TEXT, ​population ​INTEGER, ​cities TEXT, ​city_id ​INTEGER ,​climate ​TEXT, ​average_temperature ​REAL
 	private static final String[] COUNTRY_TABLE_NAME = {"country"};
 	private static final String[] COUNTRY_TABLE_FIELD_NAME= {"_id", "country", "name", "population", "cities", "city_id", "climate", "average_temperature"};
@@ -98,12 +101,11 @@ public class Controller {
 	
 	//email _id PRIMARY KEY INTEGER,  ​name TEXT, ​age INTEGER, climate_preference​ TEXT, ​email TEXT 
 	private static final String USER_TABLE_NAME = "user";
-	private static final String[] USER_FIELD_NAMES = { "_id", "name", "age","climate_preference", "email"};
-	private static final String[] USER_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT", "TEXT"};
+	private static final String[] USER_FIELD_NAMES = { "_id", "name","email","password"};
+	private static final String[] USER_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT"};
 
 
 	private static final String Japan_TABLE_NAME = "Japan";
-	private static final String Japan_FILE_DATA_FILE = "JapanFile.csv";
 	private static final String[] Japan_TABLE_FIELD_NAME= 
 		{"_id", "city", "population","climate", "average_temperature","minimum_wage", "type","descrption","unit","price" };
 	private static final String[] Japan_TABLE_FIELD_TYPES=
@@ -146,7 +148,7 @@ public class Controller {
 					controller.mAllUsersList.add(new User(id, name, email, role));
 				}
 
-				// Create japan table in the database, loading from the CSV file
+		/*		// Create japan table in the database, loading from the CSV file
 				controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
 				controller.initializeJapanDBFromFile();
 				//resultsList = controller.mJapansDB.getAllRecords();
@@ -160,7 +162,7 @@ public class Controller {
 					String publisher = values.get(5);
 				//	controller.mAllGamesList.add(new VideoGame(id, name, platform, year, genre, publisher));
 				}
-
+*/
 
 				// Create the relationship table between users and the video games they own
 				//controller.mUserGamesDB= new DBModel(DB_NAME, USER_GAMES_TABLE_NAME, USER_GAMES_FIELD_NAMES, USER_GAMES_FIELD_TYPES);
@@ -247,7 +249,7 @@ public class Controller {
 	    //    return "Password must be at least 8 characters, including 1 upper case letter, 1 number and 1 symbol.";
 
 	    // Made it through all the checks, create the new user in the database
-	    String[] values = {name, email, "user", password};
+	    String[] values = {name, email, password};
 	    // Insert the new user into the database
 	    try
         {

@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.UserInformationScene">
    <children>
-      <TextField layoutX="236.0" layoutY="145.0" promptText="Please enter your name">
+      <TextField fx:id="nameTF" layoutX="236.0" layoutY="145.0" promptText="Please enter your name">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -23,7 +23,7 @@
             <DropShadow />
          </effect>
       </TextField>
-      <TextField layoutX="236.0" layoutY="190.0" promptText="Please enter your age">
+      <TextField fx:id="ageTF" layoutX="236.0" layoutY="190.0" promptText="Please enter your age">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -31,7 +31,7 @@
             <DropShadow />
          </effect>
       </TextField>
-      <TextField layoutX="236.0" layoutY="235.0" promptText="Please enter your email">
+      <TextField fx:id="emailTF" layoutX="236.0" layoutY="235.0" promptText="Please enter your email">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -141,17 +141,17 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="402.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;" text="Done">
+      <Button layoutX="402.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;" text="Done">
          <effect>
             <DropShadow />
          </effect>
       </Button>
-      <Button layoutX="327.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;" text="Cancel">
+      <Button layoutX="319.0" layoutY="396.0" mnemonicParsing="false" onMouseClicked="#clearButton" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;" text="Clear">
          <effect>
             <DropShadow />
          </effect>
       </Button>
-      <Button layoutX="108.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;" text="Save">
+      <Button layoutX="108.0" layoutY="396.0" mnemonicParsing="false" onMouseClicked="#singOutButton" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;" text="Sign Out">
          <effect>
             <DropShadow />
          </effect>

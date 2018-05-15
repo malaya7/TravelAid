@@ -51,7 +51,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="205.0" layoutY="370.0" onMouseClicked="#loadSignIn" text="Log In" />
+            <Label layoutX="205.0" layoutY="370.0" onMouseClicked="#loadSignIn" style="-fx-background-color: white;" text="Log In" />
          </children>
       </AnchorPane>
       <Label fx:id="emailErrorLabel" layoutX="532.0" layoutY="119.0" text="Field required" textFill="RED" visible="false">
