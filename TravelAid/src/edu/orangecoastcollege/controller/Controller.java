@@ -35,12 +35,25 @@ public class Controller {
 	
 	// Our SQLite Database name
 	private static final String DB_NAME = "TravelAid.db";
-	
+	//Files
 	private static final String USA_DAIRY_FILE_DATA_FILE = "Dairy USA.csv";
 	private static final String USA_FRUIT_DATA_FILE = "Fruit USA.csv";
 	private static final String USA_VEGETABLE_DATA_FILE = "Vegetable USA.csv";
 	private static final String USA_MEAT_DATA_FILE = "Meat USA.csv";
+	private static final String USA_PRIVATE_TRANSPORTATION_FILE ="USA Transportation.csv";
+	private static final String USA_HOUSING_FILE ="USA Housing Price.csv";
+	private static final String EU_ANMAL_DATA_FILE = "animal products.csv";
+	private static final String EU_JDAIRY_DATA_FILE = "dairy products.csv";
+	private static final String EU_FRUIT_DAT_FILE = "fruit products.csv";
+	private static final String EU_VEGETABLE_DATA_FILE = "vegetable products.csv" ;
+	private static final String SPAIN_HOUSING_FILE= "Housing Spain.csv";
+	
 
+	//country codes
+	public static String USA_COUNTRY_CODE="1";
+	public static String UK_COUNTRY_CODE="2";
+	public static String SPAIN_COUNTRY_CODE="3";
+	public static String VIETNAM_COUNTRY_CODE="4";
 	
 	// country _id PRIMARY KEY INTEGER, ​name ​TEXT, ​population ​INTEGER, ​cities TEXT, ​city_id ​INTEGER ,​climate ​TEXT, ​average_temperature ​REAL
 	private static final String[] COUNTRY_TABLE_NAME = {"country"};
@@ -106,6 +119,8 @@ public class Controller {
 	private DBModel mJapanDB;
 	private DBModel mUSADB;
 	private DBModel mSpainDB;
+	private DBModel mUKDB;
+	private DBModel mCountryDB;  //I think we need this one? to store the country info into it using the first table we have
 	
 	private ObservableList<User> mAllUsersList;
 	private ObservableList<Country> mAllCountiresList;
@@ -164,7 +179,7 @@ public class Controller {
 
 		// If the result set contains results, database table already has
 		// records, no need to populate from file (so return false)
-		if (controller.mUserDB.getRecordCount() > 0)
+		if (controller.mJapanDB.getRecordCount() > 0)
 			return 0;
 
 		try {
@@ -363,6 +378,7 @@ public class Controller {
 		return controller.mAllGamesList;
 	}
 */
+
 /*	public ObservableList<String> getDistinctPlatforms() {
 		ObservableList<String> platforms = FXCollections.observableArrayList();
 		for (VideoGame vg : controller.mAllGamesList)
@@ -382,10 +398,65 @@ public class Controller {
 	}
 
 */
+	@SuppressWarnings("unused")
 	private int initializeUSADairy()throws SQLException{
-		return 0;}
+		
+		int recordsCreated=0;
+		if (controller.mUSADB.getRecordCount() > 0)
+			return 0;
+		try {
+				Scanner fileScanner = new Scanner(new File(USA_DAIRY_FILE_DATA_FILE));
+				fileScanner.nextLine();
+		
+			while (fileScanner.hasNextLine()) {
+				String[] data = fileScanner.nextLine().split(",");
+				// Length of values is one less than field names because values
+				// does not have id (DB will assign one)
+				String[] values = new String[2 - 1];
+				values[0] = data[1].replaceAll("'", "''");
+				values[1] = data[2];
+				values[2] = data[3];
+				values[3] = data[4];
+				values[4] = USA_COUNTRY_CODE;
+				
+				controller.mJapanDB.createRecord(Arrays.copyOfRange(DAIRY_TABLE_FIELD_TYPE, 1, DAIRY_TABLE_FIELD_NAME.length), values);
+				recordsCreated++;
+			}
+
+			fileScanner.close();
+		} catch (FileNotFoundException e) {
+			return 0;
+		}
+		return recordsCreated;
+}
 	private int initializeUSAFruit()throws SQLException{
-		return 0;}
+		int recordsCreated=0;
+		if (controller.mUSADB.getRecordCount() > 0)
+			return 0;
+		try {
+				Scanner fileScanner = new Scanner(new File(USA_FRUIT_DATA_FILE));
+				fileScanner.nextLine();
+		
+			while (fileScanner.hasNextLine()) {
+				String[] data = fileScanner.nextLine().split(",");
+				// Length of values is one less than field names because values
+				// does not have id (DB will assign one)
+				String[] values = new String[2 - 1];
+				values[0] = data[1].replaceAll("'", "''");
+				values[1] = data[2];
+				values[2] = data[3];
+				values[3] = data[4];
+				values[4] = USA_COUNTRY_CODE;
+				
+				controller.mJapanDB.createRecord(Arrays.copyOfRange(DAIRY_TABLE_FIELD_TYPE, 1, DAIRY_TABLE_FIELD_NAME.length), values);
+				recordsCreated++;
+			}
+
+			fileScanner.close();
+		} catch (FileNotFoundException e) {
+			return 0;
+		}
+		return recordsCreated;}
 	private int initializeUSAMeatUSA()throws SQLException{
 		return 0;}
 	private int initializeUSAVegetable()throws SQLException{

@@ -1,26 +1,22 @@
-"USA Dariy					"
-"_id	type	description	unit	price	country code"
-"	Dairy	Chesse Cheddar	lb	2.38	"
-"	Dairy	Chesse Monterrey	lb	1.97	"
-"	Dairy	Chesse Blue	lb	2.68	"
-"	Dairy	Chesse Mozzarella 	lb	2.19	"
-"	Dairy	Chesse Grade A Swiss	lb	3	"
-"	Dairy	Chesse Process American	lb	1.79	"
-"	Dairy	Milk Nonfat Dry 	lb	0.7	"
-"	Dairy	Whey Powder	lb	0.25	"
-"	Dairy	Whey protein	lb	0.7	"
-"	Dairy	Dry Buttermilk	lb	0.7	"
-"	Dairy	Whole Milk	lb	0.7	"
-"	Dairy	Lactose	lb	0.22	"
-"	Dairy	Butter	lb	2.2	"
-"	Dairy	Class II Cream	lb	2.7	"
-"	Dairy	Condensed Skim	lb	2.68	"
-"	Dairy	Casein -Pennet	lb	2.31	"
-"	Dairy	Casein-Acid	lb	3.1	"
-"	Dairy	Yogurt Greek	4-6oz	1.25	"
-"	Dairy	Yogurt Greek	32 oz	4.66	"
-"	Dairy	Yorgurt-Plain	4-6oz	1.25	"
-"	Dairy	Yogurt-plain	32 oz	3.5	"
-"	Dairy	Milk	1/2 G	3	"
-"	Dairy	Milk	1 G	5	"
-"	Dairy	Sour Cream	16 oz	3	"
+_id	type	description	unit	price	country code
+Dairy,Chesse Cheddar,lb,2.38
+Dairy,Chesse Monterrey,lb,1.97
+Dairy,Chesse Blue,lb,2.68
+Dairy,Chesse Mozzarella,lb,2.19
+Dairy,Chesse Grade A Swiss,lb,3
+Dairy,Chesse Process American,lb,1.79
+Dairy,Milk Nonfat Dry,lb,0.7
+Dairy,Whey Powder,lb,0.25
+Dairy,Whey protein,lb,0.7
+Dairy,Dry Buttermilk,lb,0.7
+Dairy,Whole Milk,lb,0.7
+Dairy,Lactose,lb,0.22
+Dairy,Butter,lb,2.2
+Dairy,Class II Cream,lb,2.7
+Dairy,Condensed Skim,lb,2.68
+Dairy,Casein-Pennt,lb,2.31
+Dairy,Casein-Acid,lb,3.1
+Dairy,Yogurt Greek,4-6oz,1.25
+Dairy,Yogurt Greek,32 oz,4.66
+Dairy,Yorgurt-Plain,4-6oz,1.25
+Dairy,Yogurt-plain,32 oz,3.5
