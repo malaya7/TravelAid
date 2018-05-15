@@ -42,21 +42,26 @@ public class Controller {
 	private static final String USA_MEAT_DATA_FILE = "Meat USA.csv";
 	private static final String USA_PRIVATE_TRANSPORTATION_FILE ="USA Transportation.csv";
 	private static final String USA_HOUSING_FILE ="USA Housing Price.csv";
+	private static final String USA_PUBLIC_TRANSPORTATION="USA Public Transportation.csv";
+	private static final String USA_PRIVATE_TRANSPORTATION="USA Transportation.csv";
 	private static final String EU_ANMAL_DATA_FILE = "animal products.csv";
 	private static final String EU_JDAIRY_DATA_FILE = "dairy products.csv";
 	private static final String EU_FRUIT_DAT_FILE = "fruit products.csv";
 	private static final String EU_VEGETABLE_DATA_FILE = "vegetable products.csv" ;
 	private static final String SPAIN_HOUSING_FILE= "Housing Spain.csv";
 	private static final String Japan_FILE_DATA_FILE = "JapanFile.csv";
-
+	private static final String SPAIN_PUB_TRANSPORTATION="Public Transportations Spain.csv";
+	private static final String SPAIN_PRIV_TRANSPORTATION= "Private Transportation Spain.csv";
+	private static final String UK_PUB_TRANSPORTATION="Public Transportation UK.csv";
+	private static final String UK_PRIV_TRANSPORTATION="Private Transportation UK.csv";
 	
-
 	//country codes
 	public static String USA_COUNTRY_CODE="1";
 	public static String UK_COUNTRY_CODE="2";
 	public static String SPAIN_COUNTRY_CODE="3";
 	public static String VIETNAM_COUNTRY_CODE="4";
 	public static String JAPAN_COUNTRY_CODE="5";
+	public static String BRAZIL_COUNTRY_CODE="6";
 
 	// country _id PRIMARY KEY INTEGER, ​name ​TEXT, ​population ​INTEGER, ​cities TEXT, ​city_id ​INTEGER ,​climate ​TEXT, ​average_temperature ​REAL
 	private static final String[] COUNTRY_TABLE_NAME = {"country"};
@@ -90,13 +95,13 @@ public class Controller {
 	
 	//public transportation  _id PRIMARY KEY INTEGER, ​type ​TEXT, average_price REA, country_code​ INTEGER 
 	private static final String[] PUBLIC_TRANSPORTATION_TABLE_NAME = {"public_transportation"};
-	private static final String[] PUBLIC_TRANSPORTATION_FIELD_NAME = {"_id", "type", "avg_price", "country_code"};
+	private static final String[] PUBLIC_TRANSPORTATION_FIELD_NAME = {"_id", "type", "avg_monthly_pass_price", "country_code"};
 	private static final String[] PUBLIC_TRANSPORTATION_FIELD_TYPE = {"INTEGER PRIMARY KEY", "TEXT", "REAL", "INTEGER"};
 
 	//private  ​_id PRIMARY KEY INTEGER​, ​average_economic_car_price ​REAL ,​average_gas_price​ REAL, ​averge_diesel_price ​REAL, 
 	//average_inssurance_price REAL,​unit​ TEXT ,​country_code​ INTEGER -
 	private static final String[] PRIVATE_TRANSPORTATION_TABLE_NAME = {"private_transportation"};
-	private static final String[] PRIVATE_TRANSPORTATION_FIELD_NAME ={"_id", "type, avg_car_price", "avg_gas_price", "avg_diesel_price","avg_inssurance_price", "unit", "country_code "};
+	private static final String[] PRIVATE_TRANSPORTATION_FIELD_NAME ={"_id", "avg_car_price", "avg_gas_price", "avg_diesel_price","avg_inssurance_price", "unit", "country_code "};
 	private static final String[] PRIVATE_TRANSPORTATION_FIELD_TYPE = {"INTEGER PRIMARY KEY", "REAL", "REAL", "REAL", "REAL", "TEXT", "INTEGER"};
 	
 	//email _id PRIMARY KEY INTEGER,  ​name TEXT, ​age INTEGER, climate_preference​ TEXT, ​email TEXT 
