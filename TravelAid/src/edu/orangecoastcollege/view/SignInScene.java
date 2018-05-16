@@ -57,6 +57,8 @@ public class SignInScene {
 	}
 	public void exitButton()
 	{
-		System.exit(0);
+	    emailAddressTF.clear();
+	    passwordTF.clear();
+	    emailAddressTF.requestFocus();
 	}
 }
