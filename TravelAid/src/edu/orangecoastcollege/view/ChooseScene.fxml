@@ -34,22 +34,22 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="foodButton" layoutX="69.0" layoutY="238.0" mnemonicParsing="false" onAction="#FoodButtonTrans" onMouseClicked="#foodTransitionButton" text="Food">
+      <Button fx:id="foodButton" layoutX="69.0" layoutY="238.0" mnemonicParsing="false" onAction="#FoodButtonTrans" text="Food">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="TransportationButton" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#TransportationButtonTrans" onMouseClicked="#TransportationButton" text="Transportation">
+      <Button fx:id="TransportationButton" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#TransportationButtonTrans" text="Transportation">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="RealEstate" layoutX="460.0" layoutY="238.0" mnemonicParsing="false" onAction="#housingButtonTrans" onMouseClicked="#RealEstateButton" text="Real-Estate">
+      <Button fx:id="RealEstate" layoutX="460.0" layoutY="238.0" mnemonicParsing="false" onAction="#housingButtonTrans" text="Real-Estate">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="Back" layoutX="72.0" layoutY="445.0" mnemonicParsing="false" onAction="#backToCountryButton" onMouseClicked="#BacktoChoosesCountry" text="Back" />
+      <Button fx:id="Back" layoutX="72.0" layoutY="445.0" mnemonicParsing="false" onAction="#backToCountryButton" text="Back" />
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Logo2.PNG" />

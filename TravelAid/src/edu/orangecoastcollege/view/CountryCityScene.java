@@ -13,4 +13,10 @@ public class CountryCityScene {
 	       ViewNavigator.loadScene("User Info", ViewNavigator.USER_INFORMATION_SCENE);
 
 	}
+	@FXML
+	public void goToChooseScene()
+	{
+        ViewNavigator.loadScene("User Info", ViewNavigator.CHOOSE_SCENE);
+
+	}
 }
