@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="603.0" style="-fx-background-color: #9AD9EA;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane prefHeight="500.0" prefWidth="603.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.TransportationScene">
    <children>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -74,7 +73,7 @@
          </font>
       </Label>
       <TextField layoutX="83.0" layoutY="228.0" prefHeight="25.0" prefWidth="524.0" promptText="type here" />
-      <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Back" />
+      <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#BackToChooseScene" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Back" />
       <Button layoutX="315.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Save" />
    </children>
 </AnchorPane>

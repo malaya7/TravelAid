@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.HouseScene">
    <children>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -69,7 +68,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="464.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="283.0" style="-fx-background-color: #ffd100;" text="Back" />
+      <Button layoutX="14.0" layoutY="464.0" mnemonicParsing="false" onAction="#BackToChooseScene" prefHeight="25.0" prefWidth="283.0" style="-fx-background-color: #ffd100;" text="Back" />
       <Button layoutX="303.0" layoutY="464.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="289.0" style="-fx-background-color: #ffd100;" text="Save" />
       <Label layoutX="14.0" layoutY="226.0" text="Search:" textFill="RED">
          <font>
