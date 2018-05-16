@@ -19,19 +19,19 @@
             <Image url="@images/UnitedKingdom.PNG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="260.0" layoutX="31.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="94.0" fitWidth="246.0" layoutX="31.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Spain.PNG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="322.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="94.0" fitWidth="250.0" layoutX="322.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/Australia.PNG" />
+            <Image url="@images/Japan.PNG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="260.0" layoutX="29.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="67.65048217773438">
+      <ImageView fitHeight="87.0" fitWidth="250.0" layoutX="29.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="70.0">
          <image>
-            <Image url="@images/Canada.PNG" />
+            <Image url="@images/Brazil.PNG" />
          </image>
       </ImageView>
       <ImageView fitHeight="125.0" fitWidth="250.0" layoutX="322.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.38298034667969">
