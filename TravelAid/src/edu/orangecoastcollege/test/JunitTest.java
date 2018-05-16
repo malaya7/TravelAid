@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
+import edu.orangecoastcollege.controller.Controller;
 import  edu.orangecoastcollege.model.DBModel;
 
 public class JunitTest {
@@ -20,14 +20,14 @@ public class JunitTest {
 	private static final String[] DAIRY_TABLE_FIELD_TYPE =  {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
 	
 	private static final String USA_DAIRY_FILE_DATA_FILE = "Dairy USA.csv";
-	private DBModel mDB;
-
+	private static DBModel mDB;
+	private static Controller controler; 
 	String[] fields;
 	String[] values;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		new DBModel(DB_NAME, DAIRY_TABLE_NAME, DAIRY_TABLE_FIELD_NAME, DAIRY_TABLE_FIELD_TYPE);
-		
+		mDB = new DBModel(DB_NAME, DAIRY_TABLE_NAME, DAIRY_TABLE_FIELD_NAME, DAIRY_TABLE_FIELD_TYPE);
+		controler = Controller.getInstance();
 	}
 
 	@AfterClass
@@ -56,10 +56,10 @@ public class JunitTest {
 	}
 
 	
-	
-	
-	
 	}
-
+public void testInitializeDairy()
+{
+	//Controller.getInstance().ini
+}
 	
 }
