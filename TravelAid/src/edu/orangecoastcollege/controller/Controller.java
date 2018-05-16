@@ -170,6 +170,11 @@ public class Controller {
 			controller = new Controller();
 			controller.mAllUsersList = FXCollections.observableArrayList();
 			controller.mAllCountiresList = FXCollections.observableArrayList();
+			controller.mAllGroceriesList = FXCollections.observableArrayList();
+			controller.mAllHousingList = FXCollections.observableArrayList();
+			controller.mAllPrivateTranportationList = FXCollections.observableArrayList();
+			controller.mAllPublicTranportationList = FXCollections.observableArrayList();
+			
 			try {
 				// Create the user table in the database
 				controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
@@ -781,4 +786,5 @@ public class Controller {
 		return recordsCreated;
 	}
 
+	//private int initialize
 }
