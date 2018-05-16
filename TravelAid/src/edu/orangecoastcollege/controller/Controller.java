@@ -432,13 +432,14 @@ public class Controller {
 				String[] data = fileScanner.nextLine().split(",");
 				// Length of values is one less than field names because values
 				// does not have id (DB will assign one)
-				String[] values = new String[2 - 1];
-				values[0] = data[1].replaceAll("'", "''");
-				values[1] = data[2];
-				values[2] = data[3];
-				values[3] = data[4];
-				values[4] = USA_COUNTRY_CODE;
-
+				String[] values = new String[DAIRY_TABLE_FIELD_NAME.length-1];
+				values[0] = data[0].replaceAll("'", "''");
+				values[1] = data[1];
+				values[2] = data[2];
+				values[3] = data[3];
+				values[4] = data[4];
+				values[5] = USA_COUNTRY_CODE;
+				
 				controller.mUSADB.createRecord(
 						Arrays.copyOfRange(DAIRY_TABLE_FIELD_TYPE, 1, DAIRY_TABLE_FIELD_NAME.length), values);
 				recordsCreated++;
@@ -463,12 +464,8 @@ public class Controller {
 				String[] data = fileScanner.nextLine().split(",");
 				// Length of values is one less than field names because values
 				// does not have id (DB will assign one)
-				String[] values = new String[2 - 1];
-				values[0] = data[1].replaceAll("'", "''");
-				values[1] = data[2];
-				values[2] = data[3];
-				values[3] = data[4];
-				values[4] = USA_COUNTRY_CODE;
+				String[] values = new String[FRUIT_TABLE_FIELD_NAME.length-1];
+				//look at fruits USA FIle
 
 				controller.mJapanDB.createRecord(
 						Arrays.copyOfRange(DAIRY_TABLE_FIELD_TYPE, 1, DAIRY_TABLE_FIELD_NAME.length), values);
