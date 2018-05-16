@@ -175,7 +175,9 @@ public class Controller {
 			try {
 				// Create the user table in the database
 				controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
+				
 				ArrayList<ArrayList<String>> resultsList = controller.mUserDB.getAllRecords();
+				
 				for (ArrayList<String> values : resultsList) {
 					int id = Integer.parseInt(values.get(0));
 					String name = values.get(1);
@@ -402,13 +404,26 @@ public class Controller {
 	public ObservableList<User> getAllUsers() {
 		return controller.mAllUsersList;
 	}
+	public ObservableList<Country> getAllCountriesList()
+	{
+		return controller.mAllCountiresList;
+	}
+	public ObservableList<Grocery> getAllGroceries()
+	{
+		return controller.mAllGroceriesList;
+	}
+	public ObservableList<Transportation> getAllPublicTransportation(){
+		return controller.mAllPublicTranportationList;
+	}
+	public ObservableList<Transportation> getAllPrivateTransporation(){
+		return controller.mAllPublicTranportationList;
+	}
+	public ObservableList<Housing> getAllHousing(){
+		return controller.mAllHousingList;
+	}
+		
 
-	/*
-	 * public ObservableList<VideoGame> getAllVideoGames() { return
-	 * controller.mAllGamesList; }
-	 */
-
-	/*
+	/*		//FILTER METHOD FOR DISTINCT 
 	 * public ObservableList<String> getDistinctPlatforms() {
 	 * ObservableList<String> platforms = FXCollections.observableArrayList();
 	 * for (VideoGame vg : controller.mAllGamesList) if

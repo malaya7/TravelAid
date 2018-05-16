@@ -39,7 +39,7 @@ public class JunitTest {
 	public void setUp() throws Exception {
 		fields = new String[] { "type", "description", "unit", "price", "country_code" };
 		values = new String[] {"cheese","cheddar","lb","25.3","1" };
-	
+		mDB.deleteAllRecords();
 	}
 
 	@After
@@ -53,13 +53,15 @@ public class JunitTest {
 			assertEquals("testing that the key is 1", 1, key);
 	} catch (SQLException e) {
 		fail("should have not failed");
+		
 	}
 
 	
 	}
 public void testInitializeDairy()
 {
-	//Controller.getInstance().ini
+	controler = Controller.getInstance();
+//	controller.
 }
 	
 }
