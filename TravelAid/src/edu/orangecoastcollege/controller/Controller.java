@@ -16,22 +16,22 @@ public class Controller {
 	private static Controller controller;
 
 	/*
-	 * 
+	 *
 	 * private static final String VIDEO_GAME_TABLE_NAME = "video_game"; private
 	 * static final String[] VIDEO_GAME_FIELD_NAMES = { "_id", "name",
 	 * "platform", "year", "genre", "publisher"}; private static final String[]
 	 * VIDEO_GAME_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "TEXT",
 	 * "INTEGER", "TEXT", "TEXT"}; private static final String
 	 * VIDEO_GAME_DATA_FILE = "videogames_lite.csv";
-	 * 
-	 * 
+	 *
+	 *
 	 * // Below is the relationship table "user_games" which associates users
 	 * with the video games in their inventory private static final String
 	 * USER_GAMES_TABLE_NAME = "user_games"; private static final String[]
 	 * USER_GAMES_FIELD_NAMES = { "user_id", "game_id"}; private static final
 	 * String[] USER_GAMES_FIELD_TYPES = { "INTEGER", "INTEGER"};
-	 * 
-	 * 
+	 *
+	 *
 	 */
 
 	// Our SQLite Database name
@@ -63,7 +63,7 @@ public class Controller {
 	public static String VIETNAM_COUNTRY_CODE = "4";
 	public static String JAPAN_COUNTRY_CODE = "5";
 	public static String BRAZIL_COUNTRY_CODE = "6";
-
+	public static int countryChoosen=0;
 	// country _id PRIMARY KEY INTEGER, ​name ​TEXT, ​population ​INTEGER,
 	// ​cities TEXT, ​city_id ​INTEGER ,​climate ​TEXT, ​average_temperature
 	// ​REAL
@@ -193,8 +193,8 @@ public class Controller {
 							Types.Dairy_products);
 					controller.mAllGroceriesList.add(g);
 				}
-				
-				
+
+
 				// _id", "type", "description", "unit", "price
 				// Grocery(String description, String unit, double price, int
 				// country_code, Types type)
@@ -364,7 +364,7 @@ public class Controller {
 	 * returned will only contain the user_id and game_id (both ints) // Loop
 	 * through the all games list (mAllGamesList). If any game in the list
 	 * matches the game id, then:
-	 * 
+	 *
 	 * // 2) Add the matching game to the user games list // 3) Return the user
 	 * games list. return userGamesList; }
 	 */
@@ -385,8 +385,8 @@ public class Controller {
 	 * occurs, return false (could not be added) try {
 	 * controller.mUserGamesDB.createRecord(USER_GAMES_FIELD_NAMES, values); }
 	 * catch (SQLException e) { e.printStackTrace(); return false; }
-	 * 
-	 * 
+	 *
+	 *
 	 * // Otherwise, return true. return true; }
 	 */
 
@@ -409,14 +409,14 @@ public class Controller {
 	 * for (VideoGame vg : controller.mAllGamesList) if
 	 * (!platforms.contains(vg.getPlatform())) platforms.add(vg.getPlatform());
 	 * FXCollections.sort(platforms); return platforms; }
-	 * 
+	 *
 	 * public ObservableList<String> getDistinctPublishers() {
 	 * ObservableList<String> publishers = FXCollections.observableArrayList();
 	 * for (VideoGame vg : controller.mAllGamesList) if
 	 * (!publishers.contains(vg.getPublisher()))
 	 * publishers.add(vg.getPublisher()); FXCollections.sort(publishers); return
 	 * publishers; }
-	 * 
+	 *
 	 */
 	@SuppressWarnings("unused")
 	private int initializeUSADairy() throws SQLException {
@@ -439,7 +439,7 @@ public class Controller {
 				values[3] = data[3];
 				values[4] = data[4];
 				values[5] = USA_COUNTRY_CODE;
-				
+
 				controller.mUSADB.createRecord(
 						Arrays.copyOfRange(DAIRY_TABLE_FIELD_TYPE, 1, DAIRY_TABLE_FIELD_NAME.length), values);
 				recordsCreated++;

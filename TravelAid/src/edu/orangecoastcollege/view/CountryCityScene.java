@@ -1,8 +1,9 @@
 package edu.orangecoastcollege.view;
 
-import javafx.fxml.FXML;
-
+import edu.orangecoastcollege.controller.Controller;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class CountryCityScene {
 
@@ -13,9 +14,42 @@ public class CountryCityScene {
 	       ViewNavigator.loadScene("User Info", ViewNavigator.USER_INFORMATION_SCENE);
 
 	}
-	@FXML
-	public void goToChooseScene()
-	{
-        ViewNavigator.loadScene("Categories", ViewNavigator.CHOOSE_SCENE);
-	}
+
+    @FXML
+    public void goToChooseScene(ActionEvent event)
+    {
+        Object object = event.getSource();
+        if (object instanceof Button)
+        {
+            Button b = (Button) object;
+            String name = b.getId();
+            switch(name)
+            {
+                case "USA":
+                    Controller.countryChoosen=1;
+                    break;
+                case"UK":
+                    Controller.countryChoosen=2;
+               break;
+                case"SPAIN":
+                    Controller.countryChoosen=3;
+                    break;
+                case "JAPAN":
+                    Controller.countryChoosen=4;
+                    break;
+                case "BRAZIL":
+                    Controller.countryChoosen=5;
+                    break;
+                case "VIETNAM":
+                    Controller.countryChoosen=6;
+                    break;
+                default: Controller.countryChoosen=0;
+                break;
+            }
+        }
+        ViewNavigator.loadScene("User Info", ViewNavigator.CHOOSE_SCENE);
+     //Event e = new Event();
+
+    }
+
 }
