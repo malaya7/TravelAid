@@ -39,7 +39,7 @@
             <Image url="@images/VietNam.PNG" />
          </image>
       </ImageView>
-      <Button layoutX="44.0" layoutY="167.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+      <Button fx:id="USA" layoutX="44.0" layoutY="167.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
          <effect>
             <DropShadow />
          </effect>
@@ -47,27 +47,27 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="335.0" layoutY="168.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+      <Button fx:id="UK" layoutX="335.0" layoutY="168.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="44.0" layoutY="284.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+      <Button fx:id="SPAIN" layoutX="44.0" layoutY="284.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="44.0" layoutY="395.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+      <Button fx:id="BRAZIL" layoutX="44.0" layoutY="395.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="335.0" layoutY="284.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+      <Button fx:id="JAPAN" layoutX="335.0" layoutY="284.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="335.0" layoutY="395.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
+      <Button fx:id="VIETNAM" layoutX="335.0" layoutY="395.0" mnemonicParsing="false" onAction="#goToChooseScene" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #9AD9EA;" text="Click">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
