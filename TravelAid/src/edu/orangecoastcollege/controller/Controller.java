@@ -472,7 +472,7 @@ public class Controller {
 				String[] values = new String[FRUIT_TABLE_FIELD_NAME.length-1];
 				//look at fruits USA FIle
 
-				controller.mJapanDB.createRecord(
+				controller.mUSADB.createRecord(
 						Arrays.copyOfRange(DAIRY_TABLE_FIELD_TYPE, 1, DAIRY_TABLE_FIELD_NAME.length), values);
 				recordsCreated++;
 			}
