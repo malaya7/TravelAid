@@ -16,7 +16,7 @@
             <Image url="@images/sky.PNG" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="425.0" layoutY="1.0" style="-fx-border-color: #000000;">
+      <AnchorPane layoutX="427.0" layoutY="1.0" prefHeight="437.0" prefWidth="270.0" style="-fx-border-color: #000000;">
          <children>
             <Label layoutX="50.0" layoutY="14.0" text="Travel Aid" textFill="#4fffd9">
                <font>
