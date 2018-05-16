@@ -2,12 +2,24 @@ package edu.orangecoastcollege.view;
 
 
 
+import java.util.Locale;
+
 import edu.orangecoastcollege.controller.Controller;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 // TODO: Implement the Initializable interface
 public class UserInformationScene {
 
+	@FXML
+	TextField ageTF;
+	@FXML
+	TextField emailTF;
+	@FXML
+	TextField nameTF;
+	@FXML
+	TextField locationTF;
+	
 	private static Controller controller = Controller.getInstance();
 
 	// TODO: Override the initialize method (let Eclipse generate the method for you)
@@ -24,16 +36,29 @@ public class UserInformationScene {
 		// 2) Use the controller to add the selected game to the inventory
 		// 3) Return the result (as a boolean)
 		  //clear all text fields
-     /*   nameTF.clear();
-        this.mNumOfYearsTF.clear();
-        this.mloanAmtTF.clear();
-        this.mMonthlyPaymentTF.clear();
-        this.mTotalPaymentTF.clear();
+        nameTF.clear();
+        this.ageTF.clear();
+        this.emailTF.clear();
+        locationTF.clear();
+
 
         // Reset the fouces back to intreast rate
-        mIntrestRateTF.requestFocus();
-*/
+        nameTF.requestFocus();
+
 	}
+	
+	@FXML 
+	public void userLocation()
+	{
+		Locale l = Locale.getDefault();
+		locationTF.setText( l.getDisplayCountry());
+	}
+	@FXML
+	public void doneButton()
+	{
+		ViewNavigator.loadScene("Choose a Country", ViewNavigator.COUNTRY_CITY_SCENE);
+	}
+	
 	
 	@FXML
 	public void singOutButton()
