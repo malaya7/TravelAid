@@ -17,7 +17,7 @@ public class JunitTest {
 	private static final String DB_NAME = "USADairyTest.db";
 	private static final String DAIRY_TABLE_NAME = "dairy";
 	private static final String[] DAIRY_TABLE_FIELD_NAME = {"_id", "type", "description", "unit", "price", "country_code" };
-	private static final String[] DAIRY_TABLE_FIELD_TYPE =  {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
+	private static final String[] DAIRY_TABLE_FIELD_TYPE =  {"INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL","INTEGER"};
 	
 	private static final String USA_DAIRY_FILE_DATA_FILE = "Dairy USA.csv";
 	private static DBModel mDB;
@@ -38,7 +38,7 @@ public class JunitTest {
 	@Before
 	public void setUp() throws Exception {
 		fields = new String[] { "type", "description", "unit", "price", "country_code" };
-		values = new String[] {"cheese","cheddar","lb","25.3","1" };
+		values = new String[] {"cheese","cheddar","lb","25","1" };
 		mDB.deleteAllRecords();
 	}
 
@@ -58,10 +58,11 @@ public class JunitTest {
 
 	
 	}
+	@Test
 public void testInitializeDairy()
 {
 	controler = Controller.getInstance();
-//	controller.
+
 }
 	
 }

@@ -201,7 +201,7 @@ public class Controller {
 							dairy);
 					controller.mAllGroceriesList.add(g);
 				}
-				
+				System.out.println("got ");
 				controller.mUSADB = new DBModel(DB_NAME, FRUIT_TABLE_NAME, FRUIT_TABLE_FIELD_NAME,
 						FRUIT_TABLE_FIELD_TYPE);
 				controller.initializeUSAFruit();
@@ -215,7 +215,7 @@ public class Controller {
 							fruit);
 					controller.mAllGroceriesList.add(g);
 				}
-				
+				System.out.println("got here");
 				controller.mUSADB = new DBModel(DB_NAME, VEGETABLE_TABLE_NAME, VEGETABLE_TABLE_FIELD_NAME,
 						VEGETABLE_TABLE_FIELD_TYPE);
 				controller.initializeUSAVegetable();
@@ -230,7 +230,8 @@ public class Controller {
 					controller.mAllGroceriesList.add(g);
 				}
 			
-				controller.mUSADB = new DBModel(DB_NAME,REAL_ESTATE_TABLE_NAME,REAL_ESTATE_FIELD_TYPE,REAL_ESTATE_FIELD_TYPE);
+				controller.mUSADB = new DBModel(DB_NAME,REAL_ESTATE_TABLE_NAME,
+						REAL_ESTATE_FIELD_NAME,REAL_ESTATE_FIELD_TYPE);
 				controller.initializeUSARealEstate();
 			String type;
 			double avgBuyPrice,avgRentPrice;
