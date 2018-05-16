@@ -146,6 +146,7 @@ public class Controller {
 	// mCurrentUser looked up?
 	private DBModel mUserDB;
 
+	private DBModel mUserChoosenDB;
 	// DBModel veriable for each country
 	private DBModel mJapanDB;
 	private DBModel mUSADB;
@@ -158,6 +159,10 @@ public class Controller {
 	private ObservableList<User> mAllUsersList;
 	private ObservableList<Country> mAllCountiresList;
 	private ObservableList<Grocery> mAllGroceriesList;
+	private ObservableList<Transportation> mAllPublicTranportationList;
+	private ObservableList<Transportation> mAllPrivateTranportationList;
+	private ObservableList<Housing> mAllHousingList;
+
 
 	private Controller() {
 	}
