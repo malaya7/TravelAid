@@ -239,7 +239,7 @@ public class Controller {
 				}
 
 				controller.mUSADB = new DBModel(DB_NAME, PUBLIC_TRANSPORTATION_TABLE_NAME,
-						PUBLIC_TRANSPORTATION_FIELD_TYPE, PUBLIC_TRANSPORTATION_FIELD_NAME);
+						PUBLIC_TRANSPORTATION_FIELD_NAME,PUBLIC_TRANSPORTATION_FIELD_TYPE);
 				controller.initizalizeUSAPublicTransportation();
 
 				String kind;
@@ -254,7 +254,7 @@ public class Controller {
 
 				
 				controller.mUSADB = new DBModel(DB_NAME, PRIVATE_TRANSPORTATION_TABLE_NAME,
-						PRIVATE_TRANSPORTATION_FIELD_TYPE, PRIVATE_TRANSPORTATION_FIELD_NAME);
+						 PRIVATE_TRANSPORTATION_FIELD_NAME,PRIVATE_TRANSPORTATION_FIELD_TYPE);
 				controller.initizalizeUSAPrivateTransportation();
 				double average_economic_car_price, average_gas_price, avgDiesel, average_inssurance_price;
 				for (ArrayList<String> f : resultsList) { // type,rent buying

@@ -1,8 +1,10 @@
 package edu.orangecoastcollege.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import edu.orangecoastcollege.controller.Controller;
-import  edu.orangecoastcollege.model.DBModel;
+import  edu.orangecoastcollege.model.*;
 
 public class JunitTest {
 	private static final String DB_NAME = "USADairyTest.db";
@@ -62,6 +64,27 @@ public class JunitTest {
 public void testInitializeDairy()
 {
 	controler = Controller.getInstance();
+	
+	
+	for(Grocery f: controler.getAllGroceries())
+	{	System.out.println(f.getDescription());
+		
+	}
+	try {
+		ArrayList<ArrayList<String>> f = mDB.getAllRecords();
+		
+		for(ArrayList<String> p: f)
+		{
+			for(String g: p)
+			{
+				System.out.println(g);
+			}
+		}
+	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
 }
 	
