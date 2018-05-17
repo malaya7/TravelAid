@@ -31,7 +31,7 @@ public class JunitTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		mDB = new DBModel(DB_NAME, DAIRY_TABLE_NAME, DAIRY_TABLE_FIELD_NAME, DAIRY_TABLE_FIELD_TYPE);
+		
 		controler = Controller.getInstance();
 	}
 
@@ -44,24 +44,11 @@ public class JunitTest {
 	public void setUp() throws Exception {
 		fields = new String[] { "type", "description", "unit", "price", "country_code" };
 		values = new String[] { "cheese", "cheddar", "lb", "25", "1" };
-		mDB.deleteAllRecords();
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testCreateRecord() {
-		try {
-			int key = mDB.createRecord(fields, values);
-			System.out.println(key);
-			assertEquals("testing that the key is 1", 1, key);
-		} catch (SQLException e) {
-			fail("should have not failed");
-
-		}
-
 	}
 
 	@Test

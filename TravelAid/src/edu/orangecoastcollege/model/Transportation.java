@@ -6,7 +6,7 @@ public class Transportation {
 	private String Kind;
 	private int country_code;
 	private double averagePrice;
-	private double averagePublicPrice;
+	private double averageMonthlyPrice;
 	// for private only
 	private double average_economic_car_price;
 	/** should have a defult value Gallons */
@@ -18,7 +18,7 @@ public class Transportation {
 
 
 	public Transportation(String kind, double average_economic_car_price,
-			double average_gas_price,double avgDiesel, double average_inssurance_price,Types unit, int country_code) {
+			double average_gas_price,double avgDiesel, double average_inssurance_price,Types unit,double avgMonthlyPass, int country_code) {
 		super();
 		Kind = kind;
 		this.average_diesel_price=avgDiesel;
@@ -27,6 +27,7 @@ public class Transportation {
 		this.average_gas_price = average_gas_price;
 		this.average_inssurance_price = average_inssurance_price;
 		this.type=unit;
+		this.averageMonthlyPrice=avgMonthlyPass;
 	}
 
 
@@ -37,7 +38,7 @@ public class Transportation {
 
 	}
 
-	
+
 
 	public String getKind() {
 		return Kind;
@@ -89,12 +90,12 @@ public class Transportation {
 
 
 	public double getAveragePublicPrice() {
-		return averagePublicPrice;
+		return averageMonthlyPrice;
 	}
 
 
 	public void setAveragePublicPrice(double averagePublicPrice) {
-		this.averagePublicPrice = averagePublicPrice;
+		this.averageMonthlyPrice = averagePublicPrice;
 	}
 
 
@@ -126,7 +127,7 @@ public class Transportation {
 		long temp;
 		temp = Double.doubleToLongBits(averagePrice);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(averagePublicPrice);
+		temp = Double.doubleToLongBits(averageMonthlyPrice);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(average_diesel_price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -158,7 +159,7 @@ public class Transportation {
 			return false;
 		if (Double.doubleToLongBits(averagePrice) != Double.doubleToLongBits(other.averagePrice))
 			return false;
-		if (Double.doubleToLongBits(averagePublicPrice) != Double.doubleToLongBits(other.averagePublicPrice))
+		if (Double.doubleToLongBits(averageMonthlyPrice) != Double.doubleToLongBits(other.averageMonthlyPrice))
 			return false;
 		if (Double.doubleToLongBits(average_diesel_price) != Double.doubleToLongBits(other.average_diesel_price))
 			return false;

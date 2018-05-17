@@ -1,2 +1,2 @@
-_id,avg_car_price,avg_gas_price,avg_diesel_price,avg_insurrance_price_per_month,unit
-1,"$33,560 ",2.846,3.157,125.28,G
+_id,avg_car_price,avg_gas_price,avg_diesel_price,avg_insurrance_price_per_month,unit,monthlyPass
+1,"$33,560 ",2.846,3.157,125.28,G,99
