@@ -49,9 +49,7 @@ public class Controller {
 	private static final String EU_VEGETABLE_DATA_FILE = "vegetable products.csv";
 	private static final String SPAIN_HOUSING_FILE = "Housing Spain.csv";
 	private static final String Japan_FILE_DATA_FILE = "JapanFile.csv";
-	private static final String SPAIN_PUB_TRANSPORTATION = "Public Transportations Spain.csv";
-	private static final String SPAIN_PRIV_TRANSPORTATION = "Private Transportation Spain.csv";
-	private static final String UK_PUB_TRANSPORTATION = "Public Transportation UK.csv";
+	private static final String SPAIN_TRANSPORTATION = "Private Transportation Spain.csv";
 	private static final String UK_PRIV_TRANSPORTATION = "Private Transportation UK.csv";
 
 	// country codes
@@ -130,18 +128,20 @@ public class Controller {
     private DBModel mSpainTransportation;
     private DBModel mSpainRealEstate;
 
-    private DBModel mVietnamFood;
-    private DBModel mVietnamTransportation;
-    private DBModel mVietnamRealEstate;
-
 
     private DBModel mJapanFood;
     private DBModel mJapanTransportation;
     private DBModel mJapanRealEstate;
 
+
+
     private DBModel mBrazilFood;
     private DBModel mBrazilTransportation;
     private DBModel mBrazilRealEstate;
+
+    private DBModel mVietnamFood;
+    private DBModel mVietnamTransportation;
+    private DBModel mVietnamRealEstate;
 
 
 
@@ -168,12 +168,12 @@ public class Controller {
 			controller.mAllGroceriesList = FXCollections.observableArrayList();
 			controller.mAllHousingList = FXCollections.observableArrayList();
 			controller.mAllTransportationList= FXCollections.observableArrayList();
-		
+
 
 
 
 			try {
-			   
+
 				// Create the user table in the database
 				controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
 
@@ -188,17 +188,13 @@ public class Controller {
 					controller.mAllUsersList.add(new User(id, name, email, role));
 				}
 
-				//load all USA files
-			
-				//fetch all usa files
-
 				controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
 						FOOD_TABLE_FIELD_TYPE);
 				controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
 						TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
 				controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
 						REAL_ESTATE_FIELD_TYPE);
-				
+
 				controller.initializeUSA();
 				resultsList = controller.mUSAFood.getAllRecords();
 				String description, unit;
@@ -481,9 +477,9 @@ public class Controller {
 	 */
 	@SuppressWarnings("unused")
     private int initializeUSA() throws SQLException
-    { 
+    {
         int recordsCreated = 0;
-     
+
         if (controller.mUSAFood.getRecordCount() > 0 &&
 
                 controller.mUSATransportation.getRecordCount() > 0 && controller.mUSARealEstate.getRecordCount() > 0)
@@ -501,7 +497,7 @@ public class Controller {
                 // Length of values is one less than field names because values
                 // does not have id (DB will assign one)
                 String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
-                
+
                 values[0] = data[0];
                 values[1] = data[1];
                 values[2] = data[2];
@@ -634,14 +630,14 @@ System.out.println(Arrays.toString(data));
                 values[4] = data[4];
                 values[5] = data[5];
                 values[6] =USA_COUNTRY_CODE;
-//average_economic_car_price, 
+//average_economic_car_price,
                 //average_gas_price,
                 //double avgDiesel,
                 //double average_inssurance_price,
                 //Types unit,
-                //double avgMonthlyPass, 
+                //double avgMonthlyPass,
                 //int country_code) {
-    				
+
                 controller.mUSATransportation.createRecord(Arrays.copyOfRange(TRANSPORTATION_FIELD_NAME, 1,
                         TRANSPORTATION_FIELD_NAME.length), values);
                 recordsCreated++;
@@ -683,7 +679,62 @@ System.out.println(Arrays.toString(data));
         return recordsCreated;
     }
 
+private int initializeEU()throws SQLException{
+    int recordsCreated=0;
 
+    //DAIRY
+    try
+    {System.out.println("inside Dairy try");
+        Scanner fileScanner = new Scanner(new File(EU_DAIRY_DATA_FILE));
+        fileScanner.nextLine();
+        fileScanner.nextLine();fileScanner.nextLine();fileScanner.nextLine();fileScanner.nextLine();
+        ArrayList<Grocery> groceriesSp = new ArrayList<>();
+      FileScanner:  while (fileScanner.hasNextLine())
+        {
+            String[] data = fileScanner.nextLine().split(",");
+            // Length of values is one less than field names because values
+            // does not have id (DB will assign one)
+            String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
+            values[0]=data[0];//type
+            values[1]=data[4];//description
+            values[2]=data[5];//unit
+            values[3]=data[8];//price
+        //_id", "type", "description", "unit", "price", "country_code" };
+       //description, String unit, double price, int country_code, Types typ
+
+            if(data[6].equalsIgnoreCase("ES")){
+
+
+                    groceriesSp.add(new Grocery(data[4], data[5], Double.valueOf(data[8]),
+                            Integer.valueOf(SPAIN_COUNTRY_CODE), Types.Dairy_products));
+                    for (Grocery e : groceriesSp)
+                    {
+                        if (e.getDescription().equalsIgnoreCase(data[4])) break FileScanner;
+                    }
+
+                controller.mSpainFood.createRecord(
+                        Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
+            }
+            if (data[6].equalsIgnoreCase("UK")){
+                ArrayList<Grocery> groceriesUK = new ArrayList<>();
+                groceriesUK.add(new Grocery(data[4],data[5],Double.valueOf(data[8]), Integer.valueOf(SPAIN_COUNTRY_CODE), Types.Dairy_products ));
+                controller.mUKFood.createRecord(
+                        Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
+            }
+
+            recordsCreated++;
+        }
+
+        fileScanner.close();
+    }
+    catch (FileNotFoundException e)
+    {   System.out.println("inside cairy catch");
+        return 0;
+    }
+
+
+return recordsCreated;
+}
 	private int initializeVideoGameDBFromFile() throws SQLException {
 		int recordsCreated = 0;
 

@@ -3,7 +3,7 @@ package edu.orangecoastcollege.model;
 public class Transportation {
 
 	// Train, Bus, Taxi
-	
+
 	private int country_code;
 	private double averagePrice;
 	private double averageMonthlyPrice;
@@ -16,11 +16,11 @@ public class Transportation {
 	private Types type;
 
 
-
+	//avgEconomicCarPrice, gas,diesel,insurrance,unit,avgMonthlyPass,cCode
 	public Transportation(double average_economic_car_price,
 			double average_gas_price,double avgDiesel, double average_inssurance_price,Types unit,double avgMonthlyPass, int country_code) {
 		super();
-		
+
 		this.average_diesel_price=avgDiesel;
 		this.country_code = country_code;
 		this.average_economic_car_price = average_economic_car_price;

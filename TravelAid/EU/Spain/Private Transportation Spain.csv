@@ -1,2 +1,2 @@
-avgCarPrice,avgGas,avgDiesel,avgInsurrance,unit
-16688,1.188,1.286, 113, L,3
+avgCarPrice,avgGas,avgDiesel,avgInsurrance,unit,acgMonthly,cCode
+16688,1.188,1.286,113, L,52.5,3
