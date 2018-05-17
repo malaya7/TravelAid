@@ -39,10 +39,10 @@ public class Controller {
 	// Files
 	private static final String USA_DAIRY_FILE_DATA_FILE = "USA/Dairy USA.csv";
 	private static final String USA_FRUIT_DATA_FILE = "USA/Fruit USA.csv";
-	private static final String USA_VEGETABLE_DATA_FILE = "Vegetable USA.csv";
-	private static final String USA_MEAT_DATA_FILE = "Meat USA.csv";
-	private static final String USA_PRIVATE_TRANSPORTATION_FILE = "USA Transportation.csv";
-	private static final String USA_HOUSING_FILE = "USA Housing Price.csv";
+	private static final String USA_VEGETABLE_DATA_FILE = "USA/Vegetables USA.csv";
+	private static final String USA_MEAT_DATA_FILE = "USA/Meat USA.csv";
+	private static final String USA_PRIVATE_TRANSPORTATION_FILE = "USA/USA Transportation.csv";
+	private static final String USA_HOUSING_FILE = "USA/USA Housing Price.csv";
 	private static final String USA_PUBLIC_TRANSPORTATION = "USA Public Transportation.csv";
 	private static final String EU_ANMAL_DATA_FILE = "animal products.csv";
 	private static final String EU_DAIRY_DATA_FILE = "dairy products.csv";
@@ -83,10 +83,8 @@ public class Controller {
     // ,​average_gas_price​ REAL, ​averge_diesel_price ​REAL,
     // average_inssurance_price REAL,​unit​ TEXT ,"avg_monthly_pass_price" REAL ,​country_code​ INTEGER -
 	private static final String TRANSPORTATION_TABLE_NAME = "transportation";
-	   private static final String[] TRANSPORTATION_FIELD_NAME = { "_id", "avg_car_price", "avg_gas_price",
-	            "avg_diesel_price", "avg_inssurance_price", "unit","avg_monthly_pass_price", "country_code " };
-	    private static final String[]  TRANSPORTATION_FIELD_TYPE = { "INTEGER PRIMARY KEY", "REAL", "REAL", "REAL",
-	            "REAL", "TEXT", "REAL","INTEGER" };
+	   private static final String[] TRANSPORTATION_FIELD_NAME = { "_id", "avg_car_price", "avg_gas_price", "avg_diesel_price", "avg_inssurance_price", "unit" ,"avg_monthly_pass_price", "country_code" };
+	    private static final String[]  TRANSPORTATION_FIELD_TYPE = { "INTEGER PRIMARY KEY", "REAL", "REAL", "REAL", "REAL", "TEXT", "REAL","INTEGER" };
 	 // real estate _id PRIMARY KEY INTEGER, ​type ​TEXT, ​average_rent_pric​e
 	    // REAL, average_buying_price ​REAL, country_code INTEGER
 	    private static final String REAL_ESTATE_TABLE_NAME = "real_estate";
@@ -284,7 +282,7 @@ public class Controller {
 					avgDiesel = Double.valueOf(f.get(3));
 					average_inssurance_price = Double.valueOf(f.get(4));
 					avgMonthlyPass = Double.valueOf(f.get(6));
-					controller.mAllTransportationList.add(new Transportation("Private", average_economic_car_price,
+					controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
 							average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
 							Integer.valueOf(USA_COUNTRY_CODE)));
 				}
@@ -534,17 +532,13 @@ public class Controller {
 	 */
 	@SuppressWarnings("unused")
     private int initializeUSA() throws SQLException
-    {   System.out.println("inside initialize USA");
-
+    { 
         int recordsCreated = 0;
      
         if (controller.mUSAFood.getRecordCount() > 0 &&
 
                 controller.mUSATransportation.getRecordCount() > 0 && controller.mUSARealEstate.getRecordCount() > 0)
             return 0;
-
-
-System.out.println("Passed the 0");
 
         //DAIRY
         try
@@ -589,14 +583,11 @@ System.out.println("Passed the 0");
                 // Length of values is one less than field names because values
                 // does not have id (DB will assign one)
                 String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
-                // "_id", "type", "description", "unit", "price", "country_code
-                // "
-                System.out.println(Arrays.toString(values));
                 values[0] = data[0];
                 values[1] = !data[2].equals("") ? data[1] :data[1] +", " + data[2];
                 values[2] = data[5];
                 values[3] = data[7];
-                values[4] = String.valueOf(USA_COUNTRY_CODE);
+                values[4] = USA_COUNTRY_CODE;
                 // look at fruits USA FIle
 
                 controller.mUSAFood.createRecord(
@@ -613,6 +604,7 @@ System.out.println("Passed the 0");
 
         //MEAT
         try {
+        	System.out.println("In the Meat Try");
             Scanner fileScanner = new Scanner(new File(USA_MEAT_DATA_FILE));
             fileScanner.nextLine();
 
@@ -628,7 +620,7 @@ System.out.println("Passed the 0");
                 values[1] = data[1];
                 values[2] = data[2];
                 values[3] = data[3];
-                values[4] = String.valueOf(USA_COUNTRY_CODE);
+                values[4] =USA_COUNTRY_CODE;
                 controller.mUSAFood.createRecord(
                         Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
 
@@ -637,11 +629,13 @@ System.out.println("Passed the 0");
 
             fileScanner.close();
         } catch (FileNotFoundException e) {
+        	System.out.println("Meat Catch");
             return 0;
         }
 
         //Vegetables
         try {
+        	System.out.println("In the veggi try");
             Scanner fileScanner = new Scanner(new File(USA_VEGETABLE_DATA_FILE));
             fileScanner.nextLine();
 
@@ -654,10 +648,10 @@ System.out.println("Passed the 0");
                 // "
                 // type description lb price
                 values[0] = data[2];
-                values[1] = data[3] + " " + data[4];
+                values[1] = !data[4].equals("") ? data[3] : data[3]+ ", " + data[4];
                 values[2] = data[7];
                 values[3] = data[9];
-                values[4] = String.valueOf(USA_COUNTRY_CODE);
+                values[4] = USA_COUNTRY_CODE;
                 controller.mUSAFood.createRecord(
                         Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
 
@@ -666,13 +660,15 @@ System.out.println("Passed the 0");
 
             fileScanner.close();
         } catch (FileNotFoundException e) {
-            return 0;
+            System.out.println("Veggi catch");
+        	return 0;
         }
 
 
         //Transportation
 
         try {
+        	System.out.println("In transportation USA");
             Scanner fileScanner = new Scanner(new File(USA_PRIVATE_TRANSPORTATION_FILE));
             fileScanner.nextLine();
 
@@ -681,15 +677,22 @@ System.out.println("Passed the 0");
                 // Length of values is one less than field names because values
                 // does not have id (DB will assign one)
                 String[] values = new String[TRANSPORTATION_FIELD_NAME.length - 1];
-
-                values[0] = data[1];
-                values[1] = data[2];
-                values[2] = data[3];
-                values[3] = data[4];
-                values[4] = data[5];
+System.out.println(Arrays.toString(data));
+                values[0] = data[0];
+                values[1] = data[1];
+                values[2] = data[2];
+                values[3] = data[3];
+                values[4] = data[4];
                 values[5] = data[5];
-                values[6] = String.valueOf(USA_COUNTRY_CODE);
-
+                values[6] =USA_COUNTRY_CODE;
+//average_economic_car_price, 
+                //average_gas_price,
+                //double avgDiesel,
+                //double average_inssurance_price,
+                //Types unit,
+                //double avgMonthlyPass, 
+                //int country_code) {
+    				
                 controller.mUSATransportation.createRecord(Arrays.copyOfRange(TRANSPORTATION_FIELD_NAME, 1,
                         TRANSPORTATION_FIELD_NAME.length), values);
                 recordsCreated++;
@@ -697,7 +700,8 @@ System.out.println("Passed the 0");
 
             fileScanner.close();
         } catch (FileNotFoundException e) {
-            return 0;
+            	System.out.println("Transportation catch");
+        	return 0;
         }
 
 
@@ -705,7 +709,7 @@ System.out.println("Passed the 0");
         try {
             Scanner fileScanner = new Scanner(new File(USA_HOUSING_FILE));
             fileScanner.nextLine();
-
+            System.out.println("in real estat USA");
             while (fileScanner.hasNextLine()) {
                 String[] data = fileScanner.nextLine().split(",");
                 // Length of values is one less than field names because values
@@ -724,7 +728,8 @@ System.out.println("Passed the 0");
 
             fileScanner.close();
         } catch (FileNotFoundException e) {
-            return 0;
+            System.out.println("USA Real State Catch");
+        	return 0;
         }
         return recordsCreated;
     }

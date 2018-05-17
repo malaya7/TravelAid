@@ -3,7 +3,7 @@ package edu.orangecoastcollege.model;
 public class Transportation {
 
 	// Train, Bus, Taxi
-	private String Kind;
+	
 	private int country_code;
 	private double averagePrice;
 	private double averageMonthlyPrice;
@@ -17,10 +17,10 @@ public class Transportation {
 
 
 
-	public Transportation(String kind, double average_economic_car_price,
+	public Transportation(double average_economic_car_price,
 			double average_gas_price,double avgDiesel, double average_inssurance_price,Types unit,double avgMonthlyPass, int country_code) {
 		super();
-		Kind = kind;
+		
 		this.average_diesel_price=avgDiesel;
 		this.country_code = country_code;
 		this.average_economic_car_price = average_economic_car_price;
@@ -31,22 +31,18 @@ public class Transportation {
 	}
 
 
-	public Transportation(String kind, double avgPublicPrice, int countryCode) {
-		this.Kind = kind;
-		this.averagePrice = avgPublicPrice;
-		this.country_code = countryCode;
 
+	public double getAverageMonthlyPrice() {
+		return averageMonthlyPrice;
 	}
 
 
 
-	public String getKind() {
-		return Kind;
+	public void setAverageMonthlyPrice(double averageMonthlyPrice) {
+		this.averageMonthlyPrice = averageMonthlyPrice;
 	}
 
-	public void setKind(String kind) {
-		Kind = kind;
-	}
+
 
 	public int getCountry_code() {
 		return country_code;
@@ -123,11 +119,10 @@ public class Transportation {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Kind == null) ? 0 : Kind.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(averagePrice);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(averageMonthlyPrice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(averagePrice);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(average_diesel_price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -152,14 +147,9 @@ public class Transportation {
 		if (getClass() != obj.getClass())
 			return false;
 		Transportation other = (Transportation) obj;
-		if (Kind == null) {
-			if (other.Kind != null)
-				return false;
-		} else if (!Kind.equals(other.Kind))
+		if (Double.doubleToLongBits(averageMonthlyPrice) != Double.doubleToLongBits(other.averageMonthlyPrice))
 			return false;
 		if (Double.doubleToLongBits(averagePrice) != Double.doubleToLongBits(other.averagePrice))
-			return false;
-		if (Double.doubleToLongBits(averageMonthlyPrice) != Double.doubleToLongBits(other.averageMonthlyPrice))
 			return false;
 		if (Double.doubleToLongBits(average_diesel_price) != Double.doubleToLongBits(other.average_diesel_price))
 			return false;

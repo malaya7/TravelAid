@@ -56,10 +56,11 @@ public class JunitTest {
 		controler = Controller.getInstance();
 
 		System.out.println(controler.getAllGroceries().size());
-		for (Grocery f : controler.getAllGroceries()) {
-			System.out.println(f.toString());
+		System.out.println(controler.getAllTransportation().size());
+		/*for (Grocery f : controler.getAllGroceries()) 
+			System.out.println(f.toString());*/
 
-		}
+		
 
 	}
 
