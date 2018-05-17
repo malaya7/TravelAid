@@ -1,5 +1,8 @@
 package edu.orangecoastcollege.model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Grocery
 {
   private String description;
@@ -13,7 +16,7 @@ private  int country_code;
   Types type;
 
 public Grocery(String description, String unit, double price, int country_code, Types type) 
-{
+{	
 	this.description = description;
 	this.unit = unit;
 	this.price = price;
@@ -23,8 +26,8 @@ public Grocery(String description, String unit, double price, int country_code, 
 
 @Override
 public String toString()
-{
-    return "[" + type.name() + ", Kind=" + description + ", Price=" + price +  unit +"]";
+{	NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
+    return "[" + type.name() + ", Kind=" + description + ", Price=" + currency.format(price) + " "+ unit +"]";
 }
 
 public String getDescription() {

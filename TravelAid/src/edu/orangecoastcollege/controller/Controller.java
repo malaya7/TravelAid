@@ -38,7 +38,7 @@ public class Controller {
 	private static final String DB_NAME = "TravelAid.db";
 	// Files
 	private static final String USA_DAIRY_FILE_DATA_FILE = "USA/Dairy USA.csv";
-	private static final String USA_FRUIT_DATA_FILE = "Fruit USA.csv";
+	private static final String USA_FRUIT_DATA_FILE = "USA/Fruit USA.csv";
 	private static final String USA_VEGETABLE_DATA_FILE = "Vegetable USA.csv";
 	private static final String USA_MEAT_DATA_FILE = "Meat USA.csv";
 	private static final String USA_PRIVATE_TRANSPORTATION_FILE = "USA Transportation.csv";
@@ -558,7 +558,7 @@ System.out.println("Passed the 0");
                 // Length of values is one less than field names because values
                 // does not have id (DB will assign one)
                 String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
-                System.out.println(Arrays.toString(values));
+                
                 values[0] = data[0];
                 values[1] = data[1];
                 values[2] = data[2];
@@ -591,10 +591,11 @@ System.out.println("Passed the 0");
                 String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
                 // "_id", "type", "description", "unit", "price", "country_code
                 // "
-                values[0] = data[2];
-                values[1] = data[3] + " " + data[4];
-                values[2] = data[7];
-                values[3] = data[9];
+                System.out.println(Arrays.toString(values));
+                values[0] = data[0];
+                values[1] = !data[2].equals("") ? data[1] :data[1] +", " + data[2];
+                values[2] = data[5];
+                values[3] = data[7];
                 values[4] = String.valueOf(USA_COUNTRY_CODE);
                 // look at fruits USA FIle
 
