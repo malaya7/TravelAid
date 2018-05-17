@@ -76,8 +76,7 @@ public class Controller {
     // food _​id PRIMARY KEY​ INTEGER, ​type[enum type] ​TEXT, ​description ​TEXT, ​unit
     // ​TEXT, price ​REAL, ​country_code ​INTEGER
 	private static final String FOOD_TABLE_NAME = "food";
-	private static final String[] FOOD_TABLE_FIELD_NAME = { "_id", "type", "description", "unit", "price",
-    "country_code " };
+	private static final String[] FOOD_TABLE_FIELD_NAME = { "_id", "type", "description", "unit", "price", "country_code" };
 	private static final String[] FOOD_TABLE_FIELD_TYPE = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL",
     "INTEGER" };
 	// private ​_id PRIMARY KEY INTEGER​, ​average_economic_car_price ​REAL
@@ -95,7 +94,7 @@ public class Controller {
 	            "country_code" };
 	    private static final String[] REAL_ESTATE_FIELD_TYPE = { "INTEGER PRIMARY KEY", "TEXT", "REAL", "REAL", "INTEGER" };
 
-	// Vegetable _​id PRIMARY KEY​ INTEGER, ​description ​TEXT, ​unit ​TEXT,
+	/*// Vegetable _​id PRIMARY KEY​ INTEGER, ​description ​TEXT, ​unit ​TEXT,
 	// ​price REAL, , ​country_code ​INTEGER
 	private static final String VEGETABLE_TABLE_NAME = "vegetable";
 	private static final String[] VEGETABLE_TABLE_FIELD_NAME = { "_id", "type", "description", "unit", "price",
@@ -145,7 +144,7 @@ public class Controller {
 			"avg_diesel_price", "avg_inssurance_price", "unit", "country_code " };
 	private static final String[] PRIVATE_TRANSPORTATION_FIELD_TYPE = { "INTEGER PRIMARY KEY", "REAL", "REAL", "REAL",
 			"REAL", "TEXT", "INTEGER" };
-
+*/
 	// email _id PRIMARY KEY INTEGER, ​name TEXT, ​age INTEGER,
 	// climate_preference​ TEXT, ​email TEXT
 	private static final String USER_TABLE_NAME = "user";
@@ -202,15 +201,8 @@ public class Controller {
 	private ObservableList<User> mAllUsersList;
 	private ObservableList<Country> mAllCountiresList;
 	private ObservableList<Grocery> mAllGroceriesList;
-	private ObservableList<Transportation> mAllPublicTranportationList;
-	private ObservableList<Transportation> mAllPrivateTranportationList;
+	private ObservableList<Transportation> mAllTransportationList;
 	private ObservableList<Housing> mAllHousingList;
-	private ArrayList<DBModel> mUSAModels = new ArrayList<>();
-	private ArrayList<DBModel> mSpainModels = new ArrayList<>();
-	private ArrayList<DBModel> mJapanModels = new ArrayList<>();
-	private ArrayList<DBModel> mBrazilModels = new ArrayList<>();
-	private ArrayList<DBModel> mVietnamModels = new ArrayList<>();
-	private ArrayList<DBModel> mUKModels = new ArrayList<>();
 
 
 	private Controller() {
@@ -228,15 +220,13 @@ public class Controller {
 			controller.mAllCountiresList = FXCollections.observableArrayList();
 			controller.mAllGroceriesList = FXCollections.observableArrayList();
 			controller.mAllHousingList = FXCollections.observableArrayList();
-			controller.mAllPrivateTranportationList = FXCollections.observableArrayList();
-			controller.mAllPublicTranportationList = FXCollections.observableArrayList();
+			controller.mAllTransportationList= FXCollections.observableArrayList();
+		
 
 
 
 			try {
-			    controller.mUSAModels.add(0, controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME,FOOD_TABLE_FIELD_NAME, FOOD_TABLE_FIELD_TYPE));
-			    controller.mUSAModels.add(1, controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,TRANSPORTATION_FIELD_NAME,TRANSPORTATION_FIELD_TYPE));
-			    controller.mUSAModels.add(2, controller.mUSARealEstate = new DBModel(DB_NAME,REAL_ESTATE_TABLE_NAME,REAL_ESTATE_FIELD_NAME,REAL_ESTATE_FIELD_TYPE));
+			   
 				// Create the user table in the database
 				controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
 
@@ -252,53 +242,63 @@ public class Controller {
 				}
 
 				//load all USA files
-				controller.initializeUSA();
+			
 				//fetch all usa files
-				 resultsList  = controller.mUSAModels.get(0).getAllRecords();
-	                String description, unit;
-	                double price;
-	                Types dairy = Types.Dairy_products;
-	                Types fruit = Types.Fruit;
-	                Types vegi = Types.Vegetable;
-	                for (ArrayList<String> f : resultsList) {
-	                    Types type=Types.Dairy_products;
-	                    if(f.get(1).equalsIgnoreCase("Fruit"))
-	                        type=fruit;
-	                    if(f.get(1).equalsIgnoreCase("Dairy"))
-	                        type=dairy;
-	                    if(f.get(1).equalsIgnoreCase("Vegetables"))
-	                        type=vegi;
 
-	                    description = f.get(2);
-	                    unit = f.get(3);
-	                    price = Double.valueOf(f.get(4));
-	                    Grocery g = new Grocery(description, unit, price, Integer.parseInt(USA_COUNTRY_CODE), type);
-	                    controller.mAllGroceriesList.add(g);
-	                }
-				 resultsList  = controller.mUSAModels.get(1).getAllRecords();
-				double average_economic_car_price, average_gas_price, avgDiesel, average_inssurance_price,avgMonthlyPass;
+				controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
+						FOOD_TABLE_FIELD_TYPE);
+				controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
+						TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
+				controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
+						REAL_ESTATE_FIELD_TYPE);
+				
+				controller.initializeUSA();
+				resultsList = controller.mUSAFood.getAllRecords();
+				String description, unit;
+				double price;
+				Types dairy = Types.Dairy_products;
+				Types fruit = Types.Fruit;
+				Types vegi = Types.Vegetable;
+				for (ArrayList<String> f : resultsList) {
+					Types type = Types.Dairy_products;
+					if (f.get(1).equalsIgnoreCase("Fruit"))
+						type = fruit;
+					if (f.get(1).equalsIgnoreCase("Dairy"))
+						type = dairy;
+					if (f.get(1).equalsIgnoreCase("Vegetables"))
+						type = vegi;
+
+					description = f.get(2);
+					unit = f.get(3);
+					price = Double.valueOf(f.get(4));
+					Grocery g = new Grocery(description, unit, price, Integer.parseInt(USA_COUNTRY_CODE), type);
+					controller.mAllGroceriesList.add(g);
+				}
+
+				resultsList = controller.mUSATransportation.getAllRecords();
+				double average_economic_car_price, average_gas_price, avgDiesel, average_inssurance_price,
+						avgMonthlyPass;
 				for (ArrayList<String> f : resultsList) { // type,rent buying
 					average_economic_car_price = Double.valueOf(f.get(1));
 					average_gas_price = Double.valueOf(f.get(2));
 					avgDiesel = Double.valueOf(f.get(3));
 					average_inssurance_price = Double.valueOf(f.get(4));
-					avgMonthlyPass=Double.valueOf(f.get(6));
-					controller.mAllPrivateTranportationList
-							.add(new Transportation("Private", average_economic_car_price, average_gas_price, avgDiesel,
-									average_inssurance_price, Types.G, avgMonthlyPass,Integer.valueOf(USA_COUNTRY_CODE)));
+					avgMonthlyPass = Double.valueOf(f.get(6));
+					controller.mAllTransportationList.add(new Transportation("Private", average_economic_car_price,
+							average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
+							Integer.valueOf(USA_COUNTRY_CODE)));
 				}
 
-				 resultsList  = controller.mUSAModels.get(2).getAllRecords();
-		        String type;
-                double avgBuyPrice, avgRentPrice;
-                for (ArrayList<String> f : resultsList) { // type,rent buying
-                    type = f.get(1);
-                    avgBuyPrice = Double.valueOf(f.get(2));
-                    avgRentPrice = Double.valueOf(f.get(4));
-                    controller.mAllHousingList
-                            .add(new Housing(type, avgBuyPrice, avgRentPrice, Integer.valueOf(USA_COUNTRY_CODE)));
-                }
-
+				resultsList = controller.mUSARealEstate.getAllRecords();
+				String type;
+				double avgBuyPrice, avgRentPrice;
+				for (ArrayList<String> f : resultsList) { // type,rent buying
+					type = f.get(1);
+					avgBuyPrice = Double.valueOf(f.get(2));
+					avgRentPrice = Double.valueOf(f.get(4));
+					controller.mAllHousingList
+							.add(new Housing(type, avgBuyPrice, avgRentPrice, Integer.valueOf(USA_COUNTRY_CODE)));
+				}
 
 				/*
 				 * // Create japan table in the database, loading from the CSV
@@ -507,13 +507,10 @@ public class Controller {
 		return controller.mAllGroceriesList;
 	}
 
-	public ObservableList<Transportation> getAllPublicTransportation() {
-		return controller.mAllPublicTranportationList;
+	public ObservableList<Transportation> getAllTransportation() {
+		return controller.mAllTransportationList;
 	}
 
-	public ObservableList<Transportation> getAllPrivateTransporation() {
-		return controller.mAllPublicTranportationList;
-	}
 
 	public ObservableList<Housing> getAllHousing() {
 		return controller.mAllHousingList;
@@ -540,9 +537,10 @@ public class Controller {
     {   System.out.println("inside initialize USA");
 
         int recordsCreated = 0;
-        if (controller.mUSAModels.get(0).getRecordCount() > 0 &&
+     
+        if (controller.mUSAFood.getRecordCount() > 0 &&
 
-                controller.mUSAModels.get(1).getRecordCount() > 0 && controller.mUSAModels.get(2).getRecordCount() > 0)
+                controller.mUSATransportation.getRecordCount() > 0 && controller.mUSARealEstate.getRecordCount() > 0)
             return 0;
 
 
@@ -550,7 +548,7 @@ System.out.println("Passed the 0");
 
         //DAIRY
         try
-        {System.out.println("inside try");
+        {System.out.println("inside Dairy try");
             Scanner fileScanner = new Scanner(new File(USA_DAIRY_FILE_DATA_FILE));
             fileScanner.nextLine();
 
@@ -560,13 +558,14 @@ System.out.println("Passed the 0");
                 // Length of values is one less than field names because values
                 // does not have id (DB will assign one)
                 String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
+                System.out.println(Arrays.toString(values));
                 values[0] = data[0];
                 values[1] = data[1];
                 values[2] = data[2];
                 values[3] = data[3];
-                values[4] = USA_COUNTRY_CODE;
+                values[4] = data[4];
 
-                controller.mUSAModels.get(0).createRecord(
+                controller.mUSAFood.createRecord(
                         Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
                 recordsCreated++;
             }
@@ -728,7 +727,7 @@ System.out.println("Passed the 0");
         }
         return recordsCreated;
     }
-
+/*
 	private int initializeUSAFruit() throws SQLException {
 		int recordsCreated = 0;
 		// since everything is in the same DB we have to "chain" the if
@@ -755,7 +754,7 @@ System.out.println("Passed the 0");
 				// look at fruits USA FIle
 
 				controller.mUSADB.createRecord(
-						Arrays.copyOfRange(FRUIT_TABLE_FIELD_NAME, 1, FRUIT_TABLE_FIELD_NAME.length), values);
+			//		Arrays.copyOfRange(FRUIT_TABLE_FIELD_NAME, 1, FRUIT_TABLE_FIELD_NAME.length), values);
 				recordsCreated++;
 			}
 
@@ -781,7 +780,7 @@ System.out.println("Passed the 0");
 				String[] data = fileScanner.nextLine().split(",");
 				// Length of values is one less than field names because values
 				// does not have id (DB will assign one)
-				String[] values = new String[MEAT_TABLE_FIELD_NAME.length - 1];
+			//	String[] values = new String[MEAT_TABLE_FIELD_NAME.length - 1];
 				// "_id", "type", "description", "unit", "price", "country_code
 				// "
 				// type description lb price
@@ -869,9 +868,9 @@ System.out.println("Passed the 0");
 		}
 		return recordsCreated;
 
-	}
+	}*/
 
-	private int initizalizeUSAPublicTransportation() throws SQLException {
+/*	private int initizalizeUSAPublicTransportation() throws SQLException {
 
 		int recordsCreated = 0;
 		if (controller.mUSADB.getRecordCount() >= controller.initializeUSARealEstate())
@@ -935,7 +934,7 @@ System.out.println("Passed the 0");
 			return 0;
 		}
 		return recordsCreated;
-	}
+	}*/
 
 	private int initializeVideoGameDBFromFile() throws SQLException {
 		int recordsCreated = 0;
