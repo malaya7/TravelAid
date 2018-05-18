@@ -136,41 +136,77 @@ public class Controller {
 	private Controller() {
 	}
 
+	private static void addUserToList() throws SQLException
+	{
+		ArrayList<ArrayList<String>> resultsList = controller.mUserDB.getAllRecords();
+
+		for (ArrayList<String> values : resultsList) {
+			int id = Integer.parseInt(values.get(0));
+			String name = values.get(1);
+			String email = values.get(2);
+			String role = values.get(3);
+			controller.mAllUsersList.add(new User(id, name, email, role));
+		}
+	}
+	
+	private static void addJapanToLists() throws SQLException
+	{
+		//TODO Japan Stuff 
+		controller.initializeJapanDBFromFile();
+		ArrayList<ArrayList<String>> JapanSet = controller.mJapanDB.getAllRecords();
+		int country = Integer.valueOf(JAPAN_COUNTRY_CODE);
+		String description,unit;
+		double price;
+		for (ArrayList<String> values : JapanSet)
+		{
+			 description = values.get(2);
+			 unit = values.get(3);
+			 price = Double.valueOf(values.get(4));
+			Types t = Types.valueOf(values.get(1));
+			if(t.equals(Types.Fruit ) || t.equals(Types.Vegetable) || t.equals(Types.Meat) || t.equals(Types.Dairy))
+			controller.mAllGroceriesList.add(new Grocery(description,unit,price,country,t));
+			else if(t.equals(Types.Transportation))
+				controller.mAllTransportationList.add(new Transportation(description,unit,price,t,country));
+			else if(t.equals(Types.RealEstate))
+				controller.mAllHousingList.add(new Housing(description,247120,price,country));
+		}
+	}
+	private static void initDBModelObjects() throws SQLException {
+		// USA DBModel
+		controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
+		controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
+				FOOD_TABLE_FIELD_TYPE);
+		
+		controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
+				TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
+		
+		controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
+				REAL_ESTATE_FIELD_TYPE);
+		// Japan DBModel
+		controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
+	}
+	private static void  initAllListsFX()
+	{
+		controller.mAllUsersList = FXCollections.observableArrayList();
+		controller.mAllCountiresList = FXCollections.observableArrayList();
+		controller.mAllGroceriesList = FXCollections.observableArrayList();
+		controller.mAllHousingList = FXCollections.observableArrayList();
+		controller.mAllTransportationList= FXCollections.observableArrayList();
+	}
+	
 	public static Controller getInstance() {
 		if (controller == null) {
 			controller = new Controller();
-			controller.mAllUsersList = FXCollections.observableArrayList();
-			controller.mAllCountiresList = FXCollections.observableArrayList();
-			controller.mAllGroceriesList = FXCollections.observableArrayList();
-			controller.mAllHousingList = FXCollections.observableArrayList();
-			controller.mAllTransportationList= FXCollections.observableArrayList();
-
-
+			initAllListsFX();
 			try {
-
-				// Create the user table in the database
-				controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
-
-				//f= new DBModel(DB_NAME, FOOD_TABLE_NAME,FOOD_TABLE_FIELD_NAME,FOOD_TABLE_FIELD_TYPE);
-				ArrayList<ArrayList<String>> resultsList = controller.mUserDB.getAllRecords();
-
-				for (ArrayList<String> values : resultsList) {
-					int id = Integer.parseInt(values.get(0));
-					String name = values.get(1);
-					String email = values.get(2);
-					String role = values.get(3);
-					controller.mAllUsersList.add(new User(id, name, email, role));
-				}
-
-				controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
-						FOOD_TABLE_FIELD_TYPE);
-				controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
-						TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
-				controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
-						REAL_ESTATE_FIELD_TYPE);
-
+				// Crete all the tables in the database
+				initDBModelObjects();
+				// Create a user object and added to allUsersList
+				addUserToList();
+				// Read from CSV files to and add to USA tables
 				controller.initializeUSA();
-				resultsList = controller.mUSAFood.getAllRecords();
+				
+				ArrayList<ArrayList<String>> resultsList = controller.mUSAFood.getAllRecords();
 				String description, unit;
 				double price;
 				Types dairy = Types.Dairy_products;
@@ -216,35 +252,15 @@ public class Controller {
 					controller.mAllHousingList
 							.add(new Housing(type, avgBuyPrice, avgRentPrice, Integer.valueOf(USA_COUNTRY_CODE)));
 				}
-				//TODO Japan Stuff 
-				controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
-				controller.initializeJapanDBFromFile();
-
-				ArrayList<ArrayList<String>> JapanSet = controller.mJapanDB.getAllRecords();
-				int country = Integer.valueOf(JAPAN_COUNTRY_CODE);
-				for (ArrayList<String> values : JapanSet)
-				{
-					 description = values.get(2);
-					 unit = values.get(3);
-					 price = Double.valueOf(values.get(4));
-					Types t = Types.valueOf(values.get(1));
-					if(t.equals(Types.Fruit ) || t.equals(Types.Vegetable) || t.equals(Types.Meat) || t.equals(Types.Dairy))
-					controller.mAllGroceriesList.add(new Grocery(description,unit,price,country,t));
-				//	else if(t.equals(Types.Transportation))
-					//	controller.mAllTransportationList.add(new Transportation(description,unit,price,t,country));
-					//else if(t.equals(Types.RealEstate))
-					//	controller.mAllHousingList.add(new Housing(description,unit,price,t,country));
-				}
-
-	
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
+				// Handle all Japan stuff
+				 addJapanToLists();
+				 
+			}catch (SQLException e)
+			{e.printStackTrace();}
 		}
 		return controller;
 	}
+	
 
 	private int initializeJapanDBFromFile() throws SQLException {
 		int recordsCreated = 0;
@@ -445,7 +461,7 @@ public class Controller {
 	 * publishers; }
 	 *
 	 */
-	@SuppressWarnings("unused")
+
     private int initializeUSA() throws SQLException
     {
         int recordsCreated = 0;

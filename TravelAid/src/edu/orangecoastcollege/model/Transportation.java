@@ -1,12 +1,17 @@
 package edu.orangecoastcollege.model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Transportation {
 
 	// Train, Bus, Taxi
-
+	String description;
+	String unit;
 	private int country_code;
 	private double averagePrice;
 	private double averageMonthlyPrice;
+
 	// for private only
 	private double average_economic_car_price;
 	/** should have a defult value Gallons */
@@ -14,7 +19,6 @@ public class Transportation {
 	private double average_diesel_price;
 	private double average_inssurance_price;
 	private Types type;
-
 
 	//avgEconomicCarPrice, gas,diesel,insurrance,unit,avgMonthlyPass,cCode
 	public Transportation(double average_economic_car_price,
@@ -30,7 +34,19 @@ public class Transportation {
 		this.averageMonthlyPrice=avgMonthlyPass;
 	}
 
+	public Transportation(String description2, String unit2, double price, Types t, int country) {
+		 description = description2;
+		 unit = unit2;
+		 averagePrice= price;
+		 type= t;
+		 country_code= country;
+	}
 
+	@Override
+	public String toString()
+	{	NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
+	    return "[" + type.name() + ", Kind=" + description + ", Price=" + currency.format(averagePrice) + " "+ unit +"]";
+	}
 
 	public double getAverageMonthlyPrice() {
 		return averageMonthlyPrice;

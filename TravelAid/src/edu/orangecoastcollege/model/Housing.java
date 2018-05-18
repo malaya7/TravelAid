@@ -1,5 +1,8 @@
 package edu.orangecoastcollege.model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Housing {
 
 	 String type;
@@ -14,6 +17,12 @@ public class Housing {
 		this.country_code = country_code;
 	}
 
+	@Override
+	public String toString()
+	{	NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
+	    return "[" + type + ", average buying  price= "+ currency.format(average_rent_price) +" average rent  price=" + currency.format(average_buying_price) +"]";
+	}
+	
 	public String getType() {
 		return type;
 	}
