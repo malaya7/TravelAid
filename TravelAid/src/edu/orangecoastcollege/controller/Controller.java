@@ -34,21 +34,19 @@ public class Controller {
 	private static final String UK_PRIV_TRANSPORTATION = "Private Transportation UK.csv";
 
 	// country codes
-	public static  String USA_COUNTRY_CODE = "1";
+	public static String USA_COUNTRY_CODE = "1";
 	public static String UK_COUNTRY_CODE = "2";
 	public static String SPAIN_COUNTRY_CODE = "3";
 	public static String VIETNAM_COUNTRY_CODE = "4";
 	public static String JAPAN_COUNTRY_CODE = "5";
 	public static String BRAZIL_COUNTRY_CODE = "6";
 	public static int countryChoosen = 0;
-	// country _id PRIMARY KEY INTEGER, ​name ​TEXT, ​population ​INTEGER,
-	// ​cities TEXT, ​city_id ​INTEGER ,​climate ​TEXT, ​average_temperature
-	// ​REAL
+	
 	private static final String COUNTRY_TABLE_NAME = "country";
-	private static final String[] COUNTRY_TABLE_FIELD_NAME = { "_id", "country", "name", "population", "cities",
-			"city_id", "climate", "average_temperature" };
-	private static final String[] COUNTRY_TABLE_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT",
-			"INTEGER", "TEXT", "REAL" };
+	private static final String[] COUNTRY_TABLE_FIELD_NAME = 
+		{ "_id", "country", "name", "population", "cities","city_id", "climate", "average_temperature" };
+	private static final String[] COUNTRY_TABLE_FIELD_TYPES =
+		{ "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT","INTEGER", "TEXT", "REAL" };
 
 
     // food _​id PRIMARY KEY​ INTEGER, ​type[enum type] ​TEXT, ​description ​TEXT, ​unit
@@ -84,6 +82,7 @@ public class Controller {
 	{ "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT" , "REAL"};
 
 	private User mCurrentUser;
+	
 	// this should be a relation table. we will add the id of countries that
 	// mCurrentUser looked up?
 	private DBModel mUserDB;
@@ -110,12 +109,6 @@ public class Controller {
     private DBModel mSpainRealEstate;
 
 
-    private DBModel mJapanFood;
-    private DBModel mJapanTransportation;
-    private DBModel mJapanRealEstate;
-
-
-
     private DBModel mBrazilFood;
     private DBModel mBrazilTransportation;
     private DBModel mBrazilRealEstate;
@@ -123,8 +116,6 @@ public class Controller {
     private DBModel mVietnamFood;
     private DBModel mVietnamTransportation;
     private DBModel mVietnamRealEstate;
-
-
 
 	private ObservableList<User> mAllUsersList;
 	private ObservableList<Country> mAllCountiresList;
@@ -195,7 +186,7 @@ public class Controller {
 	}
 	
 	public static Controller getInstance() {
-		if (controller == null) {
+		if(controller == null) {
 			controller = new Controller();
 			initAllListsFX();
 			try {
@@ -399,15 +390,17 @@ public class Controller {
 	 * games list. return userGamesList; }
 	 */
 	/*
-	 * public boolean addGameToUsersInventory(VideoGame selectedGame) { //TODO:
-	 * Implement this method // 1) Create an ObservableList<VideoGame> assigned
+	 * public boolean addGameToUsersInventory(VideoGame selectedGame)
+	 *  { //TODO:
+	 * Implement this method 
+	 * // 1) Create an ObservableList<VideoGame> assigned
 	 * to the list returned from getGamesForCurrentUser
-	 * ObservableList<VideoGame> gamesOwnedByUser = getGamesForCurrentUser(); //
+	 * ObservableList<VideoGame> gamesOwnedByUser = getGamesForCurrentUser();
 	 * If this list contains the selected game, return false (game has already
 	 * been added, so prevent duplicates)
-	 * if(gamesOwnedByUser.contains(selectedGame)) return false; // 2) Create a
-	 * String array of the values to insert into the user_games (mUserGamesDB)
-	 * table. // There are only two values in this table: the user's id
+	 * if(gamesOwnedByUser.contains(selectedGame)) return false; 
+	 * // 2) Create a String array of the values to insert into the user_games (mUserGamesDB)table.
+	 * // There are only two values in this table: the user's id
 	 * (mCurrentUser) and the selected game id String[] values = {
 	 * String.valueOf(controller.mCurrentUser.getId()),
 	 * String.valueOf(selectedGame.getId()) }; // 3) Create a new record using
@@ -415,9 +408,7 @@ public class Controller {
 	 * occurs, return false (could not be added) try {
 	 * controller.mUserGamesDB.createRecord(USER_GAMES_FIELD_NAMES, values); }
 	 * catch (SQLException e) { e.printStackTrace(); return false; }
-	 *
-	 *
-	 * // Otherwise, return true. return true; }
+	 * return true; }
 	 */
 	
 	public User getCurrentUser() {
@@ -443,23 +434,6 @@ public class Controller {
 	public ObservableList<Housing> getAllHousing() {
 		return controller.mAllHousingList;
 	}
-
-	/*
-	 * //FILTER METHOD FOR DISTINCT public ObservableList<String>
-	 * getDistinctPlatforms() { ObservableList<String> platforms =
-	 * FXCollections.observableArrayList(); for (VideoGame vg :
-	 * controller.mAllGamesList) if (!platforms.contains(vg.getPlatform()))
-	 * platforms.add(vg.getPlatform()); FXCollections.sort(platforms); return
-	 * platforms; }
-	 *
-	 * public ObservableList<String> getDistinctPublishers() {
-	 * ObservableList<String> publishers = FXCollections.observableArrayList();
-	 * for (VideoGame vg : controller.mAllGamesList) if
-	 * (!publishers.contains(vg.getPublisher()))
-	 * publishers.add(vg.getPublisher()); FXCollections.sort(publishers); return
-	 * publishers; }
-	 *
-	 */
 
     private int initializeUSA() throws SQLException
     {
@@ -500,8 +474,6 @@ public class Controller {
         {   System.out.println("inside cairy catch");
             return 0;
         }
-
-
 
         //FRUIT
         try {

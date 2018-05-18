@@ -74,6 +74,6 @@
       </Label>
       <TextField layoutX="83.0" layoutY="228.0" prefHeight="25.0" prefWidth="524.0" promptText="type here" />
       <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#BackToChooseScene" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Back" />
-      <Button layoutX="315.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Save" />
+      <Button layoutX="315.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="295.0" style="-fx-background-color: #ffd100;" text="Add" />
    </children>
 </AnchorPane>

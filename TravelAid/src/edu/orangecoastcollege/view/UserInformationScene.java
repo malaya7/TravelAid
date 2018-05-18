@@ -2,14 +2,20 @@ package edu.orangecoastcollege.view;
 
 
 
+import java.net.URL;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 // TODO: Implement the Initializable interface
-public class UserInformationScene {
+public class UserInformationScene implements Initializable {
 
 	@FXML
 	TextField ageTF;
@@ -19,7 +25,13 @@ public class UserInformationScene {
 	TextField nameTF;
 	@FXML
 	TextField locationTF;
+	@FXML
+	ComboBox<String> climateCB;
+	@FXML
+	ComboBox<String> languagesCB;
 	
+	Locale l = Locale.getDefault();
+
 	private static Controller controller = Controller.getInstance();
 
 	// TODO: Override the initialize method (let Eclipse generate the method for you)
@@ -31,17 +43,10 @@ public class UserInformationScene {
 	@FXML
 	public void clearButton()
 	{
-		//TODO: Complete this method
-		// 1) Get the selected video game from the allVideoGamesLV (use getSelectedItem())
-		// 2) Use the controller to add the selected game to the inventory
-		// 3) Return the result (as a boolean)
-		  //clear all text fields
         nameTF.clear();
         this.ageTF.clear();
         this.emailTF.clear();
         locationTF.clear();
-
-
         // Reset the fouces back to intreast rate
         nameTF.requestFocus();
 
@@ -50,7 +55,6 @@ public class UserInformationScene {
 	@FXML 
 	public void userLocation()
 	{
-		Locale l = Locale.getDefault();
 		locationTF.setText( l.getDisplayCountry());
 	}
 	@FXML
@@ -65,6 +69,25 @@ public class UserInformationScene {
 	{
 		// COMPLETED 
 		ViewNavigator.loadScene("Welcome to TravelAid", ViewNavigator.SIGN_IN_SCENE);
+	}
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		ObservableList<String> climate = FXCollections.observableArrayList();
+		climate.add("Mediterranean");
+		climate.add("Polar");
+		climate.add("Temperate Regions");
+		climate.add("Tropical");
+		ObservableList<String> languages = FXCollections.observableArrayList();
+		languages.add("Ar-Arabic");
+		languages.add("En-English");
+		languages.add("Fr-French");
+		languages.add("Sp-Spain");
+		languages.add("Vt-vietnam");
+		climateCB.setItems(climate);
+		languagesCB.setItems(languages);
+		 userLocation();
 	}
 
 }

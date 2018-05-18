@@ -79,7 +79,7 @@
          </font>
       </Label>
       <Button layoutX="15.0" layoutY="461.0" mnemonicParsing="false" onAction="#BackToChooseScene" prefHeight="25.0" prefWidth="293.0" style="-fx-background-color: #ffd100;" text="Back" />
-      <Button layoutX="315.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="293.0" style="-fx-background-color: #ffd100;" text="Save" />
+      <Button layoutX="315.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="293.0" style="-fx-background-color: #ffd100;" text="Add" />
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Logo2.PNG" />

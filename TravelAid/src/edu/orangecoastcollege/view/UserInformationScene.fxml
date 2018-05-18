@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.UserInformationScene">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.UserInformationScene">
    <children>
       <TextField fx:id="nameTF" layoutX="236.0" layoutY="145.0" promptText="Please enter your name">
          <font>
@@ -112,12 +112,12 @@
             <Image url="@images/Language.PNG" />
          </image>
       </ImageView>
-      <ComboBox layoutX="504.0" layoutY="44.0" prefHeight="30.0" prefWidth="95.0" promptText="Language" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;">
+      <ComboBox fx:id="languagesCB" layoutX="504.0" layoutY="44.0" prefHeight="30.0" prefWidth="95.0" promptText="Language" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;">
          <effect>
             <DropShadow />
          </effect>
       </ComboBox>
-      <ComboBox layoutX="312.0" layoutY="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="150.0" promptText="Climate" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;">
+      <ComboBox fx:id="climateCB" layoutX="312.0" layoutY="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="150.0" promptText="Climate" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;">
          <effect>
             <DropShadow />
          </effect>
