@@ -15,25 +15,6 @@ public class Controller {
 
 	private static Controller controller;
 
-	/*
-	 *
-	 * private static final String VIDEO_GAME_TABLE_NAME = "video_game"; private
-	 * static final String[] VIDEO_GAME_FIELD_NAMES = { "_id", "name",
-	 * "platform", "year", "genre", "publisher"}; private static final String[]
-	 * VIDEO_GAME_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "TEXT",
-	 * "INTEGER", "TEXT", "TEXT"}; private static final String
-	 * VIDEO_GAME_DATA_FILE = "videogames_lite.csv";
-	 *
-	 *
-	 * // Below is the relationship table "user_games" which associates users
-	 * with the video games in their inventory private static final String
-	 * USER_GAMES_TABLE_NAME = "user_games"; private static final String[]
-	 * USER_GAMES_FIELD_NAMES = { "user_id", "game_id"}; private static final
-	 * String[] USER_GAMES_FIELD_TYPES = { "INTEGER", "INTEGER"};
-	 *
-	 *
-	 */
-
 	// Our SQLite Database name
 	private static final String DB_NAME = "TravelAid.db";
 	// Files
@@ -155,11 +136,6 @@ public class Controller {
 	private Controller() {
 	}
 
-
-
-
-
-
 	public static Controller getInstance() {
 		if (controller == null) {
 			controller = new Controller();
@@ -168,8 +144,6 @@ public class Controller {
 			controller.mAllGroceriesList = FXCollections.observableArrayList();
 			controller.mAllHousingList = FXCollections.observableArrayList();
 			controller.mAllTransportationList= FXCollections.observableArrayList();
-
-
 
 
 			try {
@@ -242,28 +216,27 @@ public class Controller {
 					controller.mAllHousingList
 							.add(new Housing(type, avgBuyPrice, avgRentPrice, Integer.valueOf(USA_COUNTRY_CODE)));
 				}
+				//TODO Japan Stuff 
+				controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
+				controller.initializeJapanDBFromFile();
 
-				/*
-				 * // Create japan table in the database, loading from the CSV
-				 * file controller.mJapanDB = new DBModel(DB_NAME,
-				 * Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME,
-				 * Japan_TABLE_FIELD_TYPES);
-				 * controller.initializeJapanDBFromFile(); //resultsList =
-				 * controller.mJapansDB.getAllRecords(); for (ArrayList<String>
-				 * values : resultsList) { int id =
-				 * Integer.parseInt(values.get(0)); String name = values.get(1);
-				 * String platform = values.get(2); int year =
-				 * Integer.parseInt(values.get(3)); String genre =
-				 * values.get(4); String publisher = values.get(5); //
-				 * controller.mAllGamesList.add(new VideoGame(id, name,
-				 * platform, year, genre, publisher)); }
-				 */
+				ArrayList<ArrayList<String>> JapanSet = controller.mJapanDB.getAllRecords();
+				int country = Integer.valueOf(JAPAN_COUNTRY_CODE);
+				for (ArrayList<String> values : JapanSet)
+				{
+					 description = values.get(2);
+					 unit = values.get(3);
+					 price = Double.valueOf(values.get(4));
+					Types t = Types.valueOf(values.get(1));
+					if(t.equals(Types.Fruit ) || t.equals(Types.Vegetable) || t.equals(Types.Meat) || t.equals(Types.Dairy))
+					controller.mAllGroceriesList.add(new Grocery(description,unit,price,country,t));
+				//	else if(t.equals(Types.Transportation))
+					//	controller.mAllTransportationList.add(new Transportation(description,unit,price,t,country));
+					//else if(t.equals(Types.RealEstate))
+					//	controller.mAllHousingList.add(new Housing(description,unit,price,t,country));
+				}
 
-				// Create the relationship table between users and the video
-				// games they own
-				// controller.mUserGamesDB= new DBModel(DB_NAME,
-				// USER_GAMES_TABLE_NAME, USER_GAMES_FIELD_NAMES,
-				// USER_GAMES_FIELD_TYPES);
+	
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -274,33 +247,30 @@ public class Controller {
 	}
 
 	private int initializeJapanDBFromFile() throws SQLException {
-		// TODO Auto-generated method stub
 		int recordsCreated = 0;
-
 		// If the result set contains results, database table already has
 		// records, no need to populate from file (so return false)
 		if (controller.mJapanDB.getRecordCount() > 0)
 			return 0;
-
 		try {
 			// Otherwise, open the file (CSV file) and insert user data
 			// into database
-			Scanner fileScanner = new Scanner(new File("JapanFile"));
+			Scanner fileScanner = new Scanner(new File("Japan.csv"));
 			// First read is for headings:
+
 			fileScanner.nextLine();
 			// All subsequent reads are for user data
 			while (fileScanner.hasNextLine()) {
 				String[] data = fileScanner.nextLine().split(",");
 				// Length of values is one less than field names because values
 				// does not have id (DB will assign one)
-				String[] values = new String[Japan_TABLE_FIELD_NAME.length - 1];
-				values[0] = data[1].replaceAll("'", "''");
-				values[1] = data[2];
-				values[2] = data[3];
-				values[3] = data[4];
-				values[4] = data[5];
-				// controller.mJapanDB.createRecord(Arrays.copyOfRange(VIDEO_GAME_FIELD_NAMES,
-				// 1, VIDEO_GAME_FIELD_NAMES.length), values);
+				String[] values = new String[ Japan_TABLE_FIELD_NAME.length - 1];
+				System.out.println(Arrays.toString(data));
+				values[0] = data[0];
+				values[1] = data[1];
+				values[2] = data[2];
+				values[3] = data[3];
+				controller.mJapanDB.createRecord(Arrays.copyOfRange(Japan_TABLE_FIELD_NAME, 1, Japan_TABLE_FIELD_NAME.length), values);
 				recordsCreated++;
 			}
 
@@ -310,8 +280,8 @@ public class Controller {
 			return 0;
 		}
 		return recordsCreated;
-
 	}
+
 
 	public boolean isValidPassword(String password) {
 		// Valid password must contain (see regex below):
@@ -773,5 +743,4 @@ return recordsCreated;
 		return recordsCreated;
 	}
 
-	//private int initialize
 }

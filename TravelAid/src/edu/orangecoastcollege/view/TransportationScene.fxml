@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="603.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.TransportationScene">
+<AnchorPane prefHeight="500.0" prefWidth="603.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.TransportationScene">
    <children>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -66,7 +66,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <ListView layoutY="254.0" prefHeight="199.0" prefWidth="607.0" />
+      <ListView fx:id="transLV" layoutY="254.0" prefHeight="199.0" prefWidth="607.0" />
       <Label layoutX="12.0" layoutY="230.0" text="Search:" textFill="RED">
          <font>
             <Font name="Arial Bold" size="18.0" />
