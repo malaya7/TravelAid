@@ -29,7 +29,7 @@ public class Controller {
 	private static final String EU_FRUIT_DAT_FILE = "fruit products.csv";
 	private static final String EU_VEGETABLE_DATA_FILE = "vegetable products.csv";
 	private static final String SPAIN_HOUSING_FILE = "Housing Spain.csv";
-	private static final String Japan_FILE_DATA_FILE = "JapanFile.csv";
+	private static final String Japan_FILE_DATA_FILE = "Japan/Japan.csv";
 	private static final String SPAIN_TRANSPORTATION = "Private Transportation Spain.csv";
 	private static final String UK_PRIV_TRANSPORTATION = "Private Transportation UK.csv";
 
@@ -78,10 +78,10 @@ public class Controller {
 	private static final String[] USER_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT" };
 
 	private static final String Japan_TABLE_NAME = "Japan";
-	private static final String[] Japan_TABLE_FIELD_NAME = { "_id", "city", "population", "climate",
-			"average_temperature", "minimum_wage", "type", "descrption", "unit", "price" };
-	private static final String[] Japan_TABLE_FIELD_TYPES = { "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT", "REAL",
-			"REAL", "TEXT", "TEXT", "TEXT", "REAL" };
+	private static final String[] Japan_TABLE_FIELD_NAME =
+	{ "_id", "type", "descrption", "unit", "price"};
+	private static final String[] Japan_TABLE_FIELD_TYPES = 
+	{ "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT" , "REAL"};
 
 	private User mCurrentUser;
 	// this should be a relation table. we will add the id of countries that
@@ -255,7 +255,7 @@ public class Controller {
 		try {
 			// Otherwise, open the file (CSV file) and insert user data
 			// into database
-			Scanner fileScanner = new Scanner(new File("Japan.csv"));
+			Scanner fileScanner = new Scanner(new File(Japan_FILE_DATA_FILE));
 			// First read is for headings:
 
 			fileScanner.nextLine();

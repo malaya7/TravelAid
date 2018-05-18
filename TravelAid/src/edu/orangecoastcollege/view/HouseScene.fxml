@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.HouseScene">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.HouseScene">
    <children>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -41,7 +41,7 @@
             </ImageView>
          </children>
       </HBox>
-      <ListView layoutY="250.0" prefHeight="205.0" prefWidth="600.0" />
+      <ListView fx:id="housingLV" layoutY="250.0" prefHeight="205.0" prefWidth="600.0" />
       <TextField layoutX="84.0" layoutY="224.0" prefHeight="25.0" prefWidth="520.0" promptText="type here" />
       <Label layoutX="171.0" layoutY="27.0" text="Real Estate" textFill="RED">
          <font>

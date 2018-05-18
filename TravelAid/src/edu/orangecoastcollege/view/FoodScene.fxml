@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.FoodScene">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.FoodScene">
    <children>
       <HBox layoutX="5.0" layoutY="104.0" prefHeight="84.0" prefWidth="617.0">
          <children>
@@ -71,7 +71,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <ListView layoutY="252.0" prefHeight="199.0" prefWidth="622.0" />
+      <ListView fx:id="foodLV" layoutY="252.0" prefHeight="199.0" prefWidth="622.0" />
       <TextField layoutX="87.0" layoutY="227.0" prefHeight="25.0" prefWidth="533.0" promptText="type here" />
       <Label layoutX="14.0" layoutY="229.0" style="-fx-border-style: #ff0000;" text="Search:" textFill="RED">
          <font>
