@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
 import edu.orangecoastcollege.model.Grocery;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 public class FoodScene implements Initializable {
@@ -28,7 +30,12 @@ private static Controller controller = Controller.getInstance();
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-	
-		foodLV.setItems(controller.getAllGroceries());
+		ObservableList<Grocery> counrty = FXCollections.observableArrayList();
+	for(Grocery g:controller.getAllGroceries())
+	{
+		if(g.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+			counrty.add(g);
+	}
+		foodLV.setItems(counrty);
 	}
 }

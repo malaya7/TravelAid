@@ -27,22 +27,22 @@ public class CountryCityScene {
             switch(name)
             {
                 case "USA":
-                    Controller.countryChoosen=1;
+                    Controller.countryChoosen= Integer.valueOf(Controller.USA_COUNTRY_CODE);
                     break;
                 case"UK":
-                    Controller.countryChoosen=2;
+                    Controller.countryChoosen= Integer.valueOf(Controller.UK_COUNTRY_CODE);
                break;
                 case"SPAIN":
-                    Controller.countryChoosen=3;
+                    Controller.countryChoosen= Integer.valueOf(Controller.SPAIN_COUNTRY_CODE);
                     break;
                 case "JAPAN":
-                    Controller.countryChoosen=4;
+                    Controller.countryChoosen= Integer.valueOf(Controller.JAPAN_COUNTRY_CODE);
                     break;
                 case "BRAZIL":
-                    Controller.countryChoosen=5;
+                    Controller.countryChoosen= Integer.valueOf(Controller.BRAZIL_COUNTRY_CODE);
                     break;
                 case "VIETNAM":
-                    Controller.countryChoosen=6;
+                    Controller.countryChoosen= Integer.valueOf(Controller.VIETNAM_COUNTRY_CODE);
                     break;
                
             }

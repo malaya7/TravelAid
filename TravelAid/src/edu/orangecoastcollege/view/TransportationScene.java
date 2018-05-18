@@ -8,7 +8,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
+import edu.orangecoastcollege.model.Grocery;
 import edu.orangecoastcollege.model.Transportation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 public class TransportationScene implements Initializable 
@@ -29,6 +32,12 @@ private static Controller controller = Controller.getInstance();
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		transLV.setItems(controller.getAllTransportation());
+		ObservableList<Transportation> counrty = FXCollections.observableArrayList();
+		for(Transportation t:controller.getAllTransportation())
+		{
+			if(t.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+				counrty.add(t);
+		}
+		transLV.setItems(counrty);
 	}
 }

@@ -9,6 +9,9 @@ import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
 import edu.orangecoastcollege.model.Housing;
+import edu.orangecoastcollege.model.Transportation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 public class HouseScene implements Initializable 
@@ -30,6 +33,12 @@ private static Controller controller = Controller.getInstance();
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		housingLV.setItems(controller.getAllHousing());
+		ObservableList<Housing> counrty = FXCollections.observableArrayList();
+		for(Housing h:controller.getAllHousing())
+		{
+			if(h.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+				counrty.add(h);
+		}
+		housingLV.setItems(counrty);
 	}
 }

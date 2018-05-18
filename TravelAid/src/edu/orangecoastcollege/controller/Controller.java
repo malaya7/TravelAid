@@ -34,7 +34,7 @@ public class Controller {
 	private static final String UK_PRIV_TRANSPORTATION = "Private Transportation UK.csv";
 
 	// country codes
-	public static String USA_COUNTRY_CODE = "1";
+	public static  String USA_COUNTRY_CODE = "1";
 	public static String UK_COUNTRY_CODE = "2";
 	public static String SPAIN_COUNTRY_CODE = "3";
 	public static String VIETNAM_COUNTRY_CODE = "4";
@@ -240,8 +240,8 @@ public class Controller {
 					controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
 							average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
 							Integer.valueOf(USA_COUNTRY_CODE)));
+					
 				}
-
 				resultsList = controller.mUSARealEstate.getAllRecords();
 				String type;
 				double avgBuyPrice, avgRentPrice;
@@ -419,7 +419,7 @@ public class Controller {
 	 *
 	 * // Otherwise, return true. return true; }
 	 */
-
+	
 	public User getCurrentUser() {
 		return mCurrentUser;
 	}
@@ -439,7 +439,6 @@ public class Controller {
 	public ObservableList<Transportation> getAllTransportation() {
 		return controller.mAllTransportationList;
 	}
-
 
 	public ObservableList<Housing> getAllHousing() {
 		return controller.mAllHousingList;
