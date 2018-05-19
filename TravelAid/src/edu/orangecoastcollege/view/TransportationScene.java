@@ -8,13 +8,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
-import edu.orangecoastcollege.model.Grocery;
 import edu.orangecoastcollege.model.Transportation;
+import edu.orangecoastcollege.model.convertions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
-public class TransportationScene implements Initializable 
+public class TransportationScene implements Initializable, convertions 
 {
 
 private static Controller controller = Controller.getInstance();
@@ -28,6 +28,8 @@ private static Controller controller = Controller.getInstance();
         ViewNavigator.loadScene("Categories", ViewNavigator.CHOOSE_SCENE);
 
 	}
+	
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -39,5 +41,15 @@ private static Controller controller = Controller.getInstance();
 				counrty.add(t);
 		}
 		transLV.setItems(counrty);
+	}
+
+	public boolean addFinalScene() 
+	 {
+		//TODO: Complete this method
+	    // 1) Get the selected video game from the allVideoGamesLV (use getSelectedItem())
+		Transportation selected = transLV.getSelectionModel().getSelectedItem();
+		    // 2) Use the controller to add the selected game to the inventory
+		return controller.addToFinalList(selected);
+			// 3) Return the result (as a boolean)
 	}
 }

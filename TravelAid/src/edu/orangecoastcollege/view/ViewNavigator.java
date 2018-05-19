@@ -16,7 +16,8 @@ public class ViewNavigator
 	public static final String HOUSE_SCENE = "HouseScene.fxml";
 	public static final String TRANSPORTATION_SCENE = "TransportationScene.fxml";
 	public static final String USER_INFORMATION_SCENE = "UserInformationScene.fxml";
-	
+	public static final String Email = "Emailu.fxml";
+
 
 
 	public static Stage mainStage;

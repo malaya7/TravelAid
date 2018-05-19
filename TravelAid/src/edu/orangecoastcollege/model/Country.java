@@ -16,7 +16,7 @@ public class Country
 	@Override
 	public String toString()
 	{
-	    return "Country [=" + Name + ", climate=" + climate + ", population=" + population + "]";
+	    return "Country [" + Name + ", climate=" + climate + ", population=" + population + "Millions]";
 	}
 	@Override
 	public int hashCode() {

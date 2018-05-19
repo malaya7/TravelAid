@@ -9,11 +9,13 @@ import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
 import edu.orangecoastcollege.model.Grocery;
+import edu.orangecoastcollege.model.Housing;
+import edu.orangecoastcollege.model.convertions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
-public class FoodScene implements Initializable {
+public class FoodScene implements Initializable, convertions {
 
 private static Controller controller = Controller.getInstance();
 	
@@ -37,5 +39,13 @@ private static Controller controller = Controller.getInstance();
 			counrty.add(g);
 	}
 		foodLV.setItems(counrty);
+	}
+
+	@Override
+	public boolean addFinalScene() {
+		Grocery selected = foodLV.getSelectionModel().getSelectedItem();
+	    // 2) Use the controller to add the selected game to the inventory
+	return controller.addToFinalList(selected);
+	
 	}
 }

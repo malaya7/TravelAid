@@ -10,6 +10,7 @@ import java.util.Scanner;
 import edu.orangecoastcollege.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 
 public class Controller {
 
@@ -32,6 +33,7 @@ public class Controller {
 	private static final String Japan_FILE_DATA_FILE = "Japan/Japan.csv";
 	private static final String SPAIN_TRANSPORTATION = "Private Transportation Spain.csv";
 	private static final String UK_PRIV_TRANSPORTATION = "Private Transportation UK.csv";
+	private static final String AllCountries = "CountriesSix.csv";
 
 	// country codes
 	public static String USA_COUNTRY_CODE = "1";
@@ -44,9 +46,9 @@ public class Controller {
 	
 	private static final String COUNTRY_TABLE_NAME = "country";
 	private static final String[] COUNTRY_TABLE_FIELD_NAME = 
-		{ "_id", "country", "name", "population", "cities","city_id", "climate", "average_temperature" };
+		{ "_id", "country", "population", "climate"};
 	private static final String[] COUNTRY_TABLE_FIELD_TYPES =
-		{ "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT","INTEGER", "TEXT", "REAL" };
+		{ "INTEGER PRIMARY KEY", "TEXT", "INTEGER", "TEXT"};
 
 
     // food _​id PRIMARY KEY​ INTEGER, ​type[enum type] ​TEXT, ​description ​TEXT, ​unit
@@ -79,7 +81,7 @@ public class Controller {
 	private static final String[] Japan_TABLE_FIELD_NAME =
 	{ "_id", "type", "descrption", "unit", "price"};
 	private static final String[] Japan_TABLE_FIELD_TYPES = 
-	{ "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT" , "REAL"};
+	{ "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT" , "INTEGER"};
 
 	private User mCurrentUser;
 	
@@ -87,7 +89,7 @@ public class Controller {
 	// mCurrentUser looked up?
 	private DBModel mUserDB;
 
-	private DBModel mUserChoosenDB;
+	private DBModel mUserChoosenCountryDB;
 	// DBModel veriable for each country
 
 	private DBModel mJapanDB;
@@ -123,8 +125,36 @@ public class Controller {
 	private ObservableList<Transportation> mAllTransportationList;
 	private ObservableList<Housing> mAllHousingList;
 
+	public static ObservableList<Grocery> finalGroceryList  = FXCollections.observableArrayList();
+	public static ObservableList<Transportation> finalTransportationList = FXCollections.observableArrayList();
+	public static ObservableList<Housing> finalHousingList = FXCollections.observableArrayList();
 
 	private Controller() {
+	}
+
+	private static void initDBModelObjects() throws SQLException {
+		// USA DBModel
+		controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
+		controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
+				FOOD_TABLE_FIELD_TYPE);
+		
+		controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
+				TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
+		
+		controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
+				REAL_ESTATE_FIELD_TYPE);
+		// Japan DBModel
+		controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
+		// Countries 
+		controller.mUserChoosenCountryDB = new DBModel(DB_NAME,COUNTRY_TABLE_NAME,COUNTRY_TABLE_FIELD_NAME,COUNTRY_TABLE_FIELD_TYPES);
+	}
+	private static void  initAllListsFX()
+	{
+		controller.mAllUsersList = FXCollections.observableArrayList();
+		controller.mAllCountiresList = FXCollections.observableArrayList();
+		controller.mAllGroceriesList = FXCollections.observableArrayList();
+		controller.mAllHousingList = FXCollections.observableArrayList();
+		controller.mAllTransportationList= FXCollections.observableArrayList();
 	}
 
 	private static void addUserToList() throws SQLException
@@ -140,6 +170,105 @@ public class Controller {
 		}
 	}
 	
+	private static void addUSAToLists() throws SQLException
+	{
+		ArrayList<ArrayList<String>> resultsList = controller.mUSAFood.getAllRecords();
+		String description, unit;
+		double price;
+		Types dairy = Types.Dairy_products;
+		Types fruit = Types.Fruit;
+		Types vegi = Types.Vegetable;
+		for (ArrayList<String> f : resultsList) {
+			Types type = Types.Dairy_products;
+			if (f.get(1).equalsIgnoreCase("Fruit"))
+				type = fruit;
+			if (f.get(1).equalsIgnoreCase("Dairy"))
+				type = dairy;
+			if (f.get(1).equalsIgnoreCase("Vegetables"))
+				type = vegi;
+
+			description = f.get(2);
+			unit = f.get(3);
+			price = Double.valueOf(f.get(4));
+			Grocery g = new Grocery(description, unit, price, Integer.parseInt(USA_COUNTRY_CODE), type);
+			controller.mAllGroceriesList.add(g);
+		}
+
+		resultsList = controller.mUSATransportation.getAllRecords();
+		double average_economic_car_price, average_gas_price, avgDiesel, average_inssurance_price,
+				avgMonthlyPass;
+		for (ArrayList<String> f : resultsList) { // type,rent buying
+			average_economic_car_price = Double.valueOf(f.get(1));
+			average_gas_price = Double.valueOf(f.get(2));
+			avgDiesel = Double.valueOf(f.get(3));
+			average_inssurance_price = Double.valueOf(f.get(4));
+			avgMonthlyPass = Double.valueOf(f.get(6));
+			controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
+					average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
+					Integer.valueOf(USA_COUNTRY_CODE)));
+			
+		}
+		resultsList = controller.mUSARealEstate.getAllRecords();
+		String type;
+		double avgBuyPrice, avgRentPrice;
+		for (ArrayList<String> f : resultsList) { // type,rent buying
+			type = f.get(1);
+			avgBuyPrice = Double.valueOf(f.get(2));
+			avgRentPrice = Double.valueOf(f.get(4));
+			controller.mAllHousingList
+					.add(new Housing(type, avgBuyPrice, avgRentPrice, Integer.valueOf(USA_COUNTRY_CODE)));
+		}
+	}
+	
+	private static void addToAllCountriesList() throws SQLException
+	{
+		controller.initializeAllCountriesDBFromFile();
+		
+		ArrayList<ArrayList<String>> country = controller.mUserChoosenCountryDB.getAllRecords();
+		String name, climite;
+		int population;
+		for (ArrayList<String> c : country)
+		{
+			name = c.get(1);
+			population = Integer.valueOf(c.get(2));
+			climite = c.get(3);
+			controller.mAllCountiresList.add(new Country(name,climite,population));
+		}
+	}
+	
+    private int initializeAllCountriesDBFromFile() throws SQLException 
+	{
+		int recordsCreated = 0;
+		if (controller.mUserChoosenCountryDB.getRecordCount() > 0)
+			return 0;
+		try {
+			// Otherwise, open the file (CSV file) and insert user data
+			// into database
+			Scanner fileScanner = new Scanner(new File(AllCountries));
+			// First read is for headings:
+			fileScanner.nextLine();
+			// All subsequent reads are for user data
+			while (fileScanner.hasNextLine()) {
+				String[] data = fileScanner.nextLine().split(",");
+				// Length of values is one less than field names because values
+				// does not have id (DB will assign one)
+				String[] values = new String[COUNTRY_TABLE_FIELD_NAME.length - 1];
+				System.out.println(Arrays.toString(data));
+				values[0] = data[0];
+				values[1] = data[1];
+				values[2] = data[3];
+				controller.mUserChoosenCountryDB.createRecord(Arrays.copyOfRange(COUNTRY_TABLE_FIELD_NAME, 1, COUNTRY_TABLE_FIELD_NAME.length), values);
+				recordsCreated++;
+			}
+
+			// All done with the CSV file, close the connection
+			fileScanner.close();
+		} catch (FileNotFoundException e) {
+			return 0;
+		}
+		return recordsCreated;
+	}
+
 	private static void addJapanToLists() throws SQLException
 	{
 		//TODO Japan Stuff 
@@ -162,96 +291,6 @@ public class Controller {
 				controller.mAllHousingList.add(new Housing(description,247120,price,country));
 		}
 	}
-	private static void initDBModelObjects() throws SQLException {
-		// USA DBModel
-		controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
-		controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
-				FOOD_TABLE_FIELD_TYPE);
-		
-		controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
-				TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
-		
-		controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
-				REAL_ESTATE_FIELD_TYPE);
-		// Japan DBModel
-		controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
-	}
-	private static void  initAllListsFX()
-	{
-		controller.mAllUsersList = FXCollections.observableArrayList();
-		controller.mAllCountiresList = FXCollections.observableArrayList();
-		controller.mAllGroceriesList = FXCollections.observableArrayList();
-		controller.mAllHousingList = FXCollections.observableArrayList();
-		controller.mAllTransportationList= FXCollections.observableArrayList();
-	}
-	
-	public static Controller getInstance() {
-		if(controller == null) {
-			controller = new Controller();
-			initAllListsFX();
-			try {
-				// Crete all the tables in the database
-				initDBModelObjects();
-				// Create a user object and added to allUsersList
-				addUserToList();
-				// Read from CSV files to and add to USA tables
-				controller.initializeUSA();
-				
-				ArrayList<ArrayList<String>> resultsList = controller.mUSAFood.getAllRecords();
-				String description, unit;
-				double price;
-				Types dairy = Types.Dairy_products;
-				Types fruit = Types.Fruit;
-				Types vegi = Types.Vegetable;
-				for (ArrayList<String> f : resultsList) {
-					Types type = Types.Dairy_products;
-					if (f.get(1).equalsIgnoreCase("Fruit"))
-						type = fruit;
-					if (f.get(1).equalsIgnoreCase("Dairy"))
-						type = dairy;
-					if (f.get(1).equalsIgnoreCase("Vegetables"))
-						type = vegi;
-
-					description = f.get(2);
-					unit = f.get(3);
-					price = Double.valueOf(f.get(4));
-					Grocery g = new Grocery(description, unit, price, Integer.parseInt(USA_COUNTRY_CODE), type);
-					controller.mAllGroceriesList.add(g);
-				}
-
-				resultsList = controller.mUSATransportation.getAllRecords();
-				double average_economic_car_price, average_gas_price, avgDiesel, average_inssurance_price,
-						avgMonthlyPass;
-				for (ArrayList<String> f : resultsList) { // type,rent buying
-					average_economic_car_price = Double.valueOf(f.get(1));
-					average_gas_price = Double.valueOf(f.get(2));
-					avgDiesel = Double.valueOf(f.get(3));
-					average_inssurance_price = Double.valueOf(f.get(4));
-					avgMonthlyPass = Double.valueOf(f.get(6));
-					controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
-							average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
-							Integer.valueOf(USA_COUNTRY_CODE)));
-					
-				}
-				resultsList = controller.mUSARealEstate.getAllRecords();
-				String type;
-				double avgBuyPrice, avgRentPrice;
-				for (ArrayList<String> f : resultsList) { // type,rent buying
-					type = f.get(1);
-					avgBuyPrice = Double.valueOf(f.get(2));
-					avgRentPrice = Double.valueOf(f.get(4));
-					controller.mAllHousingList
-							.add(new Housing(type, avgBuyPrice, avgRentPrice, Integer.valueOf(USA_COUNTRY_CODE)));
-				}
-				// Handle all Japan stuff
-				 addJapanToLists();
-				 
-			}catch (SQLException e)
-			{e.printStackTrace();}
-		}
-		return controller;
-	}
-	
 
 	private int initializeJapanDBFromFile() throws SQLException {
 		int recordsCreated = 0;
@@ -289,7 +328,29 @@ public class Controller {
 		return recordsCreated;
 	}
 
-
+	public static Controller getInstance() {
+		if(controller == null) {
+			controller = new Controller();
+			initAllListsFX();
+			try {
+				// Crete all the tables in the database
+				initDBModelObjects();
+				// Create a user object and added to allUsersList
+				addUserToList();
+				// Read from CSV files to and add to USA tables
+				controller.initializeUSA();
+				// Create usa object reading from USA tables
+				addUSAToLists();
+				// Handle all Japan stuff
+				 addJapanToLists();
+				// Create the countries list
+				 addToAllCountriesList();
+			}catch (SQLException e)
+			{e.printStackTrace();}
+		}
+		return controller;
+	}
+	
 	public boolean isValidPassword(String password) {
 		// Valid password must contain (see regex below):
 		// At least one digit
@@ -367,49 +428,6 @@ public class Controller {
 
 		return "Incorrect email or password.";
 	}
-
-	/*
-	 * public ObservableList<VideoGame> getGamesForCurrentUser() {
-	 * ObservableList<VideoGame> userGamesList =
-	 * FXCollections.observableArrayList(); //TODO: Implement this method // 1)
-	 * With the user_games table (mUserGamesDB), get the records that match the
-	 * current user's (mCurrentUser) id try { ArrayList<ArrayList<String>>
-	 * resultsList =
-	 * controller.mUserGamesDB.getRecord(String.valueOf(controller.mCurrentUser.
-	 * getId())); int gameId; //Loop through results for(ArrayList<String>
-	 * values: resultsList) { gameId=Integer.parseInt(values.get(1)); //Loop
-	 * through all the games //mAllGamesList.forEach(e -> e.getId() == gameId);
-	 * for(VideoGame e: mAllGamesList) if(e.getId()==gameId)
-	 * {userGamesList.add(e); break;} } } catch (SQLException e) { // TODO
-	 * Auto-generated catch block e.printStackTrace(); } // Note: the records
-	 * returned will only contain the user_id and game_id (both ints) // Loop
-	 * through the all games list (mAllGamesList). If any game in the list
-	 * matches the game id, then:
-	 *
-	 * // 2) Add the matching game to the user games list // 3) Return the user
-	 * games list. return userGamesList; }
-	 */
-	/*
-	 * public boolean addGameToUsersInventory(VideoGame selectedGame)
-	 *  { //TODO:
-	 * Implement this method 
-	 * // 1) Create an ObservableList<VideoGame> assigned
-	 * to the list returned from getGamesForCurrentUser
-	 * ObservableList<VideoGame> gamesOwnedByUser = getGamesForCurrentUser();
-	 * If this list contains the selected game, return false (game has already
-	 * been added, so prevent duplicates)
-	 * if(gamesOwnedByUser.contains(selectedGame)) return false; 
-	 * // 2) Create a String array of the values to insert into the user_games (mUserGamesDB)table.
-	 * // There are only two values in this table: the user's id
-	 * (mCurrentUser) and the selected game id String[] values = {
-	 * String.valueOf(controller.mCurrentUser.getId()),
-	 * String.valueOf(selectedGame.getId()) }; // 3) Create a new record using
-	 * the USER_GAMES_FIELD_NAMES and the values array //If a SQLException
-	 * occurs, return false (could not be added) try {
-	 * controller.mUserGamesDB.createRecord(USER_GAMES_FIELD_NAMES, values); }
-	 * catch (SQLException e) { e.printStackTrace(); return false; }
-	 * return true; }
-	 */
 	
 	public User getCurrentUser() {
 		return mCurrentUser;
@@ -692,42 +710,37 @@ private int initializeEU()throws SQLException{
 
 return recordsCreated;
 }
-	private int initializeVideoGameDBFromFile() throws SQLException {
-		int recordsCreated = 0;
 
-		// If the result set contains results, database table already has
-		// records, no need to populate from file (so return false)
-		if (controller.mUserDB.getRecordCount() > 0)
-			return 0;
-
-		try {
-			// Otherwise, open the file (CSV file) and insert user data
-			// into database
-			Scanner fileScanner = new Scanner(new File(""));
-			// First read is for headings:
-			fileScanner.nextLine();
-			// All subsequent reads are for user data
-			while (fileScanner.hasNextLine()) {
-				String[] data = fileScanner.nextLine().split(",");
-				// Length of values is one less than field names because values
-				// does not have id (DB will assign one)
-				String[] values = new String[2 - 1];
-				values[0] = data[1].replaceAll("'", "''");
-				values[1] = data[2];
-				values[2] = data[3];
-				values[3] = data[4];
-				values[4] = data[5];
-				// controller.mVideoGameDB.createRecord(Arrays.copyOfRange(VIDEO_GAME_FIELD_NAMES,
-				// 1, VIDEO_GAME_FIELD_NAMES.length), values);
-				recordsCreated++;
-			}
-
-			// All done with the CSV file, close the connection
-			fileScanner.close();
-		} catch (FileNotFoundException e) {
-			return 0;
+	public boolean addToFinalList(Transportation selected) 
+	{
+		if(!finalTransportationList.contains(selected))
+		{
+			finalTransportationList.add(selected);
+			return true;
 		}
-		return recordsCreated;
+		return false;
 	}
+
+	public boolean addToFinalList(Housing selected) 
+	{
+	
+		if(!finalHousingList.contains(selected))
+		{
+			finalHousingList.add(selected);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean addToFinalList(Grocery selected) 
+	{
+		if(!finalGroceryList.contains(selected)) 
+		{
+			finalGroceryList.add(selected);
+			return true;
+		}
+		return false;
+	}
+	
 
 }

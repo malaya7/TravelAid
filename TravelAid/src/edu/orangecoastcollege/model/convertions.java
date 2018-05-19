@@ -1,7 +1,12 @@
 package edu.orangecoastcollege.model;
 
+import javafx.fxml.FXML;
+
 public interface convertions 
 {
+
+	@FXML
+	public boolean addFinalScene();
 	
 default double fromGallonsToLiters(double Gallons)
 {
