@@ -341,6 +341,7 @@ public class Controller {
 				controller.initializeUSA();
 				// Create usa object reading from USA tables
 				addUSAToLists();
+			
 				// Handle all Japan stuff
 				 addJapanToLists();
 				// Create the countries list
