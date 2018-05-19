@@ -35,6 +35,12 @@ public class Emailu implements Initializable{
 	      
 		ViewNavigator.loadScene("choose category", ViewNavigator.CHOOSE_SCENE);
 	}
+	
+	@FXML
+	public void showStats(ActionEvent event) {
+	      
+		ViewNavigator.loadScene("Stats", ViewNavigator.STATS);
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

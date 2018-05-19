@@ -34,7 +34,8 @@ public class Controller {
 	private static final String SPAIN_TRANSPORTATION = "Private Transportation Spain.csv";
 	private static final String UK_PRIV_TRANSPORTATION = "Private Transportation UK.csv";
 	private static final String AllCountries = "CountriesSix.csv";
-
+	private static final String Brazil_FOOD_DATA_FILE = "DairyBRAZIL.csv";
+	private static final String Brazil_Transportation_DATA_FILE = "TransportationBRAZIL.csv";
 	// country codes
 	public static String USA_COUNTRY_CODE = "1";
 	public static String UK_COUNTRY_CODE = "2";
@@ -55,14 +56,14 @@ public class Controller {
     // ​TEXT, price ​REAL, ​country_code ​INTEGER
 	private static final String FOOD_TABLE_NAME = "food";
 	private static final String[] FOOD_TABLE_FIELD_NAME = { "_id", "type", "description", "unit", "price", "country_code" };
-	private static final String[] FOOD_TABLE_FIELD_TYPE = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL",
-    "INTEGER" };
+	private static final String[] FOOD_TABLE_FIELD_TYPE = { "INTEGER PRIMARY KEY", "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
 	// private ​_id PRIMARY KEY INTEGER​, ​average_economic_car_price ​REAL
     // ,​average_gas_price​ REAL, ​averge_diesel_price ​REAL,
     // average_inssurance_price REAL,​unit​ TEXT ,"avg_monthly_pass_price" REAL ,​country_code​ INTEGER -
 	private static final String TRANSPORTATION_TABLE_NAME = "transportation";
 	   private static final String[] TRANSPORTATION_FIELD_NAME = { "_id", "avg_car_price", "avg_gas_price", "avg_diesel_price", "avg_inssurance_price", "unit" ,"avg_monthly_pass_price", "country_code" };
-	    private static final String[]  TRANSPORTATION_FIELD_TYPE = { "INTEGER PRIMARY KEY", "REAL", "REAL", "REAL", "REAL", "TEXT", "REAL","INTEGER" };
+	    private static final String[]  TRANSPORTATION_FIELD_TYPE = 
+	    	{ "INTEGER PRIMARY KEY", "REAL", "REAL", "REAL", "REAL", "TEXT", "REAL","INTEGER" };
 	 // real estate _id PRIMARY KEY INTEGER, ​type ​TEXT, ​average_rent_pric​e
 	    // REAL, average_buying_price ​REAL, country_code INTEGER
 	    private static final String REAL_ESTATE_TABLE_NAME = "real_estate";
@@ -133,20 +134,25 @@ public class Controller {
 	}
 
 	private static void initDBModelObjects() throws SQLException {
-		// USA DBModel
+		// User DBModel
 		controller.mUserDB = new DBModel(DB_NAME, USER_TABLE_NAME, USER_FIELD_NAMES, USER_FIELD_TYPES);
+		
+		// USA DBModel
 		controller.mUSAFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,
 				FOOD_TABLE_FIELD_TYPE);
-		
 		controller.mUSATransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,
 				TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
-		
 		controller.mUSARealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,
 				REAL_ESTATE_FIELD_TYPE);
+		
 		// Japan DBModel
 		controller.mJapanDB = new DBModel(DB_NAME, Japan_TABLE_NAME, Japan_TABLE_FIELD_NAME, Japan_TABLE_FIELD_TYPES);
 		// Countries 
 		controller.mUserChoosenCountryDB = new DBModel(DB_NAME,COUNTRY_TABLE_NAME,COUNTRY_TABLE_FIELD_NAME,COUNTRY_TABLE_FIELD_TYPES);
+	// Brazil DBModels
+		controller.mBrazilFood = new DBModel(DB_NAME, FOOD_TABLE_NAME, FOOD_TABLE_FIELD_NAME,FOOD_TABLE_FIELD_TYPE);
+		controller. mBrazilTransportation = new DBModel(DB_NAME, TRANSPORTATION_TABLE_NAME,TRANSPORTATION_FIELD_NAME, TRANSPORTATION_FIELD_TYPE);
+		controller.mBrazilRealEstate = new DBModel(DB_NAME, REAL_ESTATE_TABLE_NAME, REAL_ESTATE_FIELD_NAME,REAL_ESTATE_FIELD_TYPE);
 	}
 	private static void  initAllListsFX()
 	{
@@ -328,6 +334,89 @@ public class Controller {
 		return recordsCreated;
 	}
 
+	private static void addBrazilToLists() throws SQLException
+	{
+		controller.initializeBrazilDBFromFile();
+		// FOOD
+		ArrayList<ArrayList<String>> brazilo = controller.mBrazilFood.getAllRecords();
+		int country = Integer.valueOf(BRAZIL_COUNTRY_CODE);
+		String description,unit;
+		double price;
+		for (ArrayList<String> values : brazilo)
+		{
+			System.out.println(values);
+			 description = values.get(2);
+			 unit = values.get(3);
+			 price = Double.valueOf(values.get(4));
+			controller.mAllGroceriesList.add(new Grocery(description,unit,price,country,Types.Dairy_products));
+		}
+		// Transprotation
+
+		brazilo = controller.mBrazilTransportation.getAllRecords();
+		country = Integer.valueOf(BRAZIL_COUNTRY_CODE);
+		for (ArrayList<String> values : brazilo)
+		{
+			System.out.println(values);
+			 description = values.get(2);
+			 unit = values.get(3);
+			 price = Double.valueOf(values.get(4));
+			controller.mAllTransportationList.add(new Transportation(description,unit,price,Types.Transportation,country));
+		}
+	}
+	private int initializeBrazilDBFromFile() throws SQLException {
+		int recordsCreated = 0;
+		// FOOD
+		if (controller.mBrazilFood.getRecordCount() > 0)
+			return 0;
+		try {
+			
+			Scanner fileScanner = new Scanner(new File(Brazil_FOOD_DATA_FILE));
+
+			fileScanner.nextLine();
+			// All subsequent reads are for user data
+			// "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
+			while (fileScanner.hasNextLine()) 
+			{
+				String[] data = fileScanner.nextLine().split(",");
+				// Length of values is one less than field names because values
+				// does not have id (DB will assign one)
+				String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
+				values[0] = data[0];
+				values[1] = data[1];
+				values[2] = data[2];
+				values[3] = data[3];
+				values[4] = BRAZIL_COUNTRY_CODE;
+				controller.mBrazilFood.createRecord(Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
+				recordsCreated++;
+			}
+			// Transprotaion
+			 fileScanner = new Scanner(new File(Brazil_Transportation_DATA_FILE));
+
+			fileScanner.nextLine();
+			// All subsequent reads are for user data
+			// "TEXT", "TEXT", "TEXT", "REAL", "INTEGER" };
+			while (fileScanner.hasNextLine()) 
+			{
+				String[] data = fileScanner.nextLine().split(",");
+				// Length of values is one less than field names because values
+				// { "REAL", "REAL", "REAL", "REAL", "TEXT", "REAL","INTEGER" };
+				String[] values = new String[TRANSPORTATION_FIELD_NAME.length - 1];
+				values[4] = data[0];
+				values[5] = data[1];
+				values[6] = BRAZIL_COUNTRY_CODE;
+				controller.mBrazilTransportation.createRecord(Arrays.copyOfRange(TRANSPORTATION_FIELD_NAME, 1, TRANSPORTATION_FIELD_NAME.length), values);
+			}
+			
+			// All done with the CSV file, close the connection
+			fileScanner.close();
+			
+			
+		} catch (FileNotFoundException e) {
+			return 0;
+		}
+		return recordsCreated;
+	}
+
 	public static Controller getInstance() {
 		if(controller == null) {
 			controller = new Controller();
@@ -346,6 +435,8 @@ public class Controller {
 				 addJapanToLists();
 				// Create the countries list
 				 addToAllCountriesList();
+				 // Handling Brazil issues
+				 addBrazilToLists();
 			}catch (SQLException e)
 			{e.printStackTrace();}
 		}
@@ -426,7 +517,6 @@ public class Controller {
 				}
 			}
 		}
-
 		return "Incorrect email or password.";
 	}
 	
@@ -521,7 +611,6 @@ public class Controller {
             System.out.println("fruit catch");
             return 0;
         }
-
 
         //MEAT
         try {
