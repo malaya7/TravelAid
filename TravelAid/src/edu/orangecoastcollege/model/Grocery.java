@@ -3,11 +3,14 @@ package edu.orangecoastcollege.model;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class Grocery
+import edu.orangecoastcollege.controller.Controller;
+
+public class Grocery extends Country
 {
   private String description;
   private String unit; 
   private double price; 
+  
   
   // TODO We need a way to asstioacte this food with a country 
 private  int country_code;
@@ -26,8 +29,18 @@ public Grocery(String description, String unit, double price, int country_code, 
 
 @Override
 public String toString()
-{	NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-    return "[" + type.name() + ", Kind=" + description + ", Price=" + currency.format(price) + " "+ unit +"]";
+{	StringBuilder f= new StringBuilder("[");
+		if (getCurrencyFormat(this.country_code) == null) {
+			return f.append(Controller.getCountryName(this.country_code)).append(", ").append(type.name())
+					.append(",Kind: ").append(this.description).append(", Price: ").append(this.price)
+					.append(VIETNAM_CURRENCY).append(", ").append(this.unit).append("]").toString();
+		}
+		return f.append(Controller.getCountryName(this.country_code)).append(", ").append(type.name())
+				.append(", Kind: ").append(this.description).append(", Price=")
+				.append(getCurrencyFormat(this.country_code).format(this.price)).append(", ").append(this.unit)
+				.append("]").toString();
+
+//return "[" + type.name() + ", Kind=" + description + ", Price=" + currency.format(price) + " "+ unit +"]";
 }
 
 public String getDescription() {

@@ -3,13 +3,21 @@ package edu.orangecoastcollege.model;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class Housing {
+import edu.orangecoastcollege.controller.Controller;
+
+public class Housing extends Country{
 
 	 String type;
 	 double average_rent_price;
 	 double average_buying_price;
 	 int country_code;
-	 
+	 //Real-Estate	price in Dong/buy	Average to rent
+	 public Housing (String type, double price, double rent)
+	 {
+		 this.type=type;
+		 this.average_buying_price=price;
+		 this.average_rent_price=rent;
+	 }
 	public Housing(String type, double average_rent_price, double average_buying_price, int country_code) {
 		this.type = type;
 		this.average_rent_price = average_rent_price;
@@ -19,8 +27,21 @@ public class Housing {
 
 	@Override
 	public String toString()
-	{	NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-	    return "[" + type + ", average buying  price= "+ currency.format(average_rent_price) +" average rent  price=" + currency.format(average_buying_price) +"]";
+	{	StringBuilder h = new StringBuilder("[");
+		if(getCurrencyFormat(this.country_code)==null)
+	{	
+return			h.append(Controller.getCountryName(this.country_code)).append(", Type:").append(this.type).append(", Average buying price:")
+		.append(this.average_buying_price).append(VIETNAM_CURRENCY)
+		.append(", Average rent price:").append(this.average_rent_price).append(VIETNAM_CURRENCY).append("]")
+		.toString();
+	}
+		return h.append(Controller.getCountryName(this.country_code))
+		.append(", Type:").append(this.type).append(", Average buying price:")
+		.append(getCurrencyFormat(this.country_code).format(this.getAverage_buying_price()))
+		.append(", Average rent price:").append(getCurrencyFormat(this.country_code).format(this.average_rent_price))
+		.append("]").toString();
+
+//	    return "[" + type + ", average buying  price= "+ currency.format(average_rent_price) +" average rent  price=" + currency.format(average_buying_price) +"]";
 	}
 	
 	public String getType() {

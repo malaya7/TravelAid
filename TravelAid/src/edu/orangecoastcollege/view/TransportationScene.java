@@ -5,9 +5,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
+import edu.orangecoastcollege.model.Country;
+import edu.orangecoastcollege.model.Grocery;
 import edu.orangecoastcollege.model.Transportation;
 import edu.orangecoastcollege.model.convertions;
 import javafx.collections.FXCollections;
@@ -28,7 +32,17 @@ private static Controller controller = Controller.getInstance();
         ViewNavigator.loadScene("Categories", ViewNavigator.CHOOSE_SCENE);
 
 	}
-	
+	public void addToSaveList(ActionEvent event) {
+
+
+		for (Transportation f : controller.getAllTransportation()) 
+		{	if(f.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+			controller.saveList.add(f);
+
+		}
+
+		Controller.generateMessage();
+	}
 	
 
 	@Override

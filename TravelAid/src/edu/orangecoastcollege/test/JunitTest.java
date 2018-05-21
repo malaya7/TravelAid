@@ -47,7 +47,7 @@ public class JunitTest {
 	@Test
 	public void testControllerGetInstance() {
 		controler = Controller.getInstance();
-
+/*
 		System.out.println(controler.getAllGroceries().size());
 		System.out.println(controler.getAllTransportation().size());
 		
@@ -55,7 +55,7 @@ public class JunitTest {
 			{if(Integer.valueOf(Controller.SPAIN_COUNTRY_CODE).equals(f.getCountry_code())){
 				System.out.println(f);
 			}
-			}
+			}*/
 
 		
 

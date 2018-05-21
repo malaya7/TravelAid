@@ -5,9 +5,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
+import edu.orangecoastcollege.model.Country;
+import edu.orangecoastcollege.model.Grocery;
 import edu.orangecoastcollege.model.Housing;
 import edu.orangecoastcollege.model.Transportation;
 import edu.orangecoastcollege.model.convertions;
@@ -30,7 +34,17 @@ private static Controller controller = Controller.getInstance();
         ViewNavigator.loadScene("categories", ViewNavigator.CHOOSE_SCENE);
 
 	}
+	public void addToSaveList(ActionEvent event) {
 
+		for (Housing f : controller.getAllHousing()) 
+		{	if(f.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+			controller.saveList.add(f);
+
+		}
+
+		Controller.generateMessage();
+		
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -51,5 +65,7 @@ private static Controller controller = Controller.getInstance();
 		    // 2) Use the controller to add the selected game to the inventory
 		return controller.addToFinalList(selected);
 			// 3) Return the result (as a boolean)a
-	}
+		
+	 
+	 }
 }
