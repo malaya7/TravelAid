@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import javax.mail.MessagingException;
+
 import edu.orangecoastcollege.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,9 +130,10 @@ public class Controller {
 	public static ObservableList<Grocery> finalGroceryList  = FXCollections.observableArrayList();
 	public static ObservableList<Transportation> finalTransportationList = FXCollections.observableArrayList();
 	public static ObservableList<Housing> finalHousingList = FXCollections.observableArrayList();
-
+	public static ObservableList<Country> saveList = FXCollections.observableArrayList();
 	private Controller() {
 	}
+	
 
 	private static void initDBModelObjects() throws SQLException {
 
@@ -201,19 +204,21 @@ public class Controller {
 		Types fruit = Types.Fruit;
 		Types vegi = Types.Vegetable;
 		for (ArrayList<String> f : resultsList) {
-			Types type = Types.Dairy_products;
+			Types type=Types.Meat;
 			if (f.get(1).equalsIgnoreCase("Fruit"))
 				type = fruit;
 			if (f.get(1).equalsIgnoreCase("Dairy"))
 				type = dairy;
 			if (f.get(1).equalsIgnoreCase("Vegetables"))
 				type = vegi;
-			else{ type= Types.Meat;}
-
+			/*if(f.get(1).equalsIgnoreCase("Meat"))
+				type=Types.Meat; */
+			
 			description = f.get(2);
 			unit = f.get(3);
 			price = Double.valueOf(f.get(4));
 			Grocery g = new Grocery(description, unit, price, Integer.parseInt(SPAIN_COUNTRY_CODE), type);
+			System.out.println(g);
 			controller.mAllGroceriesList.add(g);
 		}
 		
@@ -227,7 +232,7 @@ public class Controller {
 			average_inssurance_price = Double.valueOf(f.get(4));
 			avgMonthlyPass = Double.valueOf(f.get(6));
 			controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
-					average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
+					average_gas_price, avgDiesel, average_inssurance_price, Types.L, avgMonthlyPass,
 					Integer.valueOf(SPAIN_COUNTRY_CODE)));
 			
 		}
@@ -252,19 +257,19 @@ public class Controller {
 		Types dairy = Types.Dairy_products;
 		Types fruit = Types.Fruit;
 		Types vegi = Types.Vegetable;
-		for (ArrayList<String> f : resultsList) {
-			Types type = Types.Dairy_products;
+		for (ArrayList<String> f : resultsList) {	Types type = Types.Meat;;
 			if (f.get(1).equalsIgnoreCase("Fruit"))
 				type = fruit;
 			if (f.get(1).equalsIgnoreCase("Dairy"))
 				type = dairy;
 			if (f.get(1).equalsIgnoreCase("Vegetables"))
 				type = vegi;
-
+			
 			description = f.get(2);
 			unit = f.get(3);
 			price = Double.valueOf(f.get(4));
 			Grocery g = new Grocery(description, unit, price, Integer.parseInt(UK_COUNTRY_CODE), type);
+			System.out.println(g);
 			controller.mAllGroceriesList.add(g);
 		}
 		
@@ -278,7 +283,7 @@ public class Controller {
 			average_inssurance_price = Double.valueOf(f.get(4));
 			avgMonthlyPass = Double.valueOf(f.get(6));
 			controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
-					average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
+					average_gas_price, avgDiesel, average_inssurance_price, Types.L, avgMonthlyPass,
 					Integer.valueOf(UK_COUNTRY_CODE)));
 			
 		}
@@ -303,19 +308,21 @@ public class Controller {
 		Types dairy = Types.Dairy_products;
 		Types fruit = Types.Fruit;
 		Types vegi = Types.Vegetable;
-		for (ArrayList<String> f : resultsList) {
-			Types type = Types.Dairy_products;
+		for (ArrayList<String> f : resultsList) {	Types type = Types.Meat;
 			if (f.get(1).equalsIgnoreCase("Fruit"))
 				type = fruit;
 			if (f.get(1).equalsIgnoreCase("Dairy"))
 				type = dairy;
 			if (f.get(1).equalsIgnoreCase("Vegetables"))
 				type = vegi;
-			else{ type= Types.Meat;}
+		/*	if(f.get(1).equalsIgnoreCase("Meat"))
+				type=meat;*/
+		
 			description = f.get(2);
 			unit = f.get(3);
 			price = Double.valueOf(f.get(4));
 			Grocery g = new Grocery(description, unit, price, Integer.parseInt(USA_COUNTRY_CODE), type);
+			System.out.println(g);
 			controller.mAllGroceriesList.add(g);
 		}
 
@@ -328,6 +335,11 @@ public class Controller {
 			avgDiesel = Double.valueOf(f.get(3));
 			average_inssurance_price = Double.valueOf(f.get(4));
 			avgMonthlyPass = Double.valueOf(f.get(6));
+			
+			System.out.println(new Transportation(average_economic_car_price,
+					average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
+					Integer.valueOf(USA_COUNTRY_CODE)).toString());
+			
 			controller.mAllTransportationList.add(new Transportation(average_economic_car_price,
 					average_gas_price, avgDiesel, average_inssurance_price, Types.G, avgMonthlyPass,
 					Integer.valueOf(USA_COUNTRY_CODE)));
@@ -378,7 +390,7 @@ public class Controller {
 				// Length of values is one less than field names because values
 				// does not have id (DB will assign one)
 				String[] values = new String[COUNTRY_TABLE_FIELD_NAME.length - 1];
-				System.out.println(Arrays.toString(data));
+				
 				values[0] = data[0];
 				values[1] = data[1];
 				values[2] = data[3];
@@ -436,7 +448,6 @@ public class Controller {
 				// Length of values is one less than field names because values
 				// does not have id (DB will assign one)
 				String[] values = new String[ Japan_TABLE_FIELD_NAME.length - 1];
-				System.out.println(Arrays.toString(data));
 				values[0] = data[0];
 				values[1] = data[1];
 				values[2] = data[2];
@@ -463,7 +474,7 @@ public class Controller {
 		double price;
 		for (ArrayList<String> values : brazilo)
 		{
-			System.out.println(values);
+			
 			 description = values.get(2);
 			 unit = values.get(3);
 			 price = Double.valueOf(values.get(4));
@@ -475,7 +486,7 @@ public class Controller {
 		country = Integer.valueOf(BRAZIL_COUNTRY_CODE);
 		for (ArrayList<String> values : brazilo)
 		{
-			System.out.println(values);
+			
 			 description = values.get(2);
 			 unit = values.get(3);
 			 price = Double.valueOf(values.get(4));
@@ -681,7 +692,7 @@ public class Controller {
 
         //DAIRY
         try
-        {System.out.println("inside Dairy try");
+        {
             Scanner fileScanner = new Scanner(new File(USA_DAIRY_FILE_DATA_FILE));
             fileScanner.nextLine();
 
@@ -721,7 +732,7 @@ public class Controller {
                 // does not have id (DB will assign one)
                 String[] values = new String[FOOD_TABLE_FIELD_NAME.length - 1];
                 values[0] = data[0];
-                values[1] = !data[2].equals("") ? data[1] :data[1] +", " + data[2];
+                values[1] = data[2].isEmpty() ? data[1] :data[1] +", " + data[2];
                 values[2] = data[5];
                 values[3] = data[7];
                 values[4] = USA_COUNTRY_CODE;
@@ -740,7 +751,7 @@ public class Controller {
 
         //MEAT
         try {
-        	System.out.println("In the Meat Try");
+        	
             Scanner fileScanner = new Scanner(new File(USA_MEAT_DATA_FILE));
             fileScanner.nextLine();
 
@@ -771,7 +782,7 @@ public class Controller {
 
         //Vegetables
         try {
-        	System.out.println("In the veggi try");
+        	
             Scanner fileScanner = new Scanner(new File(USA_VEGETABLE_DATA_FILE));
             fileScanner.nextLine();
 
@@ -784,7 +795,7 @@ public class Controller {
                 // "
                 // type description lb price
                 values[0] = data[2];
-                values[1] = !data[4].equals("") ? data[3] : data[3]+ ", " + data[4];
+                values[1] = data[4].isEmpty() ? data[3] : data[3]+ ", " + data[4];
                 values[2] = data[7];
                 values[3] = data[9];
                 values[4] = USA_COUNTRY_CODE;
@@ -804,7 +815,7 @@ public class Controller {
         //Transportation
 
         try {
-        	System.out.println("In transportation USA");
+        	
             Scanner fileScanner = new Scanner(new File(USA_PRIVATE_TRANSPORTATION_FILE));
             fileScanner.nextLine();
 
@@ -813,7 +824,7 @@ public class Controller {
                 // Length of values is one less than field names because values
                 // does not have id (DB will assign one)
                 String[] values = new String[TRANSPORTATION_FIELD_NAME.length - 1];
-System.out.println(Arrays.toString(data));
+
                 values[0] = data[0];
                 values[1] = data[1];
                 values[2] = data[2];
@@ -821,13 +832,6 @@ System.out.println(Arrays.toString(data));
                 values[4] = data[4];
                 values[5] = data[5];
                 values[6] =USA_COUNTRY_CODE;
-//average_economic_car_price,
-                //average_gas_price,
-                //double avgDiesel,
-                //double average_inssurance_price,
-                //Types unit,
-                //double avgMonthlyPass,
-                //int country_code) {
 
                 controller.mUSATransportation.createRecord(Arrays.copyOfRange(TRANSPORTATION_FIELD_NAME, 1,
                         TRANSPORTATION_FIELD_NAME.length), values);
@@ -845,7 +849,7 @@ System.out.println(Arrays.toString(data));
         try {
             Scanner fileScanner = new Scanner(new File(USA_HOUSING_FILE));
             fileScanner.nextLine();
-            System.out.println("in real estat USA");
+           
             while (fileScanner.hasNextLine()) {
                 String[] data = fileScanner.nextLine().split(",");
                 // Length of values is one less than field names because values
@@ -883,7 +887,7 @@ System.out.println(Arrays.toString(data));
 
 		// FOOD for both
 		try {
-			System.out.println("inside Dairy try");
+		
 			Scanner fileScanner = new Scanner(new File(EU_FOOD_FILE));
 			while (fileScanner.hasNextLine()) {
 				String[] data = fileScanner.nextLine().split(",");
@@ -897,12 +901,12 @@ System.out.println(Arrays.toString(data));
 
 				if (data[4].equalsIgnoreCase("ES")) {
 					values[4] = SPAIN_COUNTRY_CODE;
-					System.out.println(Arrays.toString(values));
+					
 					controller.mSpainFood.createRecord(
 							Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
 				} else {
 					values[4] = UK_COUNTRY_CODE;
-					System.out.println(Arrays.toString(values));
+					
 					controller.mUKFood.createRecord(
 							Arrays.copyOfRange(FOOD_TABLE_FIELD_NAME, 1, FOOD_TABLE_FIELD_NAME.length), values);
 				}
@@ -918,7 +922,7 @@ System.out.println(Arrays.toString(data));
 		
 			//Transportation Spain
 	     try {
-	        	System.out.println("In transportation Spain");
+	        	
 	            Scanner fileScanner = new Scanner(new File(SPAIN_TRANSPORTATION));
 	            fileScanner.nextLine();
 
@@ -927,7 +931,7 @@ System.out.println(Arrays.toString(data));
 	                // Length of values is one less than field names because values
 	                // does not have id (DB will assign one)
 	                String[] values = new String[TRANSPORTATION_FIELD_NAME.length - 1];
-	System.out.println(Arrays.toString(data));
+	
 	                values[0] = data[0];
 	                values[1] = data[1];
 	                values[2] = data[2];
@@ -949,7 +953,7 @@ System.out.println(Arrays.toString(data));
 
 
 	        //Real Estate Spain
-	        try {	System.out.println("In RS Spain");
+	        try {	
 	            Scanner fileScanner = new Scanner(new File(SPAIN_HOUSING_FILE));
 	            fileScanner.nextLine();
 	            while (fileScanner.hasNextLine()) {
@@ -976,7 +980,7 @@ System.out.println(Arrays.toString(data));
 		
 	        //UK Transportation
 		     try {
-		        	System.out.println("In transportation UK");
+		        	
 		            Scanner fileScanner = new Scanner(new File(UK_PRIV_TRANSPORTATION));
 		            fileScanner.nextLine();
 
@@ -985,7 +989,7 @@ System.out.println(Arrays.toString(data));
 		                // Length of values is one less than field names because values
 		                // does not have id (DB will assign one)
 		                String[] values = new String[TRANSPORTATION_FIELD_NAME.length - 1];
-		System.out.println(Arrays.toString(data));
+		
 		                values[0] = data[0];
 		                values[1] = data[1];
 		                values[2] = data[2];
@@ -1007,10 +1011,10 @@ System.out.println(Arrays.toString(data));
 
 
 		        //Real Estate UK
-		        try {	System.out.println("In RS UK");
+		        try {	
 		            Scanner fileScanner = new Scanner(new File(UK_HOUSING_FILE));
 		            fileScanner.nextLine();
-		            System.out.println("in real estat USA");
+		          
 		            while (fileScanner.hasNextLine()) {
 		                String[] data = fileScanner.nextLine().split(",");
 		                // Length of values is one less than field names because values
@@ -1046,6 +1050,17 @@ System.out.println(Arrays.toString(data));
 		return false;
 	}
 
+	public boolean addToFinalList(Country selected)
+	{
+
+		if(!saveList.contains(selected))
+		{
+			saveList.add(selected);
+			return true;
+		}
+		return false;
+		
+	}
 	public boolean addToFinalList(Housing selected) 
 	{
 	
@@ -1066,6 +1081,63 @@ System.out.println(Arrays.toString(data));
 		}
 		return false;
 	}
+	public static StringBuilder sb = new StringBuilder("Here is the Information you Requested from TraveAid\nTravelAid wishes you a pleasent travel\n");	
 	
+	public static String getEmailMessage(){
+		return sb.toString();
+	}
+	/**
+	 * Generates the Message for the email to be sent fetching data from the saveList which is populated when the user presses the save button
+	 */
+	public static void generateMessage(){
+ 
+		
+		if(saveList!=null){
+		for(Country c: saveList)
+		{
+			sb.append(c+"\n");
+		}
+		System.out.println(sb.toString());
+		}
+	}
+	/**	Sends Email containing the getEmailMessage()
+	 * @throws MessagingException Forces caller to catch this exception in case something went wrong
+	 */
+	public static void sendEmail() throws MessagingException
+	{
+		Email email = new Email();
+		ArrayList<String> emailArray = new ArrayList();
+		emailArray.add(controller.mCurrentUser.getEmail());	//[0] the email to send to
+		emailArray.add("Hello "+ controller.mCurrentUser.getName() +", TravelAid- Where your dreams become reality"); //at [1] the Subject   what can we put as subject of the email??
+		emailArray.add(sb.toString());
+		email.createAndSendEmailMessage(emailArray);
+				
+	}
+	/**
+	 * 
+	 * @param countryCode
+	 * @return returns "Country: nameOfCountry" used mainly in the class toStrings
+	 */
+	public static String getCountryName(int countryCode){
+		if (countryCode == 1)
+			return "County: USA ";
 
+		if (countryCode == 2)
+			return "County: UK ";
+
+		if (countryCode == 3)
+			return "County: Spain ";
+
+		if (countryCode == 4)
+			return "County: Vietnam ";
+
+		if (countryCode == 5)
+			return "County: Japan ";
+
+		if (countryCode == 6)
+			return "County: Brazil ";
+		return "County:";
+	}
+	
+	
 }

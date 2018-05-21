@@ -1,19 +1,20 @@
 package edu.orangecoastcollege.view;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import edu.orangecoastcollege.controller.Controller;
+import edu.orangecoastcollege.model.Country;
 import edu.orangecoastcollege.model.Grocery;
-import edu.orangecoastcollege.model.Housing;
 import edu.orangecoastcollege.model.convertions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 
 public class FoodScene implements Initializable, convertions {
 
@@ -29,6 +30,17 @@ private static Controller controller = Controller.getInstance();
 
 	}
 
+	public void addToSaveList(ActionEvent event) {
+		
+		for (Grocery f : controller.getAllGroceries()) 
+		{	if(f.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+			controller.saveList.add(f);
+
+		}
+
+		Controller.generateMessage();
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

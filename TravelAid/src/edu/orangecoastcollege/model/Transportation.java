@@ -3,7 +3,9 @@ package edu.orangecoastcollege.model;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class Transportation {
+import edu.orangecoastcollege.controller.Controller;
+
+public class Transportation extends Country {
 
 	// Train, Bus, Taxi
 	String description;
@@ -41,11 +43,40 @@ public class Transportation {
 		 type= t;
 		 country_code= country;
 	}
-
+//average_economic_car_price 
+	//double average_gas_price,double avgDiesel,
+	//double average_inssurance_price,
+	//Types unit,
+	//double avgMonthlyPass
+	// int country_code)
 	@Override
-	public String toString()
-	{	NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-	    return "[" + type.name() + ", Kind=" + description + ", Price=" + currency.format(averagePrice) + " "+ unit +"]";
+	public String toString() {
+		StringBuilder t = new StringBuilder("[");
+		if (this.average_diesel_price != 0) {
+			//vietnams currency is not supported so we implement it as a string
+			if(getCurrencyFormat(this.country_code)==null)
+			{	return
+				t.append(Controller.getCountryName(this.country_code)).append("Average Economic Car Price: ")
+				.append(this.average_economic_car_price).append(VIETNAM_CURRENCY)
+				.append(", Average Gas Price:").append(this.average_gas_price).append(VIETNAM_CURRENCY)
+				.append(", Average Diesel Price:").append(this.average_diesel_price).append(VIETNAM_CURRENCY)
+				.append(", Average Insurrance Price:").append(this.average_inssurance_price).append(VIETNAM_CURRENCY)
+				.append(", Unit:").append(this.type).append(", Average Monthly Public Transportation Pass: ")
+				.append(this.averageMonthlyPrice).append(VIETNAM_CURRENCY).append("]").toString();
+			
+			}
+			
+			return
+				t.append(Controller.getCountryName(this.country_code))
+				.append("Average Economic Car Price: ")
+				.append(getCurrencyFormat(this.country_code).format(this.average_economic_car_price))
+				.append(", Average Gas Price:").append(getCurrencyFormat(this.country_code).format(this.average_gas_price))
+				.append(", Average Diesel Price:").append(getCurrencyFormat(this.country_code).format(this.average_diesel_price))
+				.append(", Average Insurrance Price:").append(getCurrencyFormat(this.country_code).format(this.average_inssurance_price))
+				.append(", Unit:").append(this.type).append(", Average Monthly Public Transportation Pass: ")
+				.append(getCurrencyFormat(this.country_code).format(this.averageMonthlyPrice)).append("]").toString();
+		}
+		return "[" + type.name() + ", Kind=" + description + ", Price=" + averagePrice + " " + unit + "]";
 	}
 
 	public double getAverageMonthlyPrice() {
