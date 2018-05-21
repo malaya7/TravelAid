@@ -49,6 +49,7 @@ public class Emailu implements Initializable{
 
 		try {
 			controller.sendEmail();
+			AlertBox.display("Alert","Your E-mail has been sent.\nThank You for using TravilAid" );
 		} catch (MessagingException e) {
 			emailErrorLabel.setVisible(true);
 		}
