@@ -34,15 +34,11 @@ public class UserInformationScene implements Initializable {
 
 	private static Controller controller = Controller.getInstance();
 
-	// TODO: Override the initialize method (let Eclipse generate the method for you)
-	// In this method:
-	// 1) Set the items of the allVideoGamesLV to all video games from the controller
-	// 2) Set the items of the platformsCB to the distinct platforms from the controller
-	// 3) Set the items of the publishersCB to the distinct publishers from the controller	
+	
 	
 	@FXML
 	public void clearButton()
-	{
+	{	
         nameTF.clear();
         this.ageTF.clear();
         this.emailTF.clear();

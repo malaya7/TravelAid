@@ -76,7 +76,7 @@ public class Transportation extends Country {
 				.append(", Unit:").append(this.type).append(", Average Monthly Public Transportation Pass: ")
 				.append(getCurrencyFormat(this.country_code).format(this.averageMonthlyPrice)).append("]").toString();
 		}
-		return "[" + type.name() + ", Kind=" + description + ", Price=" + averagePrice + " " + unit + "]";
+		return "[" + type.name() + ", Kind=" + description + ", Price=" + getCurrencyFormat(country_code).format(averagePrice) + " " + unit + "]";
 	}
 
 	public double getAverageMonthlyPrice() {

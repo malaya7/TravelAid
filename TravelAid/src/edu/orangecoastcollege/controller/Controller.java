@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 import javax.mail.MessagingException;
 
 import edu.orangecoastcollege.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 
 public class Controller {
 
@@ -200,8 +200,8 @@ public class Controller {
 		ArrayList<ArrayList<String>> resultsList = controller.mSpainFood.getAllRecords();
 		String description, unit;
 		double price;
-		Types dairy = Types.Dairy_products;
-		Types fruit = Types.Fruit;
+		Types dairy = Types.Dairy;
+		Types fruit = Types.Fruit; 
 		Types vegi = Types.Vegetable;
 		for (ArrayList<String> f : resultsList) {
 			Types type=Types.Meat;
@@ -254,7 +254,7 @@ public class Controller {
 		ArrayList<ArrayList<String>> resultsList = controller.mUKFood.getAllRecords();
 		String description, unit;
 		double price;
-		Types dairy = Types.Dairy_products;
+		Types dairy = Types.Dairy;
 		Types fruit = Types.Fruit;
 		Types vegi = Types.Vegetable;
 		for (ArrayList<String> f : resultsList) {	Types type = Types.Meat;;
@@ -305,7 +305,7 @@ public class Controller {
 		ArrayList<ArrayList<String>> resultsList = controller.mUSAFood.getAllRecords();
 		String description, unit;
 		double price;
-		Types dairy = Types.Dairy_products;
+		Types dairy = Types.Dairy;
 		Types fruit = Types.Fruit;
 		Types vegi = Types.Vegetable;
 		for (ArrayList<String> f : resultsList) {	Types type = Types.Meat;
@@ -478,7 +478,7 @@ public class Controller {
 			 description = values.get(2);
 			 unit = values.get(3);
 			 price = Double.valueOf(values.get(4));
-			controller.mAllGroceriesList.add(new Grocery(description,unit,price,country,Types.Dairy_products));
+			controller.mAllGroceriesList.add(new Grocery(description,unit,price,country,Types.Dairy));
 		}
 		// Transprotation
 
@@ -1121,23 +1121,43 @@ public class Controller {
 	public static String getCountryName(int countryCode){
 		if (countryCode == 1)
 			return "County: USA ";
-
 		if (countryCode == 2)
 			return "County: UK ";
-
 		if (countryCode == 3)
 			return "County: Spain ";
-
 		if (countryCode == 4)
 			return "County: Vietnam ";
-
 		if (countryCode == 5)
 			return "County: Japan ";
-
 		if (countryCode == 6)
 			return "County: Brazil ";
 		return "County:";
 	}
 	
+	public ObservableList<Grocery> filterFood(Predicate<Grocery> criteria) {
+		ObservableList<Grocery> filteredFruits = FXCollections.observableArrayList();
+		for (Grocery f : mAllGroceriesList)
+			if (criteria.test(f))
+				filteredFruits.add(f);
+		return filteredFruits;
+	}
+
+	public ObservableList<Transportation> filteredTransportation(Predicate<Transportation> criteria) {
+		ObservableList<Transportation> filteredTrans = FXCollections.observableArrayList();
+		for (Transportation f : mAllTransportationList)
+			if (criteria.test(f))
+				filteredTrans.add(f);
+		return filteredTrans;
+
+	}
+
+	public ObservableList<Housing> filteredHousing(Predicate<Housing> criteria)
+	{
+		ObservableList<Housing> filteredHouse = FXCollections.observableArrayList();
+		for(Housing c: mAllHousingList)
+			if(criteria.test(c))
+				filteredHouse.add(c);
+		return filteredHouse;
+	}
 	
 }

@@ -51,27 +51,27 @@
             <Font name="Arial Bold" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="187.0" style="-fx-border-style: #ff0000;" text="Fruit" textFill="RED">
+      <Label layoutX="28.0" layoutY="187.0" onMouseClicked="#sortFruit" style="-fx-border-style: #ff0000;" text="Fruit" textFill="RED">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="139.0" layoutY="187.0" style="-fx-border-style: #ff0000;" text="Vegeteble" textFill="RED">
+      <Label layoutX="139.0" layoutY="187.0" onMouseClicked="#sortVeggis" style="-fx-border-style: #ff0000;" text="Vegeteble" textFill="RED">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="246.0" layoutY="163.0" prefHeight="70.0" prefWidth="135.0" style="-fx-border-style: #ff0000;" text="Animal Product" textFill="RED">
+      <Label layoutX="246.0" layoutY="163.0" onMouseClicked="#sortMeat" prefHeight="70.0" prefWidth="135.0" style="-fx-border-style: #ff0000;" text="Animal Product" textFill="RED">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="413.0" layoutY="188.0" style="-fx-border-style: #ff0000;" text="Dairy" textFill="RED">
+      <Label layoutX="413.0" layoutY="188.0" onMouseClicked="#sortDairy" style="-fx-border-style: #ff0000;" text="Dairy" textFill="RED">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="511.0" layoutY="188.0" style="-fx-border-style: #ff0000;" text="All Food" textFill="RED">
+      <Label layoutX="511.0" layoutY="188.0" onMouseClicked="#sortReset" style="-fx-border-style: #ff0000;" text="All Food" textFill="RED">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
