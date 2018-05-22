@@ -23,68 +23,53 @@ public class FoodScene implements Initializable, convertions {
 private static Controller controller = Controller.getInstance();
 	
 	@FXML
-	private ListView<Grocery>foodLV;
+	private ListView<Grocery> foodLV;
+
 	// Event Listener on Button.onAction
 	@FXML
-	public void sortFruit(){
-		
+	public void sortFruit() {
+
 		ObservableList<Grocery> filteredList = FXCollections.observableArrayList();
-		filteredList = controller.filterFood(f-> f.getCountry_code()==controller.countryChoosen 
-					&& f.getType().equals(Types.Fruit)
-				);
+		filteredList = controller
+				.filterFood(f -> f.getCountry_code() == controller.countryChoosen && f.getType().equals(Types.Fruit));
 		foodLV.setItems(filteredList);
-				
+
 	}
-	
-	/*
-	 *  private void filter()
-    {
-        String make = makesCB.getSelectionModel().getSelectedItem();
-        String fuelType = fuelTypesCB.getSelectionModel().getSelectedItem();
-        int cityMPG = (int) cityMPGSlider.getValue();
-        int hwyMPG = (int) hwyMPGSlider.getValue();
-        carsList = controller.filter(c -> (make == null || c.getMake().equalsIgnoreCase(make))
-                && (fuelType == null || c.getFuelType().equalsIgnoreCase(fuelType)) && c.getCityMPG() >= cityMPG
-                && c.getHighwayMPG() >= hwyMPG);
-        carsLV.setItems(carsList);
-        recordCountLabel.setText(carsList.size() + " record(s) displayed");
-    }
-	 */
-	
-	
+
 	@FXML
-	public void sortDairy(){
-		
+	public void sortDairy() {
+
 		ObservableList<Grocery> dairyList = FXCollections.observableArrayList();
-		dairyList = controller.filterFood(f-> f.getCountry_code() == controller.countryChoosen
-			&& f.getType().equals(Types.Dairy)
-				);
+		dairyList = controller
+				.filterFood(f -> f.getCountry_code() == controller.countryChoosen && f.getType().equals(Types.Dairy));
 		foodLV.setItems(dairyList);
 	}
+
 	@FXML
-	public void sortMeat(){
+	public void sortMeat() {
 		ObservableList<Grocery> meat = FXCollections.observableArrayList();
-		meat = controller.filterFood(e-> e.getCountry_code()== controller.countryChoosen && e.getType().equals(Types.Meat));
+		meat = controller
+				.filterFood(e -> e.getCountry_code() == controller.countryChoosen && e.getType().equals(Types.Meat));
 		foodLV.setItems(meat);
 	}
+
 	@FXML
-	public void sortVeggis(){
+	public void sortVeggis() {
 		ObservableList<Grocery> veggis = FXCollections.observableArrayList();
-		veggis = controller.filterFood(e-> e.getCountry_code() == controller.countryChoosen && e.getType().equals(Types.Vegetable));
+		veggis = controller.filterFood(
+				e -> e.getCountry_code() == controller.countryChoosen && e.getType().equals(Types.Vegetable));
 		foodLV.setItems(veggis);
 	}
+
 	@FXML
-	public void sortReset(){
+	public void sortReset() {
 		ObservableList<Grocery> counrty = FXCollections.observableArrayList();
-		for(Grocery g:controller.getAllGroceries())
-		{
-			if(g.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
+		for (Grocery g : controller.getAllGroceries()) {
+			if (g.getCountry_code() == Integer.valueOf(Controller.countryChoosen))
 				counrty.add(g);
 		}
-			foodLV.setItems(counrty);
-	
-		
-		
+		foodLV.setItems(counrty);
+
 	}
 	@FXML
 	public void BackToChooseScene(ActionEvent event) {

@@ -42,7 +42,7 @@ public class SignInScene {
 	    String result = controller.signInUser(email, password);
 	    if (result.equalsIgnoreCase("SUCCESS")) {
 			signInErrorLabel.setVisible(false);
-			ViewNavigator.loadScene("USER INFORMATION", ViewNavigator.COUNTRY_CITY_SCENE);
+			ViewNavigator.loadScene("Choose a Country", ViewNavigator.COUNTRY_CITY_SCENE);
 			return true;
 		}
 		signInErrorLabel.setText(result);

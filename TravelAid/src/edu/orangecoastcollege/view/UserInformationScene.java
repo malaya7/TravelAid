@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 
 // TODO: Implement the Initializable interface
 public class UserInformationScene implements Initializable {
-
+	
 	@FXML
 	TextField ageTF;
 	@FXML
@@ -29,47 +29,44 @@ public class UserInformationScene implements Initializable {
 	ComboBox<String> climateCB;
 	@FXML
 	ComboBox<String> languagesCB;
-	
+
 	Locale l = Locale.getDefault();
 
 	private static Controller controller = Controller.getInstance();
 
-	
-	
 	@FXML
-	public void clearButton()
-	{	
-        nameTF.clear();
-        this.ageTF.clear();
-        this.emailTF.clear();
-        locationTF.clear();
-        // Reset the fouces back to intreast rate
-        nameTF.requestFocus();
+	public void clearButton() {
+		nameTF.clear();
+		this.ageTF.clear();
+		this.emailTF.clear();
+		locationTF.clear();
+		// Reset the fouces back to intreast rate
+		nameTF.requestFocus();
 
 	}
-	
-	@FXML 
-	public void userLocation()
-	{
-		locationTF.setText( l.getDisplayCountry());
-	}
+
 	@FXML
-	public void doneButton()
-	{
+	public void userLocation() {
+		locationTF.setText(l.getDisplayCountry());
+	}
+
+	@FXML
+	public void doneButton() {
 		ViewNavigator.loadScene("Choose a Country", ViewNavigator.COUNTRY_CITY_SCENE);
 	}
-	
-	
+
 	@FXML
-	public void singOutButton()
-	{
-		// COMPLETED 
+	public void singOutButton() {
+		// COMPLETED
 		ViewNavigator.loadScene("Welcome to TravelAid", ViewNavigator.SIGN_IN_SCENE);
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+
+		emailTF.setText(controller.getCurrentUser().getEmail());
+		nameTF.setText(controller.getCurrentUser().getName());
 		ObservableList<String> climate = FXCollections.observableArrayList();
 		climate.add("Mediterranean");
 		climate.add("Polar");
@@ -81,9 +78,11 @@ public class UserInformationScene implements Initializable {
 		languages.add("Fr-French");
 		languages.add("Sp-Spain");
 		languages.add("Vt-vietnam");
+
 		climateCB.setItems(climate);
 		languagesCB.setItems(languages);
-		 userLocation();
+		userLocation();
+
 	}
 
 }
