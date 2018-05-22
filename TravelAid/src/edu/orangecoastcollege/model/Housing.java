@@ -37,7 +37,7 @@ return			h.append(Controller.getCountryName(this.country_code)).append(", Type:"
 	}
 		return h.append(Controller.getCountryName(this.country_code))
 		.append(", Type:").append(this.type).append(", Average buying price:")
-		.append(getCurrencyFormat(this.country_code).format(this.getAverage_buying_price()))
+		.append(getCurrencyFormat(this.country_code).format(this.average_buying_price))
 		.append(", Average rent price:").append(getCurrencyFormat(this.country_code).format(this.average_rent_price))
 		.append("]").toString();
 

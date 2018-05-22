@@ -1,5 +1,7 @@
 package edu.orangecoastcollege.view;
 
+import java.awt.Color;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,6 +25,7 @@ public class AlertBox {
 		
 		Button cloeseButton = new Button("Close");
 		cloeseButton.setOnAction(e -> window.close());
+		
 		
 		VBox vbox = new VBox(10);
 		vbox.getChildren().addAll(l,cloeseButton);

@@ -12,7 +12,7 @@ public class MainView extends Application {
 
 		ViewNavigator.loadScene("Welcome to TravelAid", ViewNavigator.SIGN_IN_SCENE);
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 }

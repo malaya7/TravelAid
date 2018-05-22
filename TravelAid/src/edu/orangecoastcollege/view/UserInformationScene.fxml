@@ -113,16 +113,6 @@
             <Image url="@images/Age.PNG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="49.0" layoutX="471.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Language.PNG" />
-         </image>
-      </ImageView>
-      <ComboBox fx:id="languagesCB" layoutX="504.0" layoutY="44.0" prefHeight="30.0" prefWidth="95.0" promptText="Language" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;">
-         <effect>
-            <DropShadow />
-         </effect>
-      </ComboBox>
       <ComboBox fx:id="climateCB" layoutX="312.0" layoutY="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="150.0" promptText="Climate" style="-fx-background-color: #00f9ff; -fx-background-radius: 10;">
          <effect>
             <DropShadow />

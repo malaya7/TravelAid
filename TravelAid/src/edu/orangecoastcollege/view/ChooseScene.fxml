@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -7,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.ChooseScene">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #9AD9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.orangecoastcollege.view.ChooseScene">
    <children>
       <ImageView fitHeight="122.0" fitWidth="174.0" layoutX="214.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -34,27 +39,27 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="foodButton" layoutX="69.0" layoutY="238.0" mnemonicParsing="false" onAction="#FoodButtonTrans" text="Food">
+      <Button fx:id="foodButton" layoutX="69.0" layoutY="238.0" mnemonicParsing="false" onAction="#FoodButtonTrans" style="-fx-background-color: TURQUOISE;" text="Food">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="TransportationButton" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#TransportationButtonTrans" text="Transportation">
+      <Button fx:id="TransportationButton" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#TransportationButtonTrans" style="-fx-background-color: TURQUOISE;" text="Transportation">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="RealEstate" layoutX="460.0" layoutY="238.0" mnemonicParsing="false" onAction="#housingButtonTrans" text="Real-Estate">
+      <Button fx:id="RealEstate" layoutX="460.0" layoutY="238.0" mnemonicParsing="false" onAction="#housingButtonTrans" style="-fx-background-color: TURQUOISE;" text="Real-Estate">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="Back" layoutX="467.0" layoutY="436.0" mnemonicParsing="false" onAction="#backToCountryButton" prefHeight="25.0" prefWidth="74.0" text="Back" />
+      <Button fx:id="Back" layoutX="467.0" layoutY="436.0" mnemonicParsing="false" onAction="#backToCountryButton" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: YELLOW;" text="Back" />
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Logo2.PNG" />
          </image>
       </ImageView>
-      <Button fx:id="result" layoutX="51.0" layoutY="435.0" mnemonicParsing="false" onAction="#resultButton" prefHeight="23.0" prefWidth="74.0" text="Result" />
+      <Button fx:id="result" layoutX="51.0" layoutY="435.0" mnemonicParsing="false" onAction="#resultButton" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: YELLOW;" text="Result" />
    </children>
 </AnchorPane>

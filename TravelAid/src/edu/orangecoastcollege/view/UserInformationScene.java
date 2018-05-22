@@ -27,8 +27,7 @@ public class UserInformationScene implements Initializable {
 	TextField locationTF;
 	@FXML
 	ComboBox<String> climateCB;
-	@FXML
-	ComboBox<String> languagesCB;
+	
 
 	Locale l = Locale.getDefault();
 
@@ -72,15 +71,9 @@ public class UserInformationScene implements Initializable {
 		climate.add("Polar");
 		climate.add("Temperate Regions");
 		climate.add("Tropical");
-		ObservableList<String> languages = FXCollections.observableArrayList();
-		languages.add("Ar-Arabic");
-		languages.add("En-English");
-		languages.add("Fr-French");
-		languages.add("Sp-Spain");
-		languages.add("Vt-vietnam");
-
+		
 		climateCB.setItems(climate);
-		languagesCB.setItems(languages);
+		
 		userLocation();
 
 	}
