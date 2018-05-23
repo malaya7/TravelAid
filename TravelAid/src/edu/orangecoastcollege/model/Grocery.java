@@ -1,25 +1,22 @@
 package edu.orangecoastcollege.model;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import edu.orangecoastcollege.controller.Controller;
 
 public class Grocery extends Country
 {
   private String description;
-  private String unit; 
-  private double price; 
-  
-  
-  // TODO We need a way to asstioacte this food with a country 
+  private String unit;
+  private double price;
+
+
+  // TODO We need a way to asstioacte this food with a country
 private  int country_code;
-  
+
   // using enum for type which could be frit,veg, meat, dairy
   Types type;
 
-public Grocery(String description, String unit, double price, int country_code, Types type) 
-{	
+public Grocery(String description, String unit, double price, int country_code, Types type)
+{
 	this.description = description;
 	this.unit = unit;
 	this.price = price;

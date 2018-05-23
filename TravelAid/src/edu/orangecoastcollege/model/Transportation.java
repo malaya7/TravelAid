@@ -43,29 +43,32 @@ public class Transportation extends Country {
 		 type= t;
 		 country_code= country;
 	}
-//average_economic_car_price 
+//average_economic_car_price
 	//double average_gas_price,double avgDiesel,
 	//double average_inssurance_price,
 	//Types unit,
 	//double avgMonthlyPass
 	// int country_code)
 	@Override
-	public String toString() {
-		StringBuilder t = new StringBuilder("[");
+	public String toString()
+	{
+	    StringBuilder t = new StringBuilder("[");
+	    if(getCurrencyFormat(this.country_code)==null)
+        {   return
+            t.append(Controller.getCountryName(this.country_code)).append("Average Economic Car Price: ")
+            .append(this.average_economic_car_price).append(VIETNAM_CURRENCY)
+            .append(", Average Gas Price:").append(this.average_gas_price).append(VIETNAM_CURRENCY)
+            .append(", Average Diesel Price:").append(this.average_diesel_price).append(VIETNAM_CURRENCY)
+            .append(", Average Insurrance Price:").append(this.average_inssurance_price).append(VIETNAM_CURRENCY)
+            .append(", Unit:").append(this.type).append(", Average Monthly Public Transportation Pass: ")
+            .append(this.averageMonthlyPrice).append(VIETNAM_CURRENCY).append("]").toString();
+
+        }
+
 		if (this.average_diesel_price != 0) {
 			//vietnams currency is not supported so we implement it as a string
-			if(getCurrencyFormat(this.country_code)==null)
-			{	return
-				t.append(Controller.getCountryName(this.country_code)).append("Average Economic Car Price: ")
-				.append(this.average_economic_car_price).append(VIETNAM_CURRENCY)
-				.append(", Average Gas Price:").append(this.average_gas_price).append(VIETNAM_CURRENCY)
-				.append(", Average Diesel Price:").append(this.average_diesel_price).append(VIETNAM_CURRENCY)
-				.append(", Average Insurrance Price:").append(this.average_inssurance_price).append(VIETNAM_CURRENCY)
-				.append(", Unit:").append(this.type).append(", Average Monthly Public Transportation Pass: ")
-				.append(this.averageMonthlyPrice).append(VIETNAM_CURRENCY).append("]").toString();
-			
-			}
-			
+
+
 			return
 				t.append(Controller.getCountryName(this.country_code))
 				.append("Average Economic Car Price: ")
