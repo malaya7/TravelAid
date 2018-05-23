@@ -27,16 +27,6 @@ private static Controller controller = Controller.getInstance();
 	
 	@FXML
 	private ListView<Grocery> foodLV;
-	@FXML
-	private Label Meat;
-	@FXML
-	private Label veggi;
-	@FXML
-	private Label dairy;
-	@FXML
-	private Label reset;
-	@FXML
-	private Label fruit;
 	
 	// Event Listener on Button.onAction
 	@FXML
